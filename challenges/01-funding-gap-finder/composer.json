@@ -1,0 +1,19 @@
+{
+  "name": "hackreation-eri/funding-gap-finder",
+  "description": "PRD 01 hello world: ETL three funders into one ledger and flag claim gaps.",
+  "type": "project",
+  "license": "MIT",
+  "require": { "php": ">=8.2" },
+  "require-dev": {
+    "phpunit/phpunit": "^11.5",
+    "behat/behat": "^3.16"
+  },
+  "autoload": { "files": ["src/etl.php"] },
+  "scripts": {
+    "test": "phpunit",
+    "bdd": "behat --colors",
+    "smoke": "php tests/smoke.php",
+    "ci": ["@test", "@bdd", "@smoke"]
+  },
+  "config": { "sort-packages": true }
+}

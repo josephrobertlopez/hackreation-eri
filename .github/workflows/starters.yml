@@ -1,0 +1,35 @@
+name: "Starters (stack hello worlds)"
+on:
+  push: { paths: ["starters/**", ".github/workflows/starters.yml"] }
+  pull_request: { paths: ["starters/**"] }
+jobs:
+  static-web:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: starters/static-web } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: npm test
+  php:
+    runs-on: ubuntu-latest
+    strategy: { matrix: { dir: [starters/php-mysql, starters/wordpress-plugin] } }
+    defaults: { run: { working-directory: "${{ matrix.dir }}" } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with: { php-version: "8.3", tools: composer }
+      - run: composer install --no-interaction --no-progress
+      - run: composer test
+  node:
+    runs-on: ubuntu-latest
+    strategy: { matrix: { dir: [starters/eri-job-card, starters/expo-supabase] } }
+    defaults: { run: { working-directory: "${{ matrix.dir }}" } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22", cache: npm, cache-dependency-path: "${{ matrix.dir }}/package-lock.json" }
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm run test:unit --if-present
+      - run: npm test --if-present

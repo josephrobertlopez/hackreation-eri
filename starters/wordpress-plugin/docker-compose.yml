@@ -1,0 +1,29 @@
+# WordPress + MySQL with the plugin mounted. Admin: http://localhost:8000/wp-admin
+# Ports bind to 127.0.0.1 only. Passwords come from .env (copy .env.example).
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: wp
+      MYSQL_USER: wp
+      MYSQL_PASSWORD: ${DB_PASS:-wp-dev-only}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS:-root-dev-only}
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASS:-root-dev-only}"]
+      interval: 5s
+      retries: 20
+  wordpress:
+    image: wordpress:php8.3-apache
+    ports: ["127.0.0.1:8000:80"]
+    environment: { WORDPRESS_DB_HOST: db, WORDPRESS_DB_USER: wp, WORDPRESS_DB_PASSWORD: "${DB_PASS:-wp-dev-only}", WORDPRESS_DB_NAME: wp, WORDPRESS_DEBUG: 1 }
+    volumes:
+      - ./eri-hello:/var/www/html/wp-content/plugins/eri-hello
+      - ../eri-job-card:/var/www/html/wp-content/plugins/eri-job-card
+      - ../../challenges/02-job-fit-checker/wp-plugin/eri-job-fit:/var/www/html/wp-content/plugins/eri-job-fit
+      - ../../challenges/03-job-post-checker/wp-plugin/eri-job-post-checker:/var/www/html/wp-content/plugins/eri-job-post-checker
+    depends_on: { db: { condition: service_healthy } }
+  phpmyadmin:
+    image: phpmyadmin:5
+    environment: { PMA_HOST: db, PMA_USER: wp, PMA_PASSWORD: "${DB_PASS:-wp-dev-only}" }
+    ports: ["127.0.0.1:8081:80"]
+    depends_on: { db: { condition: service_healthy } }

@@ -1,0 +1,23 @@
+name: "Challenge 03 · Inclusive job post checker (JS + WordPress)"
+on:
+  push: { paths: ["challenges/03-job-post-checker/**", ".github/workflows/challenge-03-*.yml"] }
+  pull_request: { paths: ["challenges/03-job-post-checker/**"] }
+defaults: { run: { working-directory: challenges/03-job-post-checker } }
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22", cache: npm, cache-dependency-path: challenges/03-job-post-checker/package-lock.json }
+      - run: npm ci
+      - name: TDD (node:test)
+        run: npm test
+      - name: BDD (Cucumber, scenarios tagged with PRD acceptance criteria)
+        run: npm run bdd
+      - name: Accessibility + behaviour (Playwright + axe)
+        run: npx playwright install --with-deps chromium && npm run test:a11y
+      - name: WordPress plugin is in sync with web/ and lints
+        run: |
+          npm run sync:wp && git diff --exit-code -- wp-plugin
+          php -l wp-plugin/eri-job-post-checker/eri-job-post-checker.php

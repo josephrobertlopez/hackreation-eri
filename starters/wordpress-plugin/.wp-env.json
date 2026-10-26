@@ -1,0 +1,6 @@
+{
+  "core": null,
+  "phpVersion": "8.2",
+  "plugins": ["./eri-hello"],
+  "config": { "WP_DEBUG": true }
+}

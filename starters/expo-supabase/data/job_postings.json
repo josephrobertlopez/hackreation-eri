@@ -1,0 +1,602 @@
+[
+ {
+  "posting_id": "JP001",
+  "employer": "Sixth Street Health Partners",
+  "title": "Picker/Packer",
+  "category": "Warehouse",
+  "neighborhood": "Wauwatosa",
+  "hours_per_week": "35",
+  "wage_per_hour": "11.50",
+  "near_bus_line": "FALSE"
+ },
+ {
+  "posting_id": "JP002",
+  "employer": "Third Ward Facilities Group",
+  "title": "Data Entry Clerk",
+  "category": "Office",
+  "neighborhood": "West Allis",
+  "hours_per_week": "35",
+  "wage_per_hour": "23.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP003",
+  "employer": "Lakefront Print Shop",
+  "title": "Receptionist",
+  "category": "Office",
+  "neighborhood": "Layton Park",
+  "hours_per_week": "24",
+  "wage_per_hour": "16.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP004",
+  "employer": "Kinnickinnic Health Partners",
+  "title": "Digital Accessibility Tester",
+  "category": "Tech",
+  "neighborhood": "Sherman Park",
+  "hours_per_week": "30",
+  "wage_per_hour": "23.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP005",
+  "employer": "Harbor Grocers",
+  "title": "Dietary Aide",
+  "category": "Health care",
+  "neighborhood": "West Allis",
+  "hours_per_week": "32",
+  "wage_per_hour": "14.00",
+  "near_bus_line": "FALSE"
+ },
+ {
+  "posting_id": "JP006",
+  "employer": "Menomonee Grocers",
+  "title": "Greeter",
+  "category": "Customer service",
+  "neighborhood": "Sherman Park",
+  "hours_per_week": "12",
+  "wage_per_hour": "13.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP007",
+  "employer": "Third Ward Logistics",
+  "title": "Office Assistant",
+  "category": "Office",
+  "neighborhood": "Glendale",
+  "hours_per_week": "40",
+  "wage_per_hour": "22.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP008",
+  "employer": "Sixth Street Logistics",
+  "title": "Dishwasher",
+  "category": "Food service",
+  "neighborhood": "West Allis",
+  "hours_per_week": "20",
+  "wage_per_hour": "23.25",
+  "near_bus_line": "FALSE"
+ },
+ {
+  "posting_id": "JP009",
+  "employer": "Lincoln Ave Market",
+  "title": "Office Assistant",
+  "category": "Office",
+  "neighborhood": "Layton Park",
+  "hours_per_week": "20",
+  "wage_per_hour": "14.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP010",
+  "employer": "Bluff Bakery Co.",
+  "title": "Sales Associate",
+  "category": "Retail",
+  "neighborhood": "Bay View",
+  "hours_per_week": "25",
+  "wage_per_hour": "20.50",
+  "near_bus_line": "FALSE"
+ },
+ {
+  "posting_id": "JP011",
+  "employer": "Sixth Street Senior Living",
+  "title": "QA Tester",
+  "category": "Tech",
+  "neighborhood": "Washington Heights",
+  "hours_per_week": "12",
+  "wage_per_hour": "18.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP012",
+  "employer": "Lakefront Cafe",
+  "title": "Custodian",
+  "category": "Custodial",
+  "neighborhood": "Riverwest",
+  "hours_per_week": "32",
+  "wage_per_hour": "18.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP013",
+  "employer": "Lincoln Ave Market",
+  "title": "Pet Groomer Assistant",
+  "category": "Animal care",
+  "neighborhood": "Layton Park",
+  "hours_per_week": "35",
+  "wage_per_hour": "19.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP014",
+  "employer": "Bluff Animal Hospital",
+  "title": "Dietary Aide",
+  "category": "Health care",
+  "neighborhood": "Walker's Point",
+  "hours_per_week": "40",
+  "wage_per_hour": "21.00",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP015",
+  "employer": "Riverbend Distribution",
+  "title": "Kennel Attendant",
+  "category": "Animal care",
+  "neighborhood": "Menomonee Valley",
+  "hours_per_week": "16",
+  "wage_per_hour": "14.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP016",
+  "employer": "Lakefront Senior Living",
+  "title": "Kennel Attendant",
+  "category": "Animal care",
+  "neighborhood": "West Allis",
+  "hours_per_week": "35",
+  "wage_per_hour": "23.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP017",
+  "employer": "Lakefront Tech Labs",
+  "title": "Groundskeeper",
+  "category": "Custodial",
+  "neighborhood": "Menomonee Valley",
+  "hours_per_week": "24",
+  "wage_per_hour": "17.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP018",
+  "employer": "Kinnickinnic Market",
+  "title": "Picker/Packer",
+  "category": "Warehouse",
+  "neighborhood": "Riverwest",
+  "hours_per_week": "32",
+  "wage_per_hour": "14.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP019",
+  "employer": "Story Hill Logistics",
+  "title": "Sorter",
+  "category": "Warehouse",
+  "neighborhood": "Bay View",
+  "hours_per_week": "20",
+  "wage_per_hour": "21.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP020",
+  "employer": "Northpoint Logistics",
+  "title": "Dietary Aide",
+  "category": "Health care",
+  "neighborhood": "Sherman Park",
+  "hours_per_week": "35",
+  "wage_per_hour": "20.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP021",
+  "employer": "Bluff Hotel",
+  "title": "Office Assistant",
+  "category": "Office",
+  "neighborhood": "Oak Creek",
+  "hours_per_week": "16",
+  "wage_per_hour": "14.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP022",
+  "employer": "Brewtown Cafe",
+  "title": "Dietary Aide",
+  "category": "Health care",
+  "neighborhood": "Walker's Point",
+  "hours_per_week": "40",
+  "wage_per_hour": "13.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP023",
+  "employer": "Riverbend Grocers",
+  "title": "IT Help Desk Tech",
+  "category": "Tech",
+  "neighborhood": "Walker's Point",
+  "hours_per_week": "16",
+  "wage_per_hour": "17.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP024",
+  "employer": "Bluff Credit Union",
+  "title": "Shipping Clerk",
+  "category": "Warehouse",
+  "neighborhood": "Glendale",
+  "hours_per_week": "40",
+  "wage_per_hour": "15.00",
+  "near_bus_line": "FALSE"
+ },
+ {
+  "posting_id": "JP025",
+  "employer": "Sixth Street Market",
+  "title": "Environmental Services Tech",
+  "category": "Health care",
+  "neighborhood": "Wauwatosa",
+  "hours_per_week": "16",
+  "wage_per_hour": "16.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP026",
+  "employer": "Third Ward Bakery Co.",
+  "title": "Groundskeeper",
+  "category": "Custodial",
+  "neighborhood": "Riverwest",
+  "hours_per_week": "16",
+  "wage_per_hour": "20.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP027",
+  "employer": "Menomonee Market",
+  "title": "Cart Attendant",
+  "category": "Retail",
+  "neighborhood": "Menomonee Valley",
+  "hours_per_week": "12",
+  "wage_per_hour": "23.75",
+  "near_bus_line": "FALSE"
+ },
+ {
+  "posting_id": "JP028",
+  "employer": "Fondy Bakery Co.",
+  "title": "Greeter",
+  "category": "Customer service",
+  "neighborhood": "Brown Deer",
+  "hours_per_week": "12",
+  "wage_per_hour": "22.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP029",
+  "employer": "Kinnickinnic Hotel",
+  "title": "Custodian",
+  "category": "Custodial",
+  "neighborhood": "Brown Deer",
+  "hours_per_week": "30",
+  "wage_per_hour": "23.00",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP030",
+  "employer": "Lincoln Ave Facilities Group",
+  "title": "Custodian",
+  "category": "Custodial",
+  "neighborhood": "Clarke Square",
+  "hours_per_week": "40",
+  "wage_per_hour": "17.00",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP031",
+  "employer": "Bluff Credit Union",
+  "title": "Sales Associate",
+  "category": "Retail",
+  "neighborhood": "Glendale",
+  "hours_per_week": "20",
+  "wage_per_hour": "23.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP032",
+  "employer": "Brewtown Cafe",
+  "title": "Call Center Rep",
+  "category": "Customer service",
+  "neighborhood": "Clarke Square",
+  "hours_per_week": "40",
+  "wage_per_hour": "14.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP033",
+  "employer": "Story Hill Distribution",
+  "title": "Sales Associate",
+  "category": "Retail",
+  "neighborhood": "Downtown",
+  "hours_per_week": "20",
+  "wage_per_hour": "13.50",
+  "near_bus_line": "FALSE"
+ },
+ {
+  "posting_id": "JP034",
+  "employer": "Kinnickinnic Health Partners",
+  "title": "Inventory Associate",
+  "category": "Warehouse",
+  "neighborhood": "Menomonee Valley",
+  "hours_per_week": "20",
+  "wage_per_hour": "20.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP035",
+  "employer": "Northpoint Cafe",
+  "title": "Dietary Aide",
+  "category": "Health care",
+  "neighborhood": "Bay View",
+  "hours_per_week": "32",
+  "wage_per_hour": "18.25",
+  "near_bus_line": "FALSE"
+ },
+ {
+  "posting_id": "JP036",
+  "employer": "Fondy Market",
+  "title": "Dishwasher",
+  "category": "Food service",
+  "neighborhood": "Oak Creek",
+  "hours_per_week": "40",
+  "wage_per_hour": "13.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP037",
+  "employer": "Lincoln Ave Tech Labs",
+  "title": "Sales Associate",
+  "category": "Retail",
+  "neighborhood": "Clarke Square",
+  "hours_per_week": "32",
+  "wage_per_hour": "14.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP038",
+  "employer": "Kinnickinnic Tech Labs",
+  "title": "Shipping Clerk",
+  "category": "Warehouse",
+  "neighborhood": "Bay View",
+  "hours_per_week": "16",
+  "wage_per_hour": "20.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP039",
+  "employer": "Juneau Distribution",
+  "title": "Cashier",
+  "category": "Retail",
+  "neighborhood": "Bay View",
+  "hours_per_week": "16",
+  "wage_per_hour": "12.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP040",
+  "employer": "Third Ward Health Partners",
+  "title": "Housekeeper",
+  "category": "Custodial",
+  "neighborhood": "Bay View",
+  "hours_per_week": "25",
+  "wage_per_hour": "21.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP041",
+  "employer": "Riverbend Cafe",
+  "title": "Groundskeeper",
+  "category": "Custodial",
+  "neighborhood": "Brown Deer",
+  "hours_per_week": "35",
+  "wage_per_hour": "11.25",
+  "near_bus_line": "FALSE"
+ },
+ {
+  "posting_id": "JP042",
+  "employer": "Third Ward Health Partners",
+  "title": "Stocker",
+  "category": "Retail",
+  "neighborhood": "Oak Creek",
+  "hours_per_week": "16",
+  "wage_per_hour": "12.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP043",
+  "employer": "Juneau Grocers",
+  "title": "Office Assistant",
+  "category": "Office",
+  "neighborhood": "Harambee",
+  "hours_per_week": "30",
+  "wage_per_hour": "11.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP044",
+  "employer": "Menomonee Tech Labs",
+  "title": "Dishwasher",
+  "category": "Food service",
+  "neighborhood": "Layton Park",
+  "hours_per_week": "20",
+  "wage_per_hour": "11.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP045",
+  "employer": "Bluff Hotel",
+  "title": "Office Assistant",
+  "category": "Office",
+  "neighborhood": "Clarke Square",
+  "hours_per_week": "20",
+  "wage_per_hour": "19.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP046",
+  "employer": "Sixth Street Tech Labs",
+  "title": "Data Entry Clerk",
+  "category": "Office",
+  "neighborhood": "West Allis",
+  "hours_per_week": "16",
+  "wage_per_hour": "17.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP047",
+  "employer": "Sixth Street Facilities Group",
+  "title": "Mail Clerk",
+  "category": "Office",
+  "neighborhood": "Bay View",
+  "hours_per_week": "20",
+  "wage_per_hour": "14.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP048",
+  "employer": "Bluff Cafe",
+  "title": "Call Center Rep",
+  "category": "Customer service",
+  "neighborhood": "Riverwest",
+  "hours_per_week": "16",
+  "wage_per_hour": "11.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP049",
+  "employer": "Lakefront Hotel",
+  "title": "Call Center Rep",
+  "category": "Customer service",
+  "neighborhood": "Glendale",
+  "hours_per_week": "35",
+  "wage_per_hour": "21.00",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP050",
+  "employer": "Juneau Credit Union",
+  "title": "Line Cook",
+  "category": "Food service",
+  "neighborhood": "Brown Deer",
+  "hours_per_week": "25",
+  "wage_per_hour": "11.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP051",
+  "employer": "Sixth Street Distribution",
+  "title": "Pet Groomer Assistant",
+  "category": "Animal care",
+  "neighborhood": "Brown Deer",
+  "hours_per_week": "32",
+  "wage_per_hour": "22.25",
+  "near_bus_line": "FALSE"
+ },
+ {
+  "posting_id": "JP052",
+  "employer": "Story Hill Bakery Co.",
+  "title": "Kennel Attendant",
+  "category": "Animal care",
+  "neighborhood": "Riverwest",
+  "hours_per_week": "24",
+  "wage_per_hour": "21.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP053",
+  "employer": "Third Ward Logistics",
+  "title": "Sorter",
+  "category": "Warehouse",
+  "neighborhood": "Walker's Point",
+  "hours_per_week": "20",
+  "wage_per_hour": "15.75",
+  "near_bus_line": "FALSE"
+ },
+ {
+  "posting_id": "JP054",
+  "employer": "Story Hill Print Shop",
+  "title": "Environmental Services Tech",
+  "category": "Health care",
+  "neighborhood": "Glendale",
+  "hours_per_week": "16",
+  "wage_per_hour": "11.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP055",
+  "employer": "Riverbend Credit Union",
+  "title": "Custodian",
+  "category": "Custodial",
+  "neighborhood": "Harambee",
+  "hours_per_week": "24",
+  "wage_per_hour": "12.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP056",
+  "employer": "Story Hill Health Partners",
+  "title": "Environmental Services Tech",
+  "category": "Health care",
+  "neighborhood": "West Allis",
+  "hours_per_week": "12",
+  "wage_per_hour": "19.00",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP057",
+  "employer": "Fondy Facilities Group",
+  "title": "Pet Groomer Assistant",
+  "category": "Animal care",
+  "neighborhood": "Riverwest",
+  "hours_per_week": "32",
+  "wage_per_hour": "14.50",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP058",
+  "employer": "Sixth Street Credit Union",
+  "title": "Sales Associate",
+  "category": "Retail",
+  "neighborhood": "Riverwest",
+  "hours_per_week": "16",
+  "wage_per_hour": "18.25",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP059",
+  "employer": "Lincoln Ave Bakery Co.",
+  "title": "QA Tester",
+  "category": "Tech",
+  "neighborhood": "Glendale",
+  "hours_per_week": "32",
+  "wage_per_hour": "23.75",
+  "near_bus_line": "TRUE"
+ },
+ {
+  "posting_id": "JP060",
+  "employer": "Northpoint Grocers",
+  "title": "Busser",
+  "category": "Food service",
+  "neighborhood": "Oak Creek",
+  "hours_per_week": "40",
+  "wage_per_hour": "21.50",
+  "near_bus_line": "FALSE"
+ }
+]

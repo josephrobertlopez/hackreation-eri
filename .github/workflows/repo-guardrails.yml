@@ -1,0 +1,14 @@
+name: "Repo guardrails"
+on: [push, pull_request]
+jobs:
+  guardrails:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Synthetic data only, no answer key
+        run: python3 tools/check_synthetic.py
+      - name: Wiki links resolve
+        run: python3 tools/check_links.py
+      - name: No obvious secrets
+        run: |
+          ! git grep -nIE '(sk-[A-Za-z0-9]{20,}|SERVICE_ROLE_KEY=[A-Za-z0-9]|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY|AKIA[0-9A-Z]{16})' -- ':!wiki/**' ':!*.md'

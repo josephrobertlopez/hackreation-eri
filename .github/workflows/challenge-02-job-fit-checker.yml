@@ -1,0 +1,23 @@
+name: "Challenge 02 · Is this job right for me? (JS + WordPress)"
+on:
+  push: { paths: ["challenges/02-job-fit-checker/**", ".github/workflows/challenge-02-*.yml"] }
+  pull_request: { paths: ["challenges/02-job-fit-checker/**"] }
+defaults: { run: { working-directory: challenges/02-job-fit-checker } }
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22", cache: npm, cache-dependency-path: challenges/02-job-fit-checker/package-lock.json }
+      - run: npm ci
+      - name: TDD (node:test)
+        run: npm test
+      - name: BDD (Cucumber, scenarios tagged with PRD acceptance criteria)
+        run: npm run bdd
+      - name: Accessibility + behaviour (Playwright + axe)
+        run: npx playwright install --with-deps chromium && npm run test:a11y
+      - name: WordPress plugin is in sync with web/ and lints
+        run: |
+          npm run sync:wp && git diff --exit-code -- wp-plugin
+          php -l wp-plugin/eri-job-fit/eri-job-fit.php

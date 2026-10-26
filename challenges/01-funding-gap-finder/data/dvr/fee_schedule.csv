@@ -1,0 +1,8 @@
+service_code,service_name,rate,unit,notes
+SE-CP,Career Profile,1000,per authorization,
+SE-JPDP,Job Preparation and Development Plan,350,per authorization,
+SE-JDH,Job Development and Hire,1600,per authorization,2000 if 20+ h/wk AND (insurance OR >=$12/h); 2200 if 35+ h/wk AND (insurance OR >=$16/h)
+SE-JTA,Job and Task Analysis,275,per authorization,
+SE-MSI,Monthly Systematic Instruction,1600,per month employed,
+SE-RET,Retention Services (no SI),500,per month employed,
+SE-TLTS,Transition to Long-Term Support (<=6 mo),1300,per authorization,

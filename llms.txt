@@ -1,0 +1,52 @@
+# Hackreation x ERI
+
+> One-day hackathon (Oct 31, 2026, Milwaukee) hosted by Mitobyte with Employment Resources, Inc. (ERI), a Wisconsin nonprofit helping people with disabilities work without losing benefits. Theme: software that connects people with disabilities to jobs. All data is synthetic. Recommended stack: HTML/jQuery, PHP/MySQL, WordPress, Expo/Supabase.
+
+## Start here
+- [Essentials](wiki/ESSENTIALS.md): the one-page rules, data and numbers
+- [AGENTS.md](AGENTS.md): rules for AI coding assistants
+- [Event](wiki/event/hackreation.md): schedule, challenges, judging rubric
+
+## PRDs
+- [PRD index](wiki/prds/README.md)
+- [PRD 01: Funding gap finder](wiki/prds/01-funding-gap-finder.md) · code: challenges/01-funding-gap-finder
+- [PRD 02: Is this job right for me?](wiki/prds/02-job-fit-checker.md) · code: challenges/02-job-fit-checker
+- [PRD 03: Inclusive job post checker](wiki/prds/03-job-post-checker.md) · code: challenges/03-job-post-checker
+- [Cut list](wiki/prds/cut-list.md)
+
+## Company
+- [ERI overview](wiki/company/eri.md)
+- [People and roles](wiki/company/people.md)
+- [Current digital properties](wiki/company/digital-properties.md)
+- [Tech stack ERI can maintain](wiki/company/tech-stack.md)
+
+## Domain
+- [Wisconsin DVR Supported Employment billing](wiki/domain/dvr-supported-employment.md)
+- [SSA work incentives, 2026 numbers](wiki/domain/ssa-work-incentives-2026.md)
+- [Glossary](wiki/domain/glossary.md)
+- [Accessibility bar](wiki/domain/accessibility.md)
+- [Privacy and data rules](wiki/domain/privacy-and-data.md)
+
+## Data
+- [Synthetic data guide](data/README.md)
+
+## Stack how-tos (read before writing code)
+- [Stack index](wiki/stack/README.md)
+- [WordPress plugin](wiki/stack/wordpress-plugin.md) · [WordPress blocks](wiki/stack/wordpress-blocks.md) · [PHP + MySQL](wiki/stack/php-mysql.md) · [Security checklist](wiki/stack/security-checklist-web.md)
+- [JavaScript + jQuery](wiki/stack/javascript-jquery.md) · [HTML/CSS accessibility](wiki/stack/html-css-accessibility.md) · [Expo](wiki/stack/expo-react-native.md) · [Supabase](wiki/stack/supabase-postgres.md) · [Docker](wiki/stack/docker-dev.md) · [AI-assisted coding](wiki/stack/ai-assisted-coding.md)
+
+## Personas and simulated users
+- [Personas](wiki/personas/README.md)
+- [Agent profiles](agents/README.md)
+
+## Knowledge base (sourced, dated; read each page's confidence)
+- [Knowledge base index](wiki/knowledge/README.md)
+- [Benefits](wiki/knowledge/benefits/README.md)
+- [Employment law](wiki/knowledge/employment-law/README.md)
+- [Compliance and accessibility](wiki/knowledge/compliance/README.md)
+- [Wisconsin landscape](wiki/knowledge/wisconsin-landscape/README.md)
+- [Public datasets](wiki/knowledge/datasets/README.md)
+- [ERI org, finances, consulting brief](wiki/knowledge/org/README.md)
+
+## Optional
+- [llms-full.txt](llms-full.txt): every wiki page concatenated, for one-shot context loading

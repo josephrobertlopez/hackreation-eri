@@ -1,0 +1,315 @@
+note_id,client_id,date,service_code,author,note_text,hire_date,hours_per_week,wage_per_hour,health_insurance,report_submitted_date,synthetic
+N00001,C001,2026-06-02,SE-CP,ES-Charlie,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-06-04,TRUE
+N00002,C001,2026-07-10,SE-JPDP,ES-Charlie,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-07-13,TRUE
+N00003,C001,2026-08-09,SE-JDH,ES-Charlie,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-08-12,TRUE
+N00004,C001,2026-09-08,SE-JDH,ES-Charlie,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-09-11,TRUE
+N00005,C001,2026-09-13,SE-JDH,ES-Charlie,Client hired as Custodian at a local employer. Start date confirmed. 15 hrs/week at $18.50/hr.,2026-09-13,15,18.50,FALSE,2026-09-17,TRUE
+N00006,C001,2026-10-13,SE-RET,ES-Charlie,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-19,TRUE
+N00007,C001,2026-11-12,SE-RET,ES-Charlie,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-11-16,TRUE
+N00008,C001,2026-12-12,SE-RET,ES-Charlie,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-15,TRUE
+N00009,C001,2027-01-11,SE-RET,ES-Charlie,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-14,TRUE
+N00010,C001,2027-02-10,SE-RET,ES-Charlie,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-02-11,TRUE
+N00011,C001,2027-03-12,SE-RET,ES-Charlie,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-03-16,TRUE
+N00012,C001,2027-04-11,SE-RET,ES-Charlie,Month 7 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-04-15,TRUE
+N00013,C002,2026-04-09,SE-CP,ES-Charlie,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-15,TRUE
+N00014,C002,2026-05-17,SE-JPDP,ES-Charlie,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-05-19,TRUE
+N00015,C002,2026-06-16,SE-JDH,ES-Charlie,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-19,TRUE
+N00016,C002,2026-07-16,SE-JDH,ES-Charlie,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-21,TRUE
+N00017,C002,2026-07-30,SE-JDH,ES-Charlie,Client hired as Prep Cook at a local employer. Start date confirmed. 24 hrs/week at $14.00/hr.,2026-07-30,24,14.00,FALSE,2026-08-03,TRUE
+N00018,C002,2026-08-29,SE-RET,ES-Charlie,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-02,TRUE
+N00019,C002,2026-09-28,SE-RET,ES-Charlie,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-09-30,TRUE
+N00020,C002,2026-10-28,SE-RET,ES-Charlie,Month 3: client not employed this month (job ended); job search resumed. No support delivered under this PO.,,,,,2026-10-30,TRUE
+N00021,C002,2026-11-27,SE-RET,ES-Charlie,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-03,TRUE
+N00022,C002,2026-12-27,SE-RET,ES-Charlie,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-28,TRUE
+N00023,C003,2026-04-18,SE-CP,ES-Bravo,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-23,TRUE
+N00024,C003,2026-05-08,SE-JPDP,ES-Bravo,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-05-14,TRUE
+N00025,C003,2026-06-07,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-10,TRUE
+N00026,C003,2026-07-07,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-10,TRUE
+N00027,C003,2026-08-06,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-08-11,TRUE
+N00028,C003,2026-08-28,SE-JDH,ES-Bravo,Client hired as QA Tester at a local employer. Start date confirmed. 15 hrs/week at $18.25/hr.,2026-08-28,15,18.25,FALSE,2026-09-11,TRUE
+N00029,C003,2026-09-27,SE-MSI,ES-Bravo,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-28,TRUE
+N00030,C003,2026-10-27,SE-MSI,ES-Bravo,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-10-30,TRUE
+N00031,C003,2026-11-26,SE-MSI,ES-Bravo,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-30,TRUE
+N00032,C003,2026-12-26,SE-MSI,ES-Bravo,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-29,TRUE
+N00033,C004,2026-03-30,SE-CP,ES-Delta,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-03,TRUE
+N00034,C004,2026-04-09,SE-JPDP,ES-Delta,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-04-13,TRUE
+N00035,C004,2026-05-09,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-05-13,TRUE
+N00036,C004,2026-06-08,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-11,TRUE
+N00037,C004,2026-07-08,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-13,TRUE
+N00038,C004,2026-07-23,SE-JDH,ES-Delta,Client hired as Custodian at a local employer. Start date confirmed. 24 hrs/week at $15.25/hr.,2026-07-23,24,15.25,FALSE,2026-07-28,TRUE
+N00039,C004,2026-08-22,SE-MSI,ES-Delta,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-08-25,TRUE
+N00040,C004,2026-09-21,SE-MSI,ES-Delta,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-09-25,TRUE
+N00041,C004,2026-10-21,SE-MSI,ES-Delta,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-27,TRUE
+N00042,C004,2026-11-20,SE-MSI,ES-Delta,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-24,TRUE
+N00043,C004,2026-12-20,SE-MSI,ES-Delta,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-21,TRUE
+N00044,C004,2027-01-19,SE-MSI,ES-Delta,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-21,TRUE
+N00045,C005,2026-03-28,SE-CP,ES-Alpha,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-02,TRUE
+N00046,C005,2026-04-16,SE-JPDP,ES-Alpha,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-04-17,TRUE
+N00047,C005,2026-05-16,SE-JDH,ES-Alpha,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-05-20,TRUE
+N00048,C005,2026-05-22,SE-JDH,ES-Alpha,Client hired as Front Desk Associate at a local employer. Start date confirmed. 20 hrs/week at $11.75/hr.,2026-05-22,20,11.75,FALSE,2026-05-26,TRUE
+N00049,C005,2026-06-21,SE-MSI,ES-Alpha,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-06-25,TRUE
+N00050,C005,2026-07-21,SE-MSI,ES-Alpha,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-07-22,TRUE
+N00051,C005,2026-08-20,SE-MSI,ES-Alpha,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-08-21,TRUE
+N00052,C005,2026-09-19,SE-MSI,ES-Alpha,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-22,TRUE
+N00053,C005,2026-10-19,SE-MSI,ES-Alpha,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-20,TRUE
+N00054,C005,2026-11-18,SE-MSI,ES-Alpha,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-20,TRUE
+N00055,C006,2026-05-06,SE-CP,ES-Alpha,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-05-07,TRUE
+N00056,C006,2026-06-05,SE-JPDP,ES-Alpha,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-06-09,TRUE
+N00057,C006,2026-07-05,SE-JDH,ES-Alpha,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-08,TRUE
+N00058,C006,2026-08-04,SE-JDH,ES-Alpha,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-08-07,TRUE
+N00059,C006,2026-08-12,SE-JDH,ES-Alpha,Client hired as Data Entry Clerk at a local employer. Start date confirmed. 24 hrs/week at $16.25/hr.,2026-08-12,24,16.25,FALSE,2026-08-17,TRUE
+N00060,C006,2026-09-11,SE-MSI,ES-Alpha,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-14,TRUE
+N00061,C006,2026-10-11,SE-MSI,ES-Alpha,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-10-14,TRUE
+N00062,C006,2026-11-10,SE-MSI,ES-Alpha,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-13,TRUE
+N00063,C006,2026-12-10,SE-MSI,ES-Alpha,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-15,TRUE
+N00064,C006,2027-01-09,SE-MSI,ES-Alpha,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-13,TRUE
+N00065,C007,2026-03-30,SE-CP,ES-Bravo,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-02,TRUE
+N00066,C007,2026-05-09,SE-JPDP,ES-Bravo,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-05-11,TRUE
+N00067,C007,2026-06-08,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-11,TRUE
+N00068,C007,2026-07-08,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-13,TRUE
+N00069,C007,2026-07-24,SE-JDH,ES-Bravo,Client hired as Cashier at a local employer. Start date confirmed. 20 hrs/week at $17.25/hr.,2026-07-24,20,17.25,FALSE,2026-07-30,TRUE
+N00070,C007,2026-08-23,SE-MSI,ES-Bravo,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-08-27,TRUE
+N00071,C007,2026-09-22,SE-MSI,ES-Bravo,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-09-28,TRUE
+N00072,C007,2026-10-22,SE-MSI,ES-Bravo,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-27,TRUE
+N00073,C007,2026-11-21,SE-MSI,ES-Bravo,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-23,TRUE
+N00074,C007,2026-12-21,SE-MSI,ES-Bravo,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-23,TRUE
+N00075,C007,2027-01-20,SE-MSI,ES-Bravo,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-22,TRUE
+N00076,C008,2026-03-14,SE-CP,ES-Charlie,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-03-19,TRUE
+N00077,C008,2026-04-22,SE-JPDP,ES-Charlie,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-04-23,TRUE
+N00078,C008,2026-05-22,SE-JDH,ES-Charlie,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-05-27,TRUE
+N00079,C008,2026-06-21,SE-JDH,ES-Charlie,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-24,TRUE
+N00080,C008,2026-06-30,SE-JDH,ES-Charlie,Client hired as Busser at a local employer. Start date confirmed. 35 hrs/week at $16.00/hr.,2026-06-30,35,16.00,FALSE,2026-07-06,TRUE
+N00081,C008,2026-07-30,SE-MSI,ES-Charlie,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-07-31,TRUE
+N00082,C008,2026-08-29,SE-MSI,ES-Charlie,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-09-03,TRUE
+N00083,C008,2026-09-28,SE-MSI,ES-Charlie,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-29,TRUE
+N00084,C008,2026-10-28,SE-MSI,ES-Charlie,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-02,TRUE
+N00085,C008,2026-11-27,SE-MSI,ES-Charlie,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-01,TRUE
+N00086,C009,2026-03-08,SE-CP,ES-Bravo,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-03-10,TRUE
+N00087,C009,2026-04-06,SE-JPDP,ES-Bravo,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-04-09,TRUE
+N00088,C009,2026-05-06,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-05-11,TRUE
+N00089,C009,2026-06-05,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-10,TRUE
+N00090,C009,2026-06-11,SE-JDH,ES-Bravo,Client hired as Call Center Rep at a local employer. Start date confirmed. 20 hrs/week at $11.50/hr. Employer offers health insurance.,2026-06-11,20,11.50,TRUE,2026-06-17,TRUE
+N00091,C009,2026-07-11,SE-RET,ES-Bravo,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-07-15,TRUE
+N00092,C009,2026-08-10,SE-RET,ES-Bravo,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-08-11,TRUE
+N00093,C009,2026-09-09,SE-RET,ES-Bravo,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-10,TRUE
+N00094,C009,2026-10-09,SE-RET,ES-Bravo,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-15,TRUE
+N00095,C010,2026-02-16,SE-CP,ES-Bravo,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-02-17,TRUE
+N00096,C010,2026-03-25,SE-JPDP,ES-Bravo,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-03-30,TRUE
+N00097,C010,2026-04-24,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-04-29,TRUE
+N00098,C010,2026-05-24,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-05-27,TRUE
+N00099,C010,2026-06-23,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-26,TRUE
+N00100,C010,2026-07-13,SE-JDH,ES-Bravo,Client hired as Pet Groomer Assistant at a local employer. Start date confirmed. 24 hrs/week at $15.00/hr.,2026-07-13,24,15.00,FALSE,2026-07-28,TRUE
+N00101,C010,2026-08-12,SE-RET,ES-Bravo,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-08-17,TRUE
+N00102,C010,2026-09-11,SE-RET,ES-Bravo,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-09-17,TRUE
+N00103,C010,2026-10-11,SE-RET,ES-Bravo,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-14,TRUE
+N00104,C010,2026-11-10,SE-RET,ES-Bravo,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-13,TRUE
+N00105,C010,2026-12-10,SE-RET,ES-Bravo,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-16,TRUE
+N00106,C010,2027-01-09,SE-RET,ES-Bravo,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-13,TRUE
+N00107,C011,2026-04-04,SE-CP,ES-Bravo,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-09,TRUE
+N00108,C011,2026-05-14,SE-JPDP,ES-Bravo,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-05-20,TRUE
+N00109,C011,2026-06-13,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-17,TRUE
+N00110,C011,2026-07-13,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-16,TRUE
+N00111,C011,2026-08-12,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-08-17,TRUE
+N00112,C011,2026-09-06,SE-JDH,ES-Bravo,Client hired as Environmental Services Tech at a local employer. Start date confirmed. 40 hrs/week at $12.25/hr. Employer offers health insurance.,2026-09-06,40,12.25,TRUE,2026-09-09,TRUE
+N00113,C011,2026-10-06,SE-MSI,ES-Bravo,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-08,TRUE
+N00114,C011,2026-11-05,SE-MSI,ES-Bravo,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-11-11,TRUE
+N00115,C011,2026-12-05,SE-MSI,ES-Bravo,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-08,TRUE
+N00116,C011,2027-01-04,SE-MSI,ES-Bravo,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-06,TRUE
+N00117,C011,2027-02-03,SE-MSI,ES-Bravo,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-02-09,TRUE
+N00118,C011,2027-03-05,SE-MSI,ES-Bravo,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-03-10,TRUE
+N00119,C012,2026-02-28,SE-CP,ES-Charlie,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-03-05,TRUE
+N00120,C012,2026-03-31,SE-JPDP,ES-Charlie,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-04-02,TRUE
+N00121,C012,2026-04-30,SE-JDH,ES-Charlie,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-05-05,TRUE
+N00122,C012,2026-05-30,SE-JDH,ES-Charlie,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-03,TRUE
+N00123,C012,2026-06-29,SE-JDH,ES-Charlie,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-02,TRUE
+N00124,C012,2026-07-15,SE-JDH,ES-Charlie,Client hired as Environmental Services Tech at a local employer. Start date confirmed. 22 hrs/week at $13.00/hr.,2026-07-15,22,13.00,FALSE,2026-07-16,TRUE
+N00125,C012,2026-08-14,SE-MSI,ES-Charlie,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-08-20,TRUE
+N00126,C012,2026-09-13,SE-MSI,ES-Charlie,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-09-14,TRUE
+N00127,C012,2026-10-13,SE-MSI,ES-Charlie,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-14,TRUE
+N00128,C012,2026-11-12,SE-MSI,ES-Charlie,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-17,TRUE
+N00129,C012,2026-12-12,SE-MSI,ES-Charlie,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-15,TRUE
+N00130,C012,2027-01-11,SE-MSI,ES-Charlie,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-14,TRUE
+N00131,C012,2027-02-10,SE-MSI,ES-Charlie,Month 7 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-02-12,TRUE
+N00132,C013,2026-04-22,SE-CP,ES-Delta,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-23,TRUE
+N00133,C013,2026-05-11,SE-JPDP,ES-Delta,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-05-12,TRUE
+N00134,C013,2026-06-10,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-15,TRUE
+N00135,C013,2026-07-01,SE-JDH,ES-Delta,Client hired as Prep Cook at a local employer. Start date confirmed. 20 hrs/week at $14.75/hr.,2026-07-01,20,14.75,FALSE,2026-07-07,TRUE
+N00136,C013,2026-07-31,SE-MSI,ES-Delta,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-08-03,TRUE
+N00137,C013,2026-08-30,SE-MSI,ES-Delta,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-09-02,TRUE
+N00138,C013,2026-09-29,SE-MSI,ES-Delta,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-30,TRUE
+N00139,C013,2026-10-29,SE-MSI,ES-Delta,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-30,TRUE
+N00140,C013,2026-11-28,SE-MSI,ES-Delta,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-30,TRUE
+N00141,C013,2026-12-28,SE-MSI,ES-Delta,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-01,TRUE
+N00142,C013,2027-01-27,SE-MSI,ES-Delta,Month 7 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-02-02,TRUE
+N00143,C014,2026-04-30,SE-CP,ES-Charlie,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-05-06,TRUE
+N00144,C014,2026-05-14,SE-JPDP,ES-Charlie,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-05-19,TRUE
+N00145,C014,2026-06-13,SE-JDH,ES-Charlie,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-17,TRUE
+N00146,C014,2026-07-13,SE-JDH,ES-Charlie,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-16,TRUE
+N00147,C014,2026-08-02,SE-JDH,ES-Charlie,Client hired as Dietary Aide at a local employer. Start date confirmed. 35 hrs/week at $17.25/hr.,2026-08-02,35,17.25,FALSE,2026-08-06,TRUE
+N00148,C014,2026-09-01,SE-MSI,ES-Charlie,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-07,TRUE
+N00149,C014,2026-10-01,SE-MSI,ES-Charlie,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-10-06,TRUE
+N00150,C014,2026-10-31,SE-MSI,ES-Charlie,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-03,TRUE
+N00151,C014,2026-11-30,SE-MSI,ES-Charlie,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-02,TRUE
+N00152,C014,2026-12-30,SE-MSI,ES-Charlie,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-04,TRUE
+N00153,C015,2026-04-22,SE-CP,ES-Alpha,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-27,TRUE
+N00154,C015,2026-05-30,SE-JPDP,ES-Alpha,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-06-04,TRUE
+N00155,C015,2026-06-29,SE-JDH,ES-Alpha,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-02,TRUE
+N00156,C015,2026-07-16,SE-JDH,ES-Alpha,Client hired as Call Center Rep at a local employer. Start date confirmed. 40 hrs/week at $16.25/hr. Employer offers health insurance.,2026-07-16,40,16.25,TRUE,2026-07-22,TRUE
+N00157,C015,2026-08-15,SE-MSI,ES-Alpha,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-08-19,TRUE
+N00158,C015,2026-09-14,SE-MSI,ES-Alpha,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-09-15,TRUE
+N00159,C015,2026-10-14,SE-MSI,ES-Alpha,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-16,TRUE
+N00160,C015,2026-11-13,SE-MSI,ES-Alpha,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-18,TRUE
+N00161,C015,2026-12-13,SE-MSI,ES-Alpha,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-17,TRUE
+N00162,C015,2027-01-12,SE-MSI,ES-Alpha,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-18,TRUE
+N00163,C016,2026-04-08,SE-CP,ES-Delta,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-09,TRUE
+N00164,C016,2026-05-13,SE-JPDP,ES-Delta,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-05-19,TRUE
+N00165,C016,2026-06-12,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-17,TRUE
+N00166,C016,2026-07-12,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-15,TRUE
+N00167,C016,2026-08-11,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-08-14,TRUE
+N00168,C016,2026-08-25,SE-JDH,ES-Delta,Client hired as Groundskeeper at a local employer. Start date confirmed. 40 hrs/week at $16.00/hr.,2026-08-25,40,16.00,FALSE,2026-08-26,TRUE
+N00169,C016,2026-09-24,SE-RET,ES-Delta,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-25,TRUE
+N00170,C016,2026-10-24,SE-RET,ES-Delta,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-10-29,TRUE
+N00171,C016,2026-11-23,SE-RET,ES-Delta,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-25,TRUE
+N00172,C016,2026-12-23,SE-RET,ES-Delta,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-25,TRUE
+N00173,C016,2027-01-22,SE-RET,ES-Delta,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-27,TRUE
+N00174,C017,2026-04-21,SE-CP,ES-Delta,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-24,TRUE
+N00175,C017,2026-05-10,SE-JPDP,ES-Delta,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-05-13,TRUE
+N00176,C017,2026-06-09,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-12,TRUE
+N00177,C017,2026-07-09,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-14,TRUE
+N00178,C017,2026-08-08,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-08-12,TRUE
+N00179,C017,2026-08-18,SE-JDH,ES-Delta,Client hired as Environmental Services Tech at a local employer. Start date confirmed. 35 hrs/week at $16.25/hr.,2026-08-18,35,16.25,FALSE,2026-08-24,TRUE
+N00180,C017,2026-09-17,SE-RET,ES-Delta,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-22,TRUE
+N00181,C017,2026-10-17,SE-RET,ES-Delta,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-10-22,TRUE
+N00182,C017,2026-11-16,SE-RET,ES-Delta,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-17,TRUE
+N00183,C017,2026-12-16,SE-RET,ES-Delta,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-21,TRUE
+N00184,C017,2027-01-15,SE-RET,ES-Delta,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-18,TRUE
+N00185,C017,2027-02-14,SE-RET,ES-Delta,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-02-16,TRUE
+N00186,C017,2027-03-16,SE-RET,ES-Delta,Month 7 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-03-22,TRUE
+N00187,C018,2026-06-02,SE-CP,ES-Bravo,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-06-08,TRUE
+N00188,C018,2026-06-22,SE-JPDP,ES-Bravo,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-06-23,TRUE
+N00189,C018,2026-07-22,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-27,TRUE
+N00190,C018,2026-08-21,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-08-26,TRUE
+N00191,C018,2026-09-20,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-09-23,TRUE
+N00192,C018,2026-10-08,SE-JDH,ES-Bravo,Client hired as Busser at a local employer. Start date confirmed. 30 hrs/week at $13.25/hr. Employer offers health insurance.,2026-10-08,30,13.25,TRUE,2026-10-12,TRUE
+N00193,C018,2026-11-07,SE-MSI,ES-Bravo,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-10,TRUE
+N00194,C018,2026-12-07,SE-MSI,ES-Bravo,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-12-10,TRUE
+N00195,C018,2027-01-06,SE-MSI,ES-Bravo,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-11,TRUE
+N00196,C018,2027-02-05,SE-MSI,ES-Bravo,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-02-08,TRUE
+N00197,C018,2027-03-07,SE-MSI,ES-Bravo,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-03-10,TRUE
+N00198,C018,2027-04-06,SE-MSI,ES-Bravo,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-04-07,TRUE
+N00199,C019,2026-02-22,SE-CP,ES-Alpha,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-02-25,TRUE
+N00200,C019,2026-03-17,SE-JPDP,ES-Alpha,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-03-19,TRUE
+N00201,C020,2026-04-15,SE-CP,ES-Delta,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-17,TRUE
+N00202,C020,2026-05-03,SE-JPDP,ES-Delta,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-05-06,TRUE
+N00203,C020,2026-06-02,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-05,TRUE
+N00204,C020,2026-07-02,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-07,TRUE
+N00205,C020,2026-08-01,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-08-05,TRUE
+N00206,C020,2026-08-19,SE-JDH,ES-Delta,Client hired as Environmental Services Tech at a local employer. Start date confirmed. 24 hrs/week at $16.00/hr.,2026-08-19,24,16.00,FALSE,2026-08-25,TRUE
+N00207,C020,2026-09-18,SE-RET,ES-Delta,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-23,TRUE
+N00208,C020,2026-10-18,SE-RET,ES-Delta,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-10-22,TRUE
+N00209,C020,2026-11-17,SE-RET,ES-Delta,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-19,TRUE
+N00210,C020,2026-12-17,SE-RET,ES-Delta,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-22,TRUE
+N00211,C020,2027-01-16,SE-RET,ES-Delta,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-21,TRUE
+N00212,C020,2027-02-15,SE-RET,ES-Delta,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-02-16,TRUE
+N00213,C020,2027-03-17,SE-RET,ES-Delta,Month 7 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-03-18,TRUE
+N00214,C021,2026-03-29,SE-CP,ES-Alpha,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-03-31,TRUE
+N00215,C021,2026-04-13,SE-JPDP,ES-Alpha,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-04-16,TRUE
+N00216,C021,2026-05-13,SE-JDH,ES-Alpha,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-05-18,TRUE
+N00217,C021,2026-06-07,SE-JDH,ES-Alpha,Client hired as Stocker at a local employer. Start date confirmed. 40 hrs/week at $13.75/hr.,2026-06-07,40,13.75,FALSE,2026-06-08,TRUE
+N00218,C021,2026-07-07,SE-RET,ES-Alpha,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-07-10,TRUE
+N00219,C021,2026-08-06,SE-RET,ES-Alpha,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-08-10,TRUE
+N00220,C021,2026-09-05,SE-RET,ES-Alpha,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-09,TRUE
+N00221,C021,2026-10-05,SE-RET,ES-Alpha,Month 4: client not employed this month (job ended); job search resumed. No support delivered under this PO.,,,,,2026-10-07,TRUE
+N00222,C021,2026-11-04,SE-RET,ES-Alpha,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-05,TRUE
+N00223,C021,2026-12-04,SE-RET,ES-Alpha,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-08,TRUE
+N00224,C022,2026-04-26,SE-CP,ES-Alpha,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-28,TRUE
+N00225,C022,2026-06-02,SE-JPDP,ES-Alpha,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-06-05,TRUE
+N00226,C022,2026-07-02,SE-JDH,ES-Alpha,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-07,TRUE
+N00227,C022,2026-07-27,SE-JDH,ES-Alpha,Client hired as Dietary Aide at a local employer. Start date confirmed. 35 hrs/week at $12.50/hr.,2026-07-27,35,12.50,FALSE,2026-07-31,TRUE
+N00228,C022,2026-08-26,SE-RET,ES-Alpha,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-01,TRUE
+N00229,C022,2026-09-25,SE-RET,ES-Alpha,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-10-01,TRUE
+N00230,C022,2026-10-25,SE-RET,ES-Alpha,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-28,TRUE
+N00231,C022,2026-11-24,SE-RET,ES-Alpha,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-27,TRUE
+N00232,C023,2026-03-11,SE-CP,ES-Bravo,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-03-12,TRUE
+N00233,C023,2026-03-23,SE-JPDP,ES-Bravo,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-03-27,TRUE
+N00234,C023,2026-04-22,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-04-27,TRUE
+N00235,C023,2026-05-22,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-05-27,TRUE
+N00236,C023,2026-06-21,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-24,TRUE
+N00237,C023,2026-07-10,SE-JDH,ES-Bravo,Client hired as QA Tester at a local employer. Start date confirmed. 35 hrs/week at $18.75/hr.,2026-07-10,35,18.75,FALSE,2026-07-13,TRUE
+N00238,C023,2026-08-09,SE-MSI,ES-Bravo,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-08-11,TRUE
+N00239,C023,2026-09-08,SE-MSI,ES-Bravo,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-09-14,TRUE
+N00240,C023,2026-10-08,SE-MSI,ES-Bravo,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-09,TRUE
+N00241,C023,2026-11-07,SE-MSI,ES-Bravo,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-09,TRUE
+N00242,C023,2026-12-07,SE-MSI,ES-Bravo,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-09,TRUE
+N00243,C024,2026-04-17,SE-CP,ES-Bravo,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-23,TRUE
+N00244,C024,2026-05-15,SE-JPDP,ES-Bravo,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-05-19,TRUE
+N00245,C024,2026-06-14,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-17,TRUE
+N00246,C024,2026-07-14,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-17,TRUE
+N00247,C024,2026-07-30,SE-JDH,ES-Bravo,Client hired as Custodian at a local employer. Start date confirmed. 38 hrs/week at $14.00/hr. Employer offers health insurance.,2026-07-30,38,14.00,TRUE,2026-07-31,TRUE
+N00248,C024,2026-08-29,SE-RET,ES-Bravo,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-02,TRUE
+N00249,C024,2026-09-28,SE-RET,ES-Bravo,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-09-30,TRUE
+N00250,C024,2026-10-28,SE-RET,ES-Bravo,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-29,TRUE
+N00251,C024,2026-11-27,SE-RET,ES-Bravo,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-01,TRUE
+N00252,C024,2026-12-27,SE-RET,ES-Bravo,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-28,TRUE
+N00253,C024,2027-01-26,SE-RET,ES-Bravo,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-27,TRUE
+N00254,C025,2026-03-23,SE-CP,ES-Delta,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-03-25,TRUE
+N00255,C025,2026-04-10,SE-JPDP,ES-Delta,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-04-13,TRUE
+N00256,C025,2026-05-10,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-05-13,TRUE
+N00257,C025,2026-05-28,SE-JDH,ES-Delta,Client hired as Pet Groomer Assistant at a local employer. Start date confirmed. 20 hrs/week at $18.25/hr. Employer offers health insurance.,2026-05-28,20,18.25,TRUE,2026-06-01,TRUE
+N00258,C025,2026-06-27,SE-RET,ES-Delta,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-06-30,TRUE
+N00259,C025,2026-07-27,SE-RET,ES-Delta,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-07-29,TRUE
+N00260,C025,2026-08-26,SE-RET,ES-Delta,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-08-31,TRUE
+N00261,C025,2026-09-25,SE-RET,ES-Delta,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-30,TRUE
+N00262,C025,2026-10-25,SE-RET,ES-Delta,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-29,TRUE
+N00263,C025,2026-11-24,SE-RET,ES-Delta,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-25,TRUE
+N00264,C026,2026-02-09,SE-CP,ES-Alpha,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-02-13,TRUE
+N00265,C026,2026-03-01,SE-JPDP,ES-Alpha,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-03-04,TRUE
+N00266,C026,2026-03-31,SE-JDH,ES-Alpha,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-04-03,TRUE
+N00267,C026,2026-04-30,SE-JDH,ES-Alpha,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-05-05,TRUE
+N00268,C026,2026-05-08,SE-JDH,ES-Alpha,Client hired as Front Desk Associate at a local employer. Start date confirmed. 35 hrs/week at $12.00/hr.,2026-05-08,35,12.00,FALSE,2026-05-11,TRUE
+N00269,C026,2026-06-07,SE-MSI,ES-Alpha,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-06-08,TRUE
+N00270,C026,2026-07-07,SE-MSI,ES-Alpha,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-07-09,TRUE
+N00271,C026,2026-08-06,SE-MSI,ES-Alpha,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-08-07,TRUE
+N00272,C026,2026-09-05,SE-MSI,ES-Alpha,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-09,TRUE
+N00273,C026,2026-10-05,SE-MSI,ES-Alpha,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-06,TRUE
+N00274,C027,2026-04-22,SE-CP,ES-Bravo,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-04-24,TRUE
+N00275,C027,2026-05-13,SE-JPDP,ES-Bravo,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-05-18,TRUE
+N00276,C027,2026-06-12,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-17,TRUE
+N00277,C027,2026-07-12,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-15,TRUE
+N00278,C027,2026-08-11,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-08-14,TRUE
+N00279,C027,2026-08-26,SE-JDH,ES-Bravo,Client hired as Receptionist at a local employer. Start date confirmed. 40 hrs/week at $13.25/hr.,2026-08-26,40,13.25,FALSE,2026-09-01,TRUE
+N00280,C027,2026-09-25,SE-MSI,ES-Bravo,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-30,TRUE
+N00281,C027,2026-10-25,SE-MSI,ES-Bravo,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-10-28,TRUE
+N00282,C027,2026-11-24,SE-MSI,ES-Bravo,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-30,TRUE
+N00283,C027,2026-12-24,SE-MSI,ES-Bravo,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-28,TRUE
+N00284,C028,2026-03-15,SE-CP,ES-Delta,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-03-19,TRUE
+N00285,C028,2026-04-07,SE-JPDP,ES-Delta,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-04-13,TRUE
+N00286,C028,2026-05-07,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-05-12,TRUE
+N00287,C028,2026-06-06,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-10,TRUE
+N00288,C028,2026-07-06,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-09,TRUE
+N00289,C028,2026-07-28,SE-JDH,ES-Delta,Client hired as Digital Accessibility Tester at a local employer. Start date confirmed. 38 hrs/week at $11.75/hr. Employer offers health insurance.,2026-07-28,38,11.75,TRUE,2026-07-30,TRUE
+N00290,C028,2026-08-27,SE-MSI,ES-Delta,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-01,TRUE
+N00291,C028,2026-09-26,SE-MSI,ES-Delta,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-09-28,TRUE
+N00292,C028,2026-10-26,SE-MSI,ES-Delta,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-29,TRUE
+N00293,C028,2026-11-25,SE-MSI,ES-Delta,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-30,TRUE
+N00294,C029,2026-03-12,SE-CP,ES-Delta,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-03-18,TRUE
+N00295,C029,2026-04-07,SE-JPDP,ES-Delta,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-04-08,TRUE
+N00296,C029,2026-05-07,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-05-12,TRUE
+N00297,C029,2026-06-06,SE-JDH,ES-Delta,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-06-10,TRUE
+N00298,C029,2026-06-13,SE-JDH,ES-Delta,Client hired as IT Help Desk Tech at a local employer. Start date confirmed. 24 hrs/week at $11.25/hr.,2026-06-13,24,11.25,FALSE,2026-06-18,TRUE
+N00299,C029,2026-07-13,SE-RET,ES-Delta,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-07-16,TRUE
+N00300,C029,2026-08-12,SE-RET,ES-Delta,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-08-14,TRUE
+N00301,C029,2026-09-11,SE-RET,ES-Delta,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-09-16,TRUE
+N00302,C029,2026-10-11,SE-RET,ES-Delta,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-13,TRUE
+N00303,C029,2026-11-10,SE-RET,ES-Delta,Month 5 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-11-12,TRUE
+N00304,C029,2026-12-10,SE-RET,ES-Delta,Month 6 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-16,TRUE
+N00305,C030,2026-05-01,SE-CP,ES-Bravo,"Completed career profile meeting with client and family. Discussed interests, strengths and support needs. Coordinated with long-term care manager.",,,,,2026-05-05,TRUE
+N00306,C030,2026-06-05,SE-JPDP,ES-Bravo,"Held job development planning meeting. Agreed target jobs, employer list and accommodations. Plan signed by team.",,,,,2026-06-08,TRUE
+N00307,C030,2026-07-05,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-07-08,TRUE
+N00308,C030,2026-08-04,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-08-07,TRUE
+N00309,C030,2026-09-03,SE-JDH,ES-Bravo,"Monthly job development report: contacted employers, practiced interviews, submitted applications.",,,,,2026-09-08,TRUE
+N00310,C030,2026-09-19,SE-JDH,ES-Bravo,Client hired as Sorter at a local employer. Start date confirmed. 36 hrs/week at $16.50/hr.,2026-09-19,36,16.50,FALSE,2026-09-23,TRUE
+N00311,C030,2026-10-19,SE-RET,ES-Bravo,Month 1 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-10-21,TRUE
+N00312,C030,2026-11-18,SE-RET,ES-Bravo,Month 2 support: on-site check-in with client and supervisor. Long-term care coordination documented.,,,,,2026-11-23,TRUE
+N00313,C030,2026-12-18,SE-RET,ES-Bravo,Month 3 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2026-12-21,TRUE
+N00314,C030,2027-01-17,SE-RET,ES-Bravo,Month 4 support: on-site check-in with client and supervisor. Client meeting expectations.,,,,,2027-01-19,TRUE

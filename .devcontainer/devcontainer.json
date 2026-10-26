@@ -1,0 +1,10 @@
+{
+  // Fallback if the hosted workspaces are down: open this repo in GitHub Codespaces (needs a free GitHub account).
+  // The universal image already has PHP, Node and Python (verify the tag before the event).
+  "name": "Hackreation x ERI",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "postCreateCommand": "bash tools/check.sh",
+  "forwardPorts": [8000, 8080],
+  "portsAttributes": { "8000": { "label": "static / challenge web" }, "8080": { "label": "php -S" } },
+  "customizations": { "vscode": { "extensions": ["bmewburn.vscode-intelephense-client", "deque-systems.vscode-axe-linter"] } }
+}

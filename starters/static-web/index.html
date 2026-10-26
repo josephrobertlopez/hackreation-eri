@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hello ERI - Static starter</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- jQuery 3.7.1, vendored so it works offline at the venue -->
+  <script src="vendor/jquery.min.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header><h1>Hello, ERI!</h1><p>Static HTML + CSS + jQuery starter. No install needed.</p></header>
+  <main id="main">
+    <label for="q">Search sample jobs</label>
+    <input id="q" type="search" placeholder="e.g. cook, Bay View" autocomplete="off">
+    <p id="count" role="status" aria-live="polite"></p>
+    <ul id="jobs"></ul>
+  </main>
+  <footer><small>All data is synthetic. See <code>data/README.md</code>.</small></footer>
+  <script src="csv.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

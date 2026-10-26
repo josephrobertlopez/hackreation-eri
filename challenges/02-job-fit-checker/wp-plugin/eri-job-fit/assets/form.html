@@ -1,0 +1,20 @@
+<div class="eri-job-fit">
+<h2>Is this job right for me?</h2>
+    <p>Answer 4 quick questions about a job offer.</p>
+    <form id="fit-form">
+      <label for="hours">Hours each week</label>
+      <input id="hours" name="hours" type="number" min="1" max="60" required inputmode="numeric">
+      <label for="wage">Pay per hour ($)</label>
+      <input id="wage" name="wage" type="number" min="1" step="0.25" required inputmode="decimal">
+      <fieldset>
+        <legend>Do you get Social Security disability benefits?</legend>
+        <label><input type="radio" name="benefit" value="SSI" required> SSI</label>
+        <label><input type="radio" name="benefit" value="SSDI"> SSDI</label>
+        <label><input type="radio" name="benefit" value="both"> Both</label>
+        <label><input type="radio" name="benefit" value="none"> No / not sure</label>
+      </fieldset>
+      <label><input type="checkbox" name="bus" id="bus"> There's a bus stop near the job</label>
+      <button type="submit">Check this job</button>
+    </form>
+    <section id="fit-result"></section>
+</div>

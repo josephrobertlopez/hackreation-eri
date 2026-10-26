@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "eri/eri-job-card",
+	"version": "0.1.0",
+	"title": "ERI Job Card",
+	"category": "widgets",
+	"icon": "id-alt",
+	"description": "Hackreation hello-world Gutenberg block",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "eri-job-card",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": "Dishwasher"
+		},
+		"employer": {
+			"type": "string",
+			"default": "Cream City Cafe"
+		},
+		"hours": {
+			"type": "number",
+			"default": 20
+		},
+		"wage": {
+			"type": "string",
+			"default": "14.00"
+		},
+		"accommodations": {
+			"type": "string",
+			"default": "Flexible schedule; written instructions"
+		}
+	}
+}

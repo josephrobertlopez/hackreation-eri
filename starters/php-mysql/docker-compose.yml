@@ -1,0 +1,30 @@
+# Optional: real MySQL like ERI's hosting. Without Docker, use `php -S` (SQLite).
+# Ports bind to 127.0.0.1 only. Passwords come from .env (copy .env.example).
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: eri
+      MYSQL_USER: eri
+      MYSQL_PASSWORD: ${DB_PASS:-eri-dev-only}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS:-root-dev-only}
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASS:-root-dev-only}"]
+      interval: 5s
+      retries: 20
+    ports: ["127.0.0.1:3306:3306"]
+  phpmyadmin:
+    image: phpmyadmin:5
+    environment: { PMA_HOST: db, PMA_USER: eri, PMA_PASSWORD: "${DB_PASS:-eri-dev-only}" }
+    ports: ["127.0.0.1:8081:80"]
+    depends_on: { db: { condition: service_healthy } }
+  app:
+    image: php:8.3-apache
+    command: bash -c "docker-php-ext-install pdo_mysql >/dev/null && php /var/www/seed.php && apache2-foreground"
+    environment: { DB_HOST: db, DB_NAME: eri, DB_USER: eri, DB_PASS: "${DB_PASS:-eri-dev-only}" }
+    volumes:
+      - ./:/var/www
+      - ./public:/var/www/html
+      - ../../data:/data:ro
+    ports: ["127.0.0.1:8080:80"]
+    depends_on: { db: { condition: service_healthy } }

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inclusive job post checker - Hello ERI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <main id="main">
+    <h1>Make your job post more inclusive</h1>
+    <p>Paste a job description. We'll flag requirements that may turn away qualified applicants with disabilities. Nothing you paste leaves your browser.</p>
+    <form id="post-form">
+      <label for="post">Job description</label>
+      <textarea id="post" name="post" rows="10" required></textarea>
+      <button type="submit">Check my post</button>
+    </form>
+    <section id="post-result"></section>
+  </main>
+  <script src="checker.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

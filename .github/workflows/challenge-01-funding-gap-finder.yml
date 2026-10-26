@@ -1,0 +1,21 @@
+name: "Challenge 01 · Funding gap finder (PHP)"
+on:
+  push: { paths: ["challenges/01-funding-gap-finder/**", ".github/workflows/challenge-01-*.yml"] }
+  pull_request: { paths: ["challenges/01-funding-gap-finder/**"] }
+defaults: { run: { working-directory: challenges/01-funding-gap-finder } }
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with: { php-version: "8.3", tools: composer }
+      - run: composer install --no-interaction --no-progress
+      - name: TDD (PHPUnit)
+        run: composer test
+      - name: BDD (Behat, scenarios tagged with PRD acceptance criteria)
+        run: composer bdd
+      - name: Smoke (no dependencies)
+        run: php tests/smoke.php
+      - name: Lint
+        run: find src public tests features -name '*.php' -print0 | xargs -0 -n1 php -l

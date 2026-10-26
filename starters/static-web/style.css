@@ -1,0 +1,10 @@
+:root { --fg:#1b1b1b; --bg:#fff; --accent:#0b5cad; --muted:#555; }
+@media (prefers-color-scheme: dark) { :root { --fg:#f2f2f2; --bg:#141414; --accent:#7db7ff; --muted:#bbb; } }
+* { box-sizing: border-box; }
+body { font: 18px/1.5 system-ui, sans-serif; color: var(--fg); background: var(--bg); margin: 0 auto; max-width: 48rem; padding: 1rem; }
+.skip { position: absolute; left: -999px; } .skip:focus { left: 1rem; top: 1rem; background: var(--bg); padding: .5rem; }
+label { display: block; font-weight: 600; margin-top: 1rem; }
+input { font: inherit; width: 100%; padding: .6rem; border: 2px solid var(--muted); border-radius: 6px; }
+input:focus { outline: 3px solid var(--accent); outline-offset: 2px; }
+#jobs { list-style: none; padding: 0; } #jobs li { border-bottom: 1px solid var(--muted); padding: .75rem 0; }
+.meta { color: var(--muted); }

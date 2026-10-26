@@ -1,0 +1,20 @@
+{
+  "name": "@hackreation-eri/job-fit-checker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PRD 02 hello world: 'Is this job right for me?'",
+  "license": "MIT",
+  "scripts": {
+    "start": "python3 -m http.server -d web 8000",
+    "test": "node --test test/*.test.js",
+    "bdd": "cucumber-js",
+    "test:a11y": "node --test e2e/*.test.mjs",
+    "sync:wp": "node scripts/sync-wp.js",
+    "ci": "npm test && npm run bdd && npm run test:a11y"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@cucumber/cucumber": "^11.3.0",
+    "playwright": "^1.64.1"
+  }
+}
