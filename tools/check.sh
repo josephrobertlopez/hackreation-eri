@@ -67,7 +67,14 @@ node_challenge() (
   # Skip cucumber when deps are not installed, but never swallow a real BDD
   # failure. The previous `... || true` did both, and node_modules IS present
   # in both node challenges, so a failing suite was silently passing.
-  { if [ -d node_modules ]; then npx cucumber-js --format summary >/dev/null && echo "  PASS cucumber"; fi; } &&
+  # Say so when cucumber is skipped. It used to vanish in silence, and
+  # infra/generate.py drops node_modules from the team images, so the day-of
+  # workspace ran NEITHER BDD suite while printing "All smoke tests passed".
+  # Still not counted in SKIPPED (this runs in a subshell and cannot reach
+  # that array), so the run can exit 0 having skipped cucumber -- visible now,
+  # but short of the exit-2 contract at the top of this file.
+  { if [ -d node_modules ]; then npx cucumber-js --format summary >/dev/null && echo "  PASS cucumber"; \
+    else echo "  SKIP cucumber (no node_modules; run npm install)"; fi; } &&
   # Skip the lint when php is absent, but NEVER swallow a real lint failure.
   # `have php && php -l ... || true` did both: measured 2026-10-26, a genuine
   # syntax error gave php -l rc=255 while check.sh still reported rc=0 and
@@ -75,7 +82,7 @@ node_challenge() (
   { if have php; then php -l "wp-plugin/$2/$2.php" >/dev/null; fi; }
 )
 static_web() { ( cd starters/static-web && node --test test/*.test.js >/dev/null && echo "  PASS node:test" ); }
-guardrails() { python3 tools/check_synthetic.py && python3 tools/check_links.py && python3 tools/check_derived.py; }
+guardrails() { python3 tools/check_synthetic.py && python3 tools/check_links.py && python3 tools/check_derived.py && bash tools/check_secrets.sh; }
 
 step "data"         python3 data_summary
 step "php-mysql"    php     php_mysql

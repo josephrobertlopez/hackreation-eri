@@ -42,8 +42,12 @@ shutil.copytree(os.path.join(here, "workspace"), ctx)
 # while still missing DVR_Answer_Key.md, since fnmatch here is case-sensitive.
 # "*_answer_key.md" rather than the bare name: it still matches the real file
 # (fnmatch's * matches zero characters) and also a judges_answer_key.md style
-# variant, while matching only files that END that way -- so unlike
-# "*answer*key*" it cannot swallow a directory.
+# variant. It matches only NAMES ending "_answer_key.md" -- narrow enough that
+# no plausible directory collides, unlike "*answer*key*", which would drop a
+# whole docs/solutions/ tree. ignore_patterns matches names, not files, so a
+# directory literally named x_answer_key.md would still be dropped; that is a
+# narrower guarantee than "cannot swallow a directory", which an earlier
+# version of this comment claimed.
 _drop = shutil.ignore_patterns("node_modules", ".git", "*.sqlite", "*_answer_key.md", ".env", "dist")
 
 
