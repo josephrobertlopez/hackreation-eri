@@ -68,7 +68,7 @@ node_challenge() (
   { have php && php -l "wp-plugin/$2/$2.php" >/dev/null || true; }
 )
 static_web() { ( cd starters/static-web && node --test test/*.test.js >/dev/null && echo "  PASS node:test" ); }
-guardrails() { python3 tools/check_synthetic.py && python3 tools/check_links.py; }
+guardrails() { python3 tools/check_synthetic.py && python3 tools/check_links.py && python3 tools/check_derived.py; }
 
 step "data"         python3 data_summary
 step "php-mysql"    php     php_mysql

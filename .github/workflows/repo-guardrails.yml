@@ -9,6 +9,12 @@ jobs:
         run: python3 tools/check_synthetic.py
       - name: Wiki links resolve
         run: python3 tools/check_links.py
+      # llms-full.txt is the flattened wiki that AI coding tools read, and
+      # challenges/01/data is a copy of the shared data/. Both have generators
+      # and neither had a gate, so both were correct only until someone edited
+      # a source file. Same pattern as challenge 02/03's sync:wp check.
+      - name: Derived files are current
+        run: python3 tools/check_derived.py
       - name: No obvious secrets
         run: |
           ! git grep -nIE '(sk-[A-Za-z0-9]{20,}|SERVICE_ROLE_KEY=[A-Za-z0-9]|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY|AKIA[0-9A-Z]{16})' -- ':!wiki/**' ':!*.md'
