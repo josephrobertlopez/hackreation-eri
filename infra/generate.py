@@ -77,13 +77,13 @@ for t in range(1, a.teams + 1):
     build: ./workspace
     restart: unless-stopped
     environment: {{ PASSWORD: "${{{T.upper()}_PASSWORD}}", DB_HOST: mysql, DB_NAME: {T}, DB_USER: {T}, DB_PASS: "${{{T.upper()}_DB_PASSWORD}}" }}
-    volumes: ["{T}_home:/home/coder", "{T}_plugins:/home/coder/wp-plugins"]
+    volumes: ["{T}_home:/home/coder", "{T}_plugins:/home/coder/wp-plugins:z"]
     deploy: {{ resources: {{ limits: {{ cpus: "1.5", memory: 2g }} }} }}
   wp-{T}:
     image: wordpress:php8.3-apache
     restart: unless-stopped
     environment: {{ WORDPRESS_DB_HOST: mysql, WORDPRESS_DB_NAME: {T}_wp, WORDPRESS_DB_USER: {T}, WORDPRESS_DB_PASSWORD: "${{{T.upper()}_DB_PASSWORD}}", WORDPRESS_DEBUG: 1 }}
-    volumes: ["{T}_wp:/var/www/html", "{T}_plugins:/var/www/html/wp-content/plugins"]
+    volumes: ["{T}_wp:/var/www/html", "{T}_plugins:/var/www/html/wp-content/plugins:z"]
     depends_on: {{ mysql: {{ condition: service_healthy }} }}
     deploy: {{ resources: {{ limits: {{ memory: 512m }} }} }}''')
     vols += [f"{T}_home:", f"{T}_wp:", f"{T}_plugins:"]
