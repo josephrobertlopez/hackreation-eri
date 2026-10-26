@@ -64,7 +64,10 @@ challenge01(){ ( cd challenges/01-funding-gap-finder && php tests/smoke.php && r
 node_challenge() (
   cd "challenges/$1" &&
   node --test test/*.test.js >/dev/null && echo "  PASS node:test" &&
-  { [ -d node_modules ] && npx cucumber-js --format summary >/dev/null && echo "  PASS cucumber" || true; } &&
+  # Skip cucumber when deps are not installed, but never swallow a real BDD
+  # failure. The previous `... || true` did both, and node_modules IS present
+  # in both node challenges, so a failing suite was silently passing.
+  { if [ -d node_modules ]; then npx cucumber-js --format summary >/dev/null && echo "  PASS cucumber"; fi; } &&
   # Skip the lint when php is absent, but NEVER swallow a real lint failure.
   # `have php && php -l ... || true` did both: measured 2026-10-26, a genuine
   # syntax error gave php -l rc=255 while check.sh still reported rc=0 and

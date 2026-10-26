@@ -29,16 +29,22 @@ pw = lambda n=16: "".join(secrets.choice(string.ascii_letters + string.digits) f
 ctx = os.path.join(out, "workspace")
 if os.path.exists(ctx): shutil.rmtree(ctx)
 shutil.copytree(os.path.join(here, "workspace"), ctx)
-# "_answer_key.md" is an fnmatch on the BASENAME with no wildcard, so it only
-# ever matched a file named exactly that. The real file is dvr_answer_key.md,
-# which means the judges' answer key was being copied into all six team
-# images while check_synthetic.py separately refused to let it be committed --
-# two guards disagreeing about the same artifact. Widened, and kept broader
-# than the commit-side check on purpose: baking one into an image is worse.
-_drop = shutil.ignore_patterns(
-    "node_modules", ".git", "*.sqlite", ".env", "dist",
-    "*answer*key*", "*solution*", "*rubric*",
-)
+# "_answer_key.md" is correct and always was. shutil.ignore_patterns fnmatches
+# the BASENAME, and the judges' key is data/dvr/_answer_key.md -- "dvr" is the
+# directory, not part of the name (tools/generate_synthetic_data.py:349,
+# .gitignore:9). An earlier edit here widened this to "*answer*key*",
+# "*solution*", "*rubric*" on the false reading that the file was called
+# dvr_answer_key.md and was therefore leaking into team images. It was not;
+# measured, both versions copy zero answer keys. That widening is reverted
+# because it was a net risk: these globs drop whole DIRECTORIES, so a future
+# docs/solutions/ or a wiki Solution-*.md would silently vanish from all six
+# team images and break tools/check.sh at the event if anything linked to it --
+# while still missing DVR_Answer_Key.md, since fnmatch here is case-sensitive.
+# "*_answer_key.md" rather than the bare name: it still matches the real file
+# (fnmatch's * matches zero characters) and also a judges_answer_key.md style
+# variant, while matching only files that END that way -- so unlike
+# "*answer*key*" it cannot swallow a directory.
+_drop = shutil.ignore_patterns("node_modules", ".git", "*.sqlite", "*_answer_key.md", ".env", "dist")
 
 
 def _ignore(dirpath, names):

@@ -22,10 +22,16 @@ jobs:
       - name: No obvious secrets
         # Rewritten 2026-10-26. The previous one-liner had three holes:
         #
-        #  * ':!*.md' excluded 143 of 315 tracked files -- every runbook in
-        #    prompts/, agents/, deck/, docs/, AGENTS.md, CLAUDE.md. That is
-        #    exactly where a human pastes a key, and ai-helpers documents
-        #    exporting LLM_API_KEY, so key handling is expected activity here.
+        #  * ':!*.md' excluded all 143 tracked markdown files -- the runbooks
+        #    in prompts/, agents/, deck/, docs/, AGENTS.md, CLAUDE.md, and the
+        #    97-file wiki/. That is exactly where a human pastes a key, and
+        #    ai-helpers documents exporting LLM_API_KEY, so key handling is
+        #    expected activity here. All path exclusions are now gone: keeping
+        #    ':!wiki/**' would still have hidden 97 of those 143, and
+        #    ':!*.example' hid a planted key in starters/php-mysql/.env.example
+        #    -- the exact file an attendee pastes a real key into before
+        #    copying it to .env. Scanning the whole tree with no exclusions is
+        #    measurably clean today, so the exclusions bought nothing.
         #  * `! git grep ...` turns ANY non-zero into a pass, git's own fatals
         #    included, so the step could pass having read nothing -- the same
         #    shape as the git ls-files bug this repo already fixed once.
@@ -35,14 +41,36 @@ jobs:
         # git grep exits 0 on match, 1 on no match, >1 on error. Only 1 is a pass.
         run: |
           set -uo pipefail
-          PATTERN='(sk-ant-[A-Za-z0-9_-]{16,}|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|glpat-[A-Za-z0-9_-]{16,}|xox[baprs]-[A-Za-z0-9-]{10,}|SERVICE_ROLE_KEY=[A-Za-z0-9]|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY|AKIA[0-9A-Z]{16}|(API|SECRET|ACCESS)_KEY[[:space:]]*=[[:space:]]*[A-Za-z0-9/+_-]{20,})'
-          git grep -nIE "$PATTERN" -- ':!wiki/**' ':!*.example' ':!**/*.example'
-          rc=$?
-          if [ "$rc" -eq 0 ]; then
-            echo "::error::possible credential committed (see matches above)"
-            exit 1
-          elif [ "$rc" -ne 1 ]; then
+          # The last alternative is generic on purpose: any SCREAMING_CASE
+          # name ending _KEY or _TOKEN assigned 20+ key-ish characters. That
+          # covers API_KEY, ACCESS_KEY, SERVICE_ROLE_KEY and ANTHROPIC_API_KEY
+          # without enumerating them.
+          PATTERN='(sk-ant-[A-Za-z0-9_-]{16,}|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|glpat-[A-Za-z0-9_-]{16,}|xox[baprs]-[A-Za-z0-9-]{10,}|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY|AKIA[0-9A-Z]{16}|[A-Z][A-Z0-9_]*_(KEY|TOKEN)[[:space:]]*=[[:space:]]*[A-Za-z0-9/+_-]{20,})'
+          # `|| rc=$?` is load-bearing. Actions runs a `run:` step as
+          # `bash -e {0}`, and `set -uo pipefail` does NOT clear errexit.
+          # git grep exits 1 for "no match", so a bare call aborts the step on
+          # a clean repo before any rc handling is reached. Measured: under
+          # `bash -e` rc=1 with ZERO output; under plain bash rc=0 and "no
+          # credential patterns found". A gate that is silently red on every
+          # push gets deleted under event pressure, which is worse than the
+          # `! git grep` hole this replaced -- that at least ran.
+          rc=0
+          MATCHES="$(git grep -nIE "$PATTERN")" || rc=$?
+          if [ "$rc" -gt 1 ]; then
             echo "::error::git grep failed with exit $rc; the scan did not run"
             exit 1
           fi
-          echo "no credential patterns found"
+          # The generic *_KEY= alternative also matches this repo's own
+          # placeholders -- EXPO_PUBLIC_SUPABASE_ANON_KEY=YOUR-ANON-OR-PUBLISHABLE-KEY
+          # is 27 key-ish characters. Without this filter the step is red on a
+          # clean tree, which is the same red-by-construction failure the rc
+          # handling above exists to prevent, just louder. Filter the
+          # placeholders, never the paths: excluding files is what let a key
+          # hide in .env.example and in all 97 wiki pages.
+          REAL="$(printf '%s' "$MATCHES" | grep -viE 'YOUR[-_]|CHANGE[-_]?ME|PLACEHOLDER|EXAMPLE-|<[A-Za-z_]+>|XXXX' || true)"
+          if [ -n "$REAL" ]; then
+            printf '%s\n' "$REAL"
+            echo "::error::possible credential committed (see matches above)"
+            exit 1
+          fi
+          echo "no credential patterns found (placeholders ignored)"
