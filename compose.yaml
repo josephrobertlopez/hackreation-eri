@@ -1,0 +1,79 @@
+# Run all three challenge UIs on any machine that has Docker. One command:
+#
+#     docker compose up
+#
+#     challenge 01  funding gap finder   http://localhost:8001
+#     challenge 02  is this job for me?  http://localhost:8002
+#     challenge 03  job post checker     http://localhost:8003
+#
+# To review the two WordPress plugins inside a real WordPress, use the stack
+# that already exists for that: starters/wordpress-plugin/docker-compose.yml.
+# This file deliberately does not duplicate it.
+#
+# Design notes, so the next person does not "improve" this into something worse:
+#
+#  * Stock images only, with bind mounts. There is deliberately NO Dockerfile
+#    per challenge. Three custom images would be three build surfaces to keep
+#    working through the event, and they would make handing code to another
+#    team depend on a registry being up. Stock images plus a bind mount means
+#    a reviewer needs Docker and nothing else, and edits appear on reload.
+#  * The whole repo is mounted and each service sets working_dir, rather than
+#    mounting each challenge alone. Challenge 01 reads the shared data/ and
+#    writes ledger.csv next to itself, so running it from anywhere but its own
+#    directory changes behaviour. This mirrors exactly how the tests run it.
+#  * Ports bind to 127.0.0.1 only, matching starters/php-mysql/docker-compose.yml.
+#    Nothing here is hardened for a public network, and it serves synthetic
+#    data that still should not reach the internet by accident.
+#  * No database and no credentials of any kind live in this file. The two
+#    JS challenges are static and challenge 01 reads CSVs, so none is needed.
+#  * Every bind mount carries :z. On an SELinux host (Fedora, RHEL, CentOS)
+#    an unlabelled bind mount is unreadable inside the container, and the
+#    symptom is a bare "Permission denied" -- nginx returns 403 and php -S
+#    returns a 200 whose body is a fatal error. It works without :z on macOS,
+#    Windows and Ubuntu, so this is exactly the bug that reaches an event and
+#    only breaks for some attendees. Lowercase z (shared) is correct here
+#    because challenge-01 mounts the repo and 02/03 mount directories inside
+#    it; :Z (private) would have each container relabel the others' files.
+#    Note :z relabels the host directory, which is a real side effect on your
+#    checkout, and is harmless for a source tree.
+name: hackreation-eri
+
+services:
+  challenge-01:
+    image: php:8.3-cli
+    working_dir: /repo/challenges/01-funding-gap-finder
+    command: php -S 0.0.0.0:80 -t public
+    volumes:
+      - ./:/repo:z
+    ports: ["127.0.0.1:8001:80"]
+    healthcheck:
+      # php:8.3-cli ships no curl or wget, so probe with php itself.
+      test: ["CMD-SHELL", "php -r 'exit(@file_get_contents(\"http://127.0.0.1/\") ? 0 : 1);'"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 5s
+
+  challenge-02:
+    image: nginx:alpine
+    volumes:
+      - ./challenges/02-job-fit-checker/web:/usr/share/nginx/html:ro,z
+    ports: ["127.0.0.1:8002:80"]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/ || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 3s
+
+  challenge-03:
+    image: nginx:alpine
+    volumes:
+      - ./challenges/03-job-post-checker/web:/usr/share/nginx/html:ro,z
+    ports: ["127.0.0.1:8003:80"]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/ || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 3s

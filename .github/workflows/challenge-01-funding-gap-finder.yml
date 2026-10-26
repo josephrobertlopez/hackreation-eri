@@ -19,3 +19,12 @@ jobs:
         run: php tests/smoke.php
       - name: Lint
         run: find src public tests features -name '*.php' -print0 | xargs -0 -n1 php -l
+      # Rule 6 ("accessible or it doesn't count") applies to all three
+      # challenges, but only 02 and 03 had a browser gate. Added 2026-10-26
+      # after axe found landmark-one-main and region violations in this
+      # challenge's own hello world, which nothing was checking.
+      - uses: actions/setup-node@v4
+        with: { node-version: "22", cache: npm, cache-dependency-path: challenges/01-funding-gap-finder/package-lock.json }
+      - run: npm ci
+      - name: Accessibility (Playwright + axe, against php -S)
+        run: npx playwright install --with-deps chromium && npm run test:a11y

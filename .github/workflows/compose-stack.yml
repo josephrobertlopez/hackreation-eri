@@ -1,0 +1,61 @@
+# The "hand it to another team" path: `docker compose up` must actually serve
+# all three challenges on a machine that has nothing installed but Docker.
+#
+# This asserts CONTENT, not just a 200. Challenge 01 returned HTTP 200 with a
+# PHP fatal error in the body when its bind mount was unreadable, so a status
+# check alone would have passed while every page was broken.
+name: "Compose stack (docker compose up serves all three)"
+on:
+  push:
+    paths: ["compose.yaml", "challenges/**", ".github/workflows/compose-stack.yml"]
+  pull_request:
+    paths: ["compose.yaml", "challenges/**", ".github/workflows/compose-stack.yml"]
+
+jobs:
+  stack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: compose.yaml is valid
+        run: docker compose config --quiet
+
+      - name: Bring the stack up and wait for every healthcheck
+        run: docker compose up -d --wait
+
+      - name: Every challenge serves its real page
+        run: |
+          set -euo pipefail
+          check() {  # check <port> <expected text in the page>
+            local port="$1" want="$2" body code
+            code=$(curl -fsS -o /tmp/body -w '%{http_code}' "http://127.0.0.1:$port/")
+            body=$(cat /tmp/body)
+            echo "  port $port -> HTTP $code"
+            if ! grep -qi -- "$want" /tmp/body; then
+              echo "::error::port $port did not contain '$want'"
+              echo "--- first 20 lines of what it did return ---"
+              printf '%s\n' "$body" | head -20
+              return 1
+            fi
+            # A PHP fatal renders with HTTP 200, so fail explicitly on one.
+            if grep -qiE 'fatal error|permission denied' /tmp/body; then
+              echo "::error::port $port returned an error page with HTTP $code"
+              printf '%s\n' "$body" | head -20
+              return 1
+            fi
+          }
+          check 8001 'Funding gap finder'
+          check 8002 'Is this job right for me'
+          check 8003 'Inclusive job post checker'
+
+      - name: Challenge 01 computed real flags, not an empty table
+        run: |
+          set -euo pipefail
+          curl -fsS http://127.0.0.1:8001/ > /tmp/c01
+          grep -oE '[0-9]+ flags' /tmp/c01 | head -1
+          # 0 flags would mean the ETL ran against no data and still rendered.
+          test "$(grep -oE '([0-9]+) flags' /tmp/c01 | head -1 | grep -oE '[0-9]+')" -gt 0
+
+      - name: Tear down
+        if: always()
+        run: docker compose down -v --remove-orphans

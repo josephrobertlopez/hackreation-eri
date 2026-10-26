@@ -1,0 +1,15 @@
+{
+  "name": "@hackreation-eri/funding-gap-finder",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PRD 01 hello world: funding gap finder. PHP is the project; this package exists only to run the browser accessibility gate, matching challenges 02 and 03.",
+  "license": "MIT",
+  "scripts": {
+    "start": "php -S localhost:8080 -t public",
+    "test:a11y": "node --test e2e/*.test.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "playwright": "^1.64.1"
+  }
+}
