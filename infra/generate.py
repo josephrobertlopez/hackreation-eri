@@ -29,8 +29,25 @@ pw = lambda n=16: "".join(secrets.choice(string.ascii_letters + string.digits) f
 ctx = os.path.join(out, "workspace")
 if os.path.exists(ctx): shutil.rmtree(ctx)
 shutil.copytree(os.path.join(here, "workspace"), ctx)
-shutil.copytree(os.path.join(here, ".."), os.path.join(ctx, "repo"),
-                ignore=shutil.ignore_patterns("node_modules", ".git", "infra", "*.sqlite", "_answer_key.md", ".env", "dist"))
+_drop = shutil.ignore_patterns("node_modules", ".git", "*.sqlite", "_answer_key.md", ".env", "dist")
+
+
+def _ignore(dirpath, names):
+    """Exclude the usual heavy/secret things, and infra/out specifically.
+
+    infra/ as a whole used to be excluded. That broke the workspace: the
+    repo README links to infra/README.md, so `bash tools/check.sh` -- the
+    command the kickoff deck tells attendees to run -- failed on a broken
+    link inside every team's environment. Only infra/out/ must be skipped,
+    because it is this script's own output and copying it would recurse.
+    """
+    drop = set(_drop(dirpath, names))
+    if os.path.abspath(dirpath) == os.path.abspath(here):
+        drop.add("out")
+    return drop
+
+
+shutil.copytree(os.path.join(here, ".."), os.path.join(ctx, "repo"), ignore=_ignore)
 
 env = {"MYSQL_ROOT_PASSWORD": pw()}
 svc = ['''services:

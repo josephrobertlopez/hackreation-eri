@@ -32,40 +32,68 @@ def fail(msg):
 
 
 def tracked_files():
-    """Files git knows about. Fails loudly rather than returning nothing."""
+    """Files git knows about, plus whether git could be consulted at all.
+
+    Returns (files, reason_unavailable). reason_unavailable is None when git
+    worked. This does NOT abort when git is missing: the day-of workspace
+    image is built by infra/generate.py, which copies the repo WITHOUT .git on
+    purpose, and the kickoff deck tells attendees to run tools/check.sh there.
+    Aborting would break the event; passing silently would be the original
+    bug. So the CSV scan below runs at full strength either way, and only the
+    answer-key half -- which is inherently about what is committed -- is
+    reported as not checked.
+    """
     try:
         proc = subprocess.run(
             ["git", "ls-files"], capture_output=True, text=True, check=False
         )
     except FileNotFoundError:
-        fail("git is not installed, so committed files cannot be checked. "
-             "Install git, or run this from a git clone rather than a zip.")
+        return [], "git is not installed"
     if proc.returncode != 0:
-        fail("not a git repository, so committed files cannot be checked. "
-             "Clone the repo instead of unzipping it, or run `git init`.\n"
-             f"  git said: {proc.stderr.strip().splitlines()[0] if proc.stderr.strip() else 'unknown error'}")
+        return [], "not a git repository (unzipped, or a copy without .git)"
     files = proc.stdout.split()
     if not files:
-        fail("git reported zero tracked files. Refusing to pass without "
-             "having inspected anything.")
-    return files
+        return [], "git reported zero tracked files"
+    return files, None
 
 
-def in_scope(path):
-    """Skip vendored code and the fetched public datasets."""
-    return "node_modules" not in path and not path.startswith("data/public/")
+# Directories that only ever hold generated output. Scanning the working tree
+# means generated files show up too: infra/generate.py writes infra/out/teams.csv,
+# the per-team handout sheet, which has no synthetic column by design and is
+# not data. These are skipped even when git cannot tell us they are ignored.
+GENERATED_PREFIXES = ("infra/out/", "data/public/")
+
+
+def ignored_by_git():
+    """Paths git is configured to ignore. Empty when git cannot be consulted."""
+    proc = subprocess.run(
+        ["git", "ls-files", "--others", "--ignored", "--exclude-standard"],
+        capture_output=True, text=True, check=False,
+    )
+    return set(proc.stdout.split()) if proc.returncode == 0 else set()
+
+
+def in_scope(path, ignored):
+    """Skip vendored code, generated output and anything git ignores."""
+    norm = path[2:] if path.startswith("./") else path
+    if "node_modules" in norm or "/vendor/" in norm:
+        return False
+    if norm.startswith(GENERATED_PREFIXES):
+        return False
+    return norm not in ignored
 
 
 def main():
-    tracked = tracked_files()
+    tracked, no_git = tracked_files()
 
     # Answer keys are about what is COMMITTED, so this half stays tracked-only.
     bad = [f"{f}: judges' answer key must not be committed"
            for f in tracked if f.endswith("_answer_key.md")]
 
+    ignored = set() if no_git else ignored_by_git()
     on_disk = glob.glob("**/*.csv", recursive=True)
     csvs = sorted({f for f in list(tracked) + on_disk
-                   if f.endswith(".csv") and in_scope(f)})
+                   if f.endswith(".csv") and in_scope(f, ignored)})
     if not csvs:
         fail("found no CSVs to check. Expected the synthetic datasets under "
              "data/ -- refusing to pass without having inspected anything.")
@@ -90,8 +118,16 @@ def main():
     if bad:
         print("\n".join(bad))
         sys.exit(1)
-    print(f"synthetic-data guardrail ok ({len(csvs)} CSVs checked, "
-          f"{len(tracked)} files tracked)")
+
+    if no_git:
+        # Say exactly what was and was not proven. "ok" with an unstated gap
+        # is how the original version passed while reading nothing.
+        print(f"synthetic-data guardrail ok ({len(csvs)} CSVs checked from disk)")
+        print(f"  NOTE: {no_git}, so the committed-answer-key check did not run.")
+        print("  The CSV scan above is unaffected and ran in full.")
+    else:
+        print(f"synthetic-data guardrail ok ({len(csvs)} CSVs checked, "
+              f"{len(tracked)} files tracked)")
 
 
 if __name__ == "__main__":
