@@ -8,3 +8,6 @@ data/public/
 # judges only - never commit
 data/dvr/_answer_key.md
 challenges/01-funding-gap-finder/ledger.csv
+
+# PHPUnit writes this next to the challenge on every run
+.phpunit.result.cache
