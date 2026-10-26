@@ -20,4 +20,8 @@ jobs:
       - name: Derived files are current
         run: python3 tools/check_derived.py
       - name: No obvious secrets
+        # Same contract as check_synthetic.py above: the scan degrades out loud
+        # in a copy without .git (the day-of workspace), but here git must work
+        # or the whole scan would silently no-op behind a green check.
+        env: { ERI_REQUIRE_GIT: "1" }
         run: bash tools/check_secrets.sh
