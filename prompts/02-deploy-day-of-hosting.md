@@ -9,7 +9,8 @@ You are an SRE setting up a one-day, disposable coding environment for about 6 t
 **Steps**
 1. **Pre-flight the host** and report a table: OS, CPU, RAM, free disk, `docker version`, `docker compose version`, whether ports 80/443 are free, and whether outbound npm/Packagist/Docker Hub work. The minimum for 6 teams is 8 vCPU / 16 GB / 40 GB. If it's short, propose fewer teams.
 2. Check DNS: `dig +short team1.<domain>` resolves to the host.
-3. Pin `CODE_SERVER_VERSION` in `infra/workspace/Dockerfile` to the current stable tag (check Docker Hub `codercom/code-server`). Commit it.
+3. Confirm `CODE_SERVER_VERSION` in `infra/workspace/Dockerfile` is a pinned tag, not `latest`.
+   It ships pinned to `4.143.1`. Do not bump it on the day of the event.
 4. `python3 infra/generate.py --teams <N> --domain <domain> --email <email>`, then `cd infra/out && docker compose up -d --build`.
 5. **Verify each team**, and fix any item marked (verify) in `infra/README.md`:
    - `https://teamN.<domain>` shows the code-server login; the password from `teams.csv` works

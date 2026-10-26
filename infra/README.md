@@ -45,7 +45,8 @@ Dry run on a laptop: `python3 infra/generate.py --teams 2 --domain localhost`, t
 5. OK to wipe everything that evening?
 
 ## Runbook
-- **T-7 days:** confirm the answers above; pin `CODE_SERVER_VERSION` in `workspace/Dockerfile`.
+- **T-7 days:** confirm the answers above. `CODE_SERVER_VERSION` is already pinned to
+  `4.143.1` in `workspace/Dockerfile`; only change it if the dry run then re-passes.
 - **T-2 days:** full dry run with 2 teams. Open VS Code, run `bash tools/check.sh`, activate a plugin in WordPress.
 - **T-1 day:** `generate.py --teams <N+1>` (one spare), `up -d --build`, print the `teams.csv` slips.
 - **Day of:** hand out slips at team formation; watch `docker stats`; the Codespaces fallback is in `.devcontainer/`.

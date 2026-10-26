@@ -1,6 +1,12 @@
 # Team workspace: VS Code in the browser (code-server) + PHP 8 + Node 22 + the monorepo.
-# Pin CODE_SERVER_VERSION to a current tag from https://hub.docker.com/r/codercom/code-server/tags (verify before the event).
-ARG CODE_SERVER_VERSION=latest
+# Pinned. `latest` would silently change the base image between the dry run and the
+# event, and a code-server that boots differently on the morning of bricks all six
+# workspaces at once with no time to debug. 4.143.1 is the exact image this stack was
+# verified against: on 2026-10-26 `latest` and `4.143.1` were the same manifest,
+# sha256:377b66bec5645510ed52549bb00e648c273edc604d230a3f90fd2b2433afcb97.
+# To bump: pick a tag from https://hub.docker.com/r/codercom/code-server/tags, then
+# re-run the T-2 dry run before trusting it.
+ARG CODE_SERVER_VERSION=4.143.1
 FROM codercom/code-server:${CODE_SERVER_VERSION}
 
 USER root
