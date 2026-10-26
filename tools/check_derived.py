@@ -36,23 +36,37 @@ def check_llms_full():
         return
     with open("llms-full.txt", "rb") as fh:
         before = fh.read()
-    proc = subprocess.run(
-        [sys.executable, "tools/build_llms_full.py"],
-        capture_output=True, text=True, check=False,
-    )
-    if proc.returncode != 0:
-        problems.append(f"tools/build_llms_full.py failed: {proc.stderr.strip()[:200]}")
-        return
-    with open("llms-full.txt", "rb") as fh:
-        after = fh.read()
-    if before != after:
-        # Put the committed version back; this is a check, not a fixer.
-        with open("llms-full.txt", "wb") as fh:
-            fh.write(before)
-        problems.append(
-            f"llms-full.txt is stale ({len(before)} bytes committed, "
-            f"{len(after)} regenerated). Run: python3 tools/build_llms_full.py"
+
+    # build_llms_full.py opens the tracked file "w", so it is TRUNCATED the
+    # moment it starts. An early return on a generator failure therefore left
+    # a 9-byte llms-full.txt on disk -- the check destroyed the artifact it
+    # exists to protect. Measured 2026-10-26 with a generator that truncates
+    # then exits 3: 781,787 bytes -> 9, and it stayed that way. The restore
+    # must run on EVERY path out of here, so it lives in finally.
+    try:
+        proc = subprocess.run(
+            [sys.executable, "tools/build_llms_full.py"],
+            capture_output=True, text=True, check=False,
         )
+        if proc.returncode != 0:
+            problems.append(
+                f"tools/build_llms_full.py failed (exit {proc.returncode}): "
+                f"{proc.stderr.strip()[:200]}"
+            )
+            return
+        with open("llms-full.txt", "rb") as fh:
+            after = fh.read()
+        if before != after:
+            problems.append(
+                f"llms-full.txt is stale ({len(before)} bytes committed, "
+                f"{len(after)} regenerated). Run: python3 tools/build_llms_full.py"
+            )
+    finally:
+        # This is a check, not a fixer: the tracked file always ends as found.
+        with open("llms-full.txt", "rb") as fh:
+            if fh.read() != before:
+                with open("llms-full.txt", "wb") as out:
+                    out.write(before)
 
 
 def check_challenge_data():

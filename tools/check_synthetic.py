@@ -73,6 +73,30 @@ def ignored_by_git():
     return set(proc.stdout.split()) if proc.returncode == 0 else set()
 
 
+# Two real files legitimately carry no `synthetic` column: the DVR rate card,
+# which is public reference data, and the ETL's own output ledger.
+#
+# This was a SUBSTRING test against the whole path -- `"ledger" not in f` --
+# which meant ANY path containing "ledger" or "fee_schedule" skipped the row
+# check entirely. Measured 2026-10-26: a CSV of fabricated names, SSN-shaped
+# numbers and addresses passed as data/county/ledger_export.csv and as
+# data/dvr/real_fee_schedule_2026.csv, while the same content at
+# data/county/obvious.csv was caught. "ledger" is this repo's own vocabulary
+# (etl.php writes ledger.csv, LEDGER_COLS, .gitignore names it), so it is a
+# likely word in a finance-export filename a team invents on the day.
+# Matched on the EXACT basename, so a lookalike never qualifies:
+# ledger_export.csv != ledger.csv, real_fee_schedule_2026.csv != fee_schedule.csv.
+# Basename rather than full path because challenge 01 keeps its own copy of the
+# shared data (challenges/01-funding-gap-finder/data/dvr/fee_schedule.csv), and
+# an exact-path rule silently failed on that copy.
+EXEMPT_BASENAMES = {"ledger.csv", "fee_schedule.csv"}
+
+
+def is_exempt(path):
+    """True only for the specific known files, never for a lookalike name."""
+    return os.path.basename(path) in EXEMPT_BASENAMES
+
+
 def in_scope(path, ignored):
     """Skip vendored code, generated output and anything git ignores."""
     norm = path[2:] if path.startswith("./") else path
@@ -112,7 +136,7 @@ def main():
             offenders = sum(1 for r in rows if (r.get("synthetic") or "").strip().upper() != "TRUE")
             if offenders:
                 bad.append(f"{f} [{where}]: {offenders} row(s) not marked synthetic=TRUE")
-        elif "fee_schedule" not in f and "ledger" not in f:
+        elif not is_exempt(f):
             bad.append(f"{f} [{where}]: no synthetic column")
 
     if bad:
@@ -125,6 +149,13 @@ def main():
         print(f"synthetic-data guardrail ok ({len(csvs)} CSVs checked from disk)")
         print(f"  NOTE: {no_git}, so the committed-answer-key check did not run.")
         print("  The CSV scan above is unaffected and ran in full.")
+        # CI is read by exit code, not by prose. Somewhere that git MUST work
+        # -- any workflow -- sets ERI_REQUIRE_GIT=1 so a degraded run is a
+        # failure rather than a green check with a silent no-op half. The
+        # trigger is any non-zero git exit, including "dubious ownership"
+        # (rc 128) on a differently-owned checkout, not only a missing .git.
+        if os.environ.get("ERI_REQUIRE_GIT") == "1":
+            fail(f"{no_git}, and ERI_REQUIRE_GIT=1 demands a working git checkout.")
     else:
         print(f"synthetic-data guardrail ok ({len(csvs)} CSVs checked, "
               f"{len(tracked)} files tracked)")

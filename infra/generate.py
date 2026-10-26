@@ -29,7 +29,16 @@ pw = lambda n=16: "".join(secrets.choice(string.ascii_letters + string.digits) f
 ctx = os.path.join(out, "workspace")
 if os.path.exists(ctx): shutil.rmtree(ctx)
 shutil.copytree(os.path.join(here, "workspace"), ctx)
-_drop = shutil.ignore_patterns("node_modules", ".git", "*.sqlite", "_answer_key.md", ".env", "dist")
+# "_answer_key.md" is an fnmatch on the BASENAME with no wildcard, so it only
+# ever matched a file named exactly that. The real file is dvr_answer_key.md,
+# which means the judges' answer key was being copied into all six team
+# images while check_synthetic.py separately refused to let it be committed --
+# two guards disagreeing about the same artifact. Widened, and kept broader
+# than the commit-side check on purpose: baking one into an image is worse.
+_drop = shutil.ignore_patterns(
+    "node_modules", ".git", "*.sqlite", ".env", "dist",
+    "*answer*key*", "*solution*", "*rubric*",
+)
 
 
 def _ignore(dirpath, names):

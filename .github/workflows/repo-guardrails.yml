@@ -6,6 +6,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Synthetic data only, no answer key
+        # ERI_REQUIRE_GIT=1: the guard is allowed to degrade on a laptop or in
+        # the day-of workspace image (no .git by design), but here git must
+        # work, or the answer-key half would silently no-op behind a green check.
+        env: { ERI_REQUIRE_GIT: "1" }
         run: python3 tools/check_synthetic.py
       - name: Wiki links resolve
         run: python3 tools/check_links.py
@@ -16,5 +20,29 @@ jobs:
       - name: Derived files are current
         run: python3 tools/check_derived.py
       - name: No obvious secrets
+        # Rewritten 2026-10-26. The previous one-liner had three holes:
+        #
+        #  * ':!*.md' excluded 143 of 315 tracked files -- every runbook in
+        #    prompts/, agents/, deck/, docs/, AGENTS.md, CLAUDE.md. That is
+        #    exactly where a human pastes a key, and ai-helpers documents
+        #    exporting LLM_API_KEY, so key handling is expected activity here.
+        #  * `! git grep ...` turns ANY non-zero into a pass, git's own fatals
+        #    included, so the step could pass having read nothing -- the same
+        #    shape as the git ls-files bug this repo already fixed once.
+        #  * sk-[A-Za-z0-9]{20,} cannot match sk-ant-api03-..., which breaks
+        #    at the hyphen.
+        #
+        # git grep exits 0 on match, 1 on no match, >1 on error. Only 1 is a pass.
         run: |
-          ! git grep -nIE '(sk-[A-Za-z0-9]{20,}|SERVICE_ROLE_KEY=[A-Za-z0-9]|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY|AKIA[0-9A-Z]{16})' -- ':!wiki/**' ':!*.md'
+          set -uo pipefail
+          PATTERN='(sk-ant-[A-Za-z0-9_-]{16,}|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|glpat-[A-Za-z0-9_-]{16,}|xox[baprs]-[A-Za-z0-9-]{10,}|SERVICE_ROLE_KEY=[A-Za-z0-9]|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY|AKIA[0-9A-Z]{16}|(API|SECRET|ACCESS)_KEY[[:space:]]*=[[:space:]]*[A-Za-z0-9/+_-]{20,})'
+          git grep -nIE "$PATTERN" -- ':!wiki/**' ':!*.example' ':!**/*.example'
+          rc=$?
+          if [ "$rc" -eq 0 ]; then
+            echo "::error::possible credential committed (see matches above)"
+            exit 1
+          elif [ "$rc" -ne 1 ]; then
+            echo "::error::git grep failed with exit $rc; the scan did not run"
+            exit 1
+          fi
+          echo "no credential patterns found"

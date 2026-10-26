@@ -65,7 +65,11 @@ node_challenge() (
   cd "challenges/$1" &&
   node --test test/*.test.js >/dev/null && echo "  PASS node:test" &&
   { [ -d node_modules ] && npx cucumber-js --format summary >/dev/null && echo "  PASS cucumber" || true; } &&
-  { have php && php -l "wp-plugin/$2/$2.php" >/dev/null || true; }
+  # Skip the lint when php is absent, but NEVER swallow a real lint failure.
+  # `have php && php -l ... || true` did both: measured 2026-10-26, a genuine
+  # syntax error gave php -l rc=255 while check.sh still reported rc=0 and
+  # "passed: 10 failed: 0".
+  { if have php; then php -l "wp-plugin/$2/$2.php" >/dev/null; fi; }
 )
 static_web() { ( cd starters/static-web && node --test test/*.test.js >/dev/null && echo "  PASS node:test" ); }
 guardrails() { python3 tools/check_synthetic.py && python3 tools/check_links.py && python3 tools/check_derived.py; }
@@ -79,7 +83,10 @@ step "challenge 01" php     challenge01
 step "challenge 02" node    node_challenge 02-job-fit-checker      eri-job-fit
 step "challenge 03" node    node_challenge 03-job-post-checker     eri-job-post-checker
 step "static-web"   node    static_web
-step "guardrails"   python3,git guardrails
+# Gated on python3 only. The guards were deliberately taught to work without
+# git (the day-of workspace has no .git), so requiring git here would skip all
+# three on a laptop that lacks it, including the two that never touch git.
+step "guardrails"   python3 guardrails
 
 echo
 echo "---------------------------------------------"
