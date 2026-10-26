@@ -47,7 +47,7 @@ Dry run on a laptop: `python3 infra/generate.py --teams 2 --domain localhost`, t
 ## Runbook
 - **T-7 days:** confirm the answers above. `CODE_SERVER_VERSION` is already pinned to
   `4.143.1` in `workspace/Dockerfile`; only change it if the dry run then re-passes.
-- **T-2 days:** full dry run with 2 teams. Open VS Code, run `bash tools/check.sh`, activate a plugin in WordPress.
+- **T-2 days:** full dry run with 2 teams. Open VS Code, run `bash tools/check.sh` (expect exit **2** on a team image: no `node_modules`, so both BDD suites skip. Exit 1 is a real failure), activate a plugin in WordPress, and **check spoken instructions actually speak on the image** -- if the voice list is empty, no team can rely on audio and P2 needs pre-recorded files instead.
 - **T-1 day:** `generate.py --teams <N+1>` (one spare), `up -d --build`, print the `teams.csv` slips.
 - **Day of:** hand out slips at team formation; watch `docker stats`; the Codespaces fallback is in `.devcontainer/`.
 - **Same night:** teams push to GitHub (or download a zip from VS Code); then `docker compose down -v` to delete everything.

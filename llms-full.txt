@@ -224,7 +224,7 @@ Milwaukee-area employment specialists are listed on the staff page and are good 
 
 # Recommended stack
 
-ERI's public sites run on **WordPress** (see [digital-properties.md](digital-properties.md)). So the safest bet for anything ERI keeps after the event is PHP, MySQL, WordPress and plain HTML/CSS/JavaScript. For a phone-first prototype, Expo + Supabase is the suggested option. **Confirm with ERI before you count on any of these being adopted.**
+ERI's public sites run on **WordPress** (see [digital-properties.md](digital-properties.md)), so for anything ERI might keep, the safest bet is PHP, MySQL, WordPress and plain HTML/CSS/JavaScript. For a phone-first prototype, Expo + Supabase. **Confirm with ERI before you count on any of these being adopted.**
 
 | Target | Tools | Starter in this repo |
 | --- | --- | --- |
@@ -232,19 +232,56 @@ ERI's public sites run on **WordPress** (see [digital-properties.md](digital-pro
 | | PHP, SQL/MySQL/phpMyAdmin | `starters/php-mysql` |
 | | WordPress | `starters/wordpress-plugin`, `starters/eri-job-card` (block) |
 | Mobile apps | JavaScript, React Native/Expo, Postgres/Supabase | `starters/expo-supabase` |
-| AI | Chat assistants (Claude, ChatGPT) or an API key you bring | `starters/ai-helpers` |
+| AI | Chat assistants (Claude, ChatGPT) or an API key you bring | `starters/ai-helpers` — **read the limits below first** |
+
+## Pick by project
+
+These are [ERI's four problem statements](../../docs/eri-problem-statements.md). Each has a different shape, and the shape decides the stack.
+
+| ERI project | Start here | Why | Only if you need |
+| --- | --- | --- | --- |
+| **P1** Show Your Skills | `static-web` | Media + a preview page; nothing needs a server if the portfolio exports as a file | `expo-supabase` — if you want a real **view-only link** and native camera. Then you own the hosting question |
+| **P2** My Workday Assistant | `static-web`, phone-first | One step at a time is local state. Must work at 320px and on a tablet | `expo-supabase` — if you want it installable with offline tasks |
+| **P3** Job Coach Connection | `static-web`, two browser tabs | Employee view and coach inbox are two views over one state. Two tabs on one laptop is an honest demo of a simulated inbox | `php-mysql` or Supabase — if requests must cross **devices**, not tabs |
+| **P4** Employer Opportunity Hub | `static-web`, then wrap as a WordPress plugin | Form in, explained matches out. **The most WordPress-ready of the four** and the likeliest for ERI's web team to host first | `php-mysql` — if the industry/task library outgrows a CSV |
+
+**WordPress fit, honestly:** P4 is a natural plugin. P1 can be one, but media uploads are the hard part. **P2 and P3 are stateful apps, not page content** — forcing them into a plugin costs you the day. Build them standalone and say so in the demo.
+
+## Three things no starter here does yet
+
+ERI's statements need these. Nothing in `starters/` demonstrates them, and none is verified in this repo — budget time, and check on your own target browser early.
+
+| Capability | Who needs it | The boring way that works |
+| --- | --- | --- |
+| **Photo / video / audio capture** | P1 (required: "at least one non-text method") | `<input type="file" accept="image/*,video/*,audio/*" capture>` gets you the phone camera and mic roll with zero JS. `MediaRecorder` records in-page if you want that. Expo: `expo-camera`, `expo-av` |
+| **Audio instructions** | P1, P2 ("listen rather than read") | `speechSynthesis` needs no key, no file and no cost — **but it is UNVERIFIED on the day-of image.** On Linux with no speech voices installed it returns an empty voice list and silently does nothing, and the workspaces are Linux containers. Treat pre-recorded audio files as the real fallback, always ship the text, and verify this at the T-2 dry run |
+| **Two roles, one state** | P3 (employee → coach inbox → response) | `localStorage` plus the `storage` event, or `BroadcastChannel`, syncs two tabs on one machine. Real cross-device needs a backend |
+
+Also: **P2 needs step images.** The data generator makes CSVs, not pictures. Use simple icons or take four photos on your phone; ERI asked for pictures with the text, and a step with no picture fails AC-P2.3.
+
+## ERI's limits on AI
+
+Read this before using `starters/ai-helpers`.
+
+ERI put these **out of scope in writing**, and they are not style preferences:
+
+- **No AI-generated assessment of applicant suitability** (P1 §9).
+- **No automated hiring or applicant scoring** (P1 §9, P4 §11).
+- **Never rank candidates based on disability** (P4 §10).
+- **Never suggest an accommodation from a disability label alone** (P4 §10).
+- **No automated accommodation decisions**; complex legal questions go to qualified professionals (P4 §10).
+
+So: use an LLM to help you *write code*, to turn text into plain language, or to explain a match **that your own rules already made**. Do not use it to judge a person. A model that outputs "this candidate is a 72% fit" is the exact product ERI said not to build, and it will lose on the rubric.
+
+Two of the bundled prompts (`classify-service-note.md`, `inclusive-job-post.md`) were written for the retired challenges and no longer map to any of the four.
 
 ## Ground rules
-- **Prototypes stay standalone.** No connections to ERI systems, and no AI agents pointed at anything real.
-- Use only data in `data/`, which is synthetic.
-- Prefer no build step and no new paid services. If you add a dependency, say why in your team README.
-- Something you hand ERI should run with the README in under 10 minutes.
 
-## Picking a starter
-- Job seekers on phones → `expo-supabase` (also runs on web)
-- Staff tool or billing checker → `php-mysql`, then wrap it as a WordPress plugin
-- Content ERI staff will edit → `wordpress-plugin` or `eri-job-card`
-- Quick demo or calculator → `static-web`
+- **Prototypes stay standalone.** No connections to ERI systems, and no AI agents pointed at anything real.
+- Use only data in `data/` and your challenge's `data/`, which is synthetic.
+- Prefer no build step and no new paid services. If you add a dependency, say why in your team README.
+- Something you hand ERI should run from its README in under 10 minutes.
+- **Accessibility is 25% of the score and it is tested, not eyeballed.** Every project above has keyboard, screen reader and plain-language requirements in ERI's own statement.
 
 
 <!-- FILE: wiki/domain/accessibility.md -->
@@ -7644,6 +7681,13 @@ Runs a warehouse or kitchen and has open shifts. Unsure what accommodations cost
 
 # PRD 01: Funding gap finder
 
+> **SUPERSEDED, 2026-10-26.** ERI supplied their own four problem statements;
+> this PRD was our guess and is not one of them. See
+> [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md) and
+> [ADR 0003](../../docs/adr/0003-pivot-to-eri-problem-statements.md). The code
+> under `challenges/` stays until its replacement runs, because its test
+> harness is being ported, not thrown away.
+
 **Status:** v0.2, **Hello world:** [`challenges/01-funding-gap-finder`](../../challenges/01-funding-gap-finder/), **Data:** `data/dvr/`, `data/ticket/`, `data/county/`, **Personas:** finance director, [Alex](../personas/eri-staff.md)
 
 > **Our assumptions (ERI: keep / kill / change)**
@@ -7703,6 +7747,13 @@ If ERI continues: ERI finance owns the rules. No code owner until ERI decides on
 
 # PRD 02: "Is this job right for me?"
 
+> **SUPERSEDED, 2026-10-26.** ERI supplied their own four problem statements;
+> this PRD was our guess and is not one of them. See
+> [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md) and
+> [ADR 0003](../../docs/adr/0003-pivot-to-eri-problem-statements.md). The code
+> under `challenges/` stays until its replacement runs, because its test
+> harness is being ported, not thrown away.
+
 **Status:** v0.2, **Hello world:** [`challenges/02-job-fit-checker`](../../challenges/02-job-fit-checker/), **Data:** `data/job_postings.csv`, `data/job_seekers.csv`, **Persona:** [Marcus](../personas/job-seekers.md) (and [agent](../../agents/avg-job-seeker.md))
 
 > **Our assumptions (ERI: keep / kill / change)**
@@ -7759,6 +7810,13 @@ If ERI picks it: ERI web team. **Volunteer follow-up:** evening 1, install it on
 <!-- FILE: wiki/prds/03-job-post-checker.md -->
 
 # PRD 03: Inclusive job post checker
+
+> **SUPERSEDED, 2026-10-26.** ERI supplied their own four problem statements;
+> this PRD was our guess and is not one of them. See
+> [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md) and
+> [ADR 0003](../../docs/adr/0003-pivot-to-eri-problem-statements.md). The code
+> under `challenges/` stays until its replacement runs, because its test
+> harness is being ported, not thrown away.
 
 **Status:** v0.2, **Hello world:** [`challenges/03-job-post-checker`](../../challenges/03-job-post-checker/), **Data:** `data/job_postings.csv` (46/60 contain planted barrier phrases), **Persona:** hiring manager ([job-seekers.md #6](../personas/job-seekers.md))
 
@@ -7899,6 +7957,502 @@ The razor: **asked for by ERI?** · **usable by ERI's web team within two volunt
 | Turning-18 navigator | Cut | ERI already has Before Age 18 and its planning tool; better to improve that site than build a new one |
 | Spreadsheet pivot "skill" for billing | Kept inside 01 | Allowed as a team's approach in 01 (synthetic data only at the hackathon) |
 | Multi-funder revenue platform | Kept as the *story* of 01 | Built for DVR + mocks only; the pattern is what ERI keeps |
+
+
+<!-- FILE: wiki/prds/p1-show-your-skills.md -->
+
+# PRD: Show Your Skills
+
+**ERI project 1** · **Status:** from ERI, 2026-10-26 · **Source:** [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md#project-1-show-your-skills)
+
+**Suggested stack:** `starters/static-web`; the portfolio exports as a file. Media capture via a file input with the `capture` attribute. Use `expo-supabase` only if you want a real view-only link, and own the hosting question. See [tech-stack.md](../company/tech-stack.md#pick-by-project).
+
+> **This PRD is downstream of ERI's own words.** Where it differs from the
+> source, the source wins. Our additions are marked *(ours)* and ERI may
+> keep / kill / change them.
+
+## 1. Problem
+
+Traditional resumes may not accurately represent a person's abilities,
+particularly with limited work experience, a communication disability, or
+difficulty describing strengths in writing. Job seekers need accessible ways to
+show skills; employers need straightforward ways to see how those skills relate
+to job responsibilities.
+
+## 2. Users
+
+| Persona | Goal | Pain today |
+| --- | --- | --- |
+| Job seeker with a disability | Show what I can actually do | A resume hides my ability behind writing |
+| Job coach / employment specialist | Help organize someone's work examples | No shared place to put photos, video, notes |
+| Employer / hiring manager | Understand an applicant's skills fast | Must infer ability from a thin resume |
+
+## 3. Hackathon MVP (ERI's list, verbatim scope)
+
+- [ ] Enter basic profile information
+- [ ] Select or enter **three** skills
+- [ ] Add **at least one** example of a skill
+- [ ] Display it as a simple portfolio
+- [ ] Share or export the portfolio
+
+**Out of scope today (ERI):** commercial job board integration, automated
+hiring or applicant scoring, employer account management, AI-generated
+assessments of suitability, identity verification, production hosting.
+
+## 4. User stories
+
+- As a job seeker, I want to show a video of myself completing a work task so
+  employers can see my skills.
+- As a person who has difficulty writing, I want to use pictures or audio to
+  explain my abilities.
+- As a job coach, I want to help someone organize their work examples.
+- As an employer, I want to quickly understand an applicant's skills without
+  navigating a complicated website.
+
+## 5. Data
+
+`challenges/p1-show-your-skills/data/` — a skills vocabulary and a set of
+sample work examples with captions and transcripts, all synthetic. Sample media
+only, per ERI §10. *(ours)* Keep the skill names consistent with P4's task
+vocabulary so a team can demo the P1→P4 handoff ERI names in P4 §12.
+
+## 6. Acceptance criteria
+
+- **AC-P1.1** Given an empty portfolio, when the user enters a display name and
+  interests, then the portfolio shows them without requiring a legal name.
+- **AC-P1.2** Given the skill step, when the user picks from the list or types
+  a custom skill, then three skills can be recorded.
+- **AC-P1.3** Given a skill, when the user attaches a photo, audio, video or
+  written example, then it appears under that skill with its caption or
+  transcript.
+- **AC-P1.4** Given a completed portfolio, when an employer opens the preview,
+  then at least three skills are identifiable without instruction.
+- **AC-P1.5** Given a completed portfolio, when the user chooses to share, then
+  a view-only link or downloadable file is produced **and the user chooses what
+  it contains**.
+- **AC-P1.6** Given any step, when the user navigates by keyboard only, then
+  every control is reachable and focus is visible.
+- **AC-P1.7** Given any image, audio or video, then a text alternative,
+  caption or transcript is present.
+- **AC-P1.8** Given the whole flow, then no step imposes a time limit.
+- **AC-P1.9** *(ours)* Given the running app, then it makes no network request;
+  nothing leaves the browser.
+
+## 7. Accessibility
+
+Keyboard and screen reader, plain-language instructions, alternatives to typed
+input, labels/captions/transcripts, no time limits, user controls what is
+shared. One real screen reader pass is required, not optional.
+
+## 8. Risks and guardrails
+
+- **Never require disclosure of a disability or diagnosis.** Not a field, not a
+  prompt, not an inference.
+- Demonstration content only with consent; use the synthetic sample media.
+- Do not score, rank or assess the person. ERI put AI-generated suitability
+  assessment out of scope explicitly.
+- A portfolio is the person's own. Sharing is their decision each time.
+
+## 9. What ERI needs to adopt it
+
+Browser-only, nothing stored server-side, so ERI's web team can review it as a
+static page or a WordPress plugin. Media hosting is the open question — a real
+deployment needs a decision about where video lives and who can reach it.
+
+## 10. Adversarial debate
+
+| Against | Response |
+| --- | --- |
+| "This is just a resume builder" | A resume is text. The point is the non-text path: ERI's success criteria require at least one non-text method |
+| "Employers won't open a link from a stranger" | Which is why the share artifact must also be downloadable and skimmable in under a minute |
+| "Video hosting makes this unhostable for ERI" | True for production. For the hackathon, local sample media; name the hosting decision rather than hide it |
+
+**Kill it if:** a job seeker cannot finish a portfolio in 5–10 minutes with
+prepared examples, or an employer cannot name three skills after reading one.
+
+## 11. Monday owner
+
+ERI to name. The adopt path runs through the web team.
+
+## 12. Demo script (3 min)
+
+A job seeker builds a portfolio showing they can organize supplies, greet
+customers and follow a checklist. An employer opens it and reads those three
+skills back.
+
+
+<!-- FILE: wiki/prds/p2-my-workday-assistant.md -->
+
+# PRD: My Workday Assistant
+
+**ERI project 2** · **Status:** from ERI, 2026-10-26 · **Source:** [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md#project-2-my-workday-assistant)
+
+**Suggested stack:** `starters/static-web`, phone-first, usable at 320px. Audio via `speechSynthesis` **only if the workspace image has voices — that is unverified, so test it before building on it**; pre-recorded audio files otherwise. The text is shown either way. See [tech-stack.md](../company/tech-stack.md#pick-by-project).
+
+> **This PRD is downstream of ERI's own words.** Where it differs from the
+> source, the source wins. Our additions are marked *(ours)*.
+
+## 1. Problem
+
+Some employees need support to remember task sequences, understand
+instructions, transition between activities, or handle a changed workday.
+Printed checklists and verbal instructions do not always fit. Job coaches and
+supervisors need a simple way to make accessible instructions the employee can
+use on their own.
+
+## 2. Users
+
+| Persona | Goal | Pain today |
+| --- | --- | --- |
+| Employee with a disability | Finish the task without asking again | Instructions were verbal and are gone |
+| Job coach | Build a task guide quickly | Paper checklists don't carry pictures or audio |
+| Supervisor / trainer | Update steps when the process changes | Reprint everything, hope it reaches people |
+
+## 3. Hackathon MVP (ERI's list, verbatim scope)
+
+- [ ] List **three** sample workplace tasks
+- [ ] Select a task
+- [ ] Show it in manageable steps, **pictures and text**
+- [ ] Mark each step complete
+- [ ] Show completion progress
+- [ ] A simple **"I Need Help"** option
+
+**Out of scope today (ERI):** scheduling or time tracking, payroll, automated
+performance evaluation, location tracking, extensive employer management, AI
+task analysis.
+
+## 4. User stories
+
+- As an employee, I want pictures for each step so I can finish without asking
+  my supervisor repeatedly.
+- As an employee, I want to listen to instructions rather than read them.
+- As a job coach, I want to quickly create a task checklist.
+- As a supervisor, I want to update instructions when a process changes.
+- As an employee, I want to say I need help without feeling embarrassed.
+
+## 5. Data
+
+`challenges/p2-my-workday-assistant/data/` — three synthetic tasks with ordered
+steps, each step carrying text, an image or icon, and an audio transcript.
+"Stock the Shelves" is ERI's suggested demo and should be one of them.
+
+## 6. Acceptance criteria
+
+- **AC-P2.1** Given the task list, when it loads, then three tasks are shown
+  with large labelled controls.
+- **AC-P2.2** Given a selected task, when it opens, then exactly **one step** is
+  shown at a time with Back and Next.
+- **AC-P2.3** Given a step, then it carries **at least two formats** — text and
+  a picture at minimum.
+- **AC-P2.4** Given a step, when the user marks it complete, then progress
+  updates and the current step and what comes next are both identifiable.
+- **AC-P2.5** Given any step, when the user asks to repeat it, then the
+  instruction is available again, including the audio.
+- **AC-P2.6** Given any screen, then "I Need Help" is reachable in one action.
+- **AC-P2.7** Given the whole flow, then nothing expires and no step requires a
+  fast response.
+- **AC-P2.8** Given a phone-width screen (320px), then the task is completable.
+- **AC-P2.9** *(ours)* Given completion data, then it stays in the browser; no
+  progress is transmitted anywhere.
+
+## 7. Accessibility
+
+Large clearly labelled controls, images + text + optional audio, plain language
+and short sentences, keyboard and screen reader, no time pressure, repeatable
+instructions, minimal distraction, works on a phone or tablet.
+
+## 8. Risks and guardrails
+
+- **This is a support tool, not a monitoring tool.** It must not be designed so
+  an employer can measure a worker without their knowledge. Progress is private
+  to the employee unless they understand and agree to share it.
+- Task instructions must reflect real workplace requirements; anything
+  potentially unsafe is for qualified staff to review, not a hackathon team.
+- Do not gamify completion speed. Measuring how fast a disabled employee works
+  is the surveillance failure wearing a friendly hat.
+
+## 9. What ERI needs to adopt it
+
+Phone-first. The coach-authoring side is the part that decides adoption: if
+making a guide is harder than writing it on paper, it will not get used.
+
+## 10. Adversarial debate
+
+| Against | Response |
+| --- | --- |
+| "This is a checklist app" | The MVP is. The requirement that makes it not one is two formats per step plus repeatability |
+| "Employers will use it to track people" | Which is why progress is local and private by default, and why that is an AC rather than a value |
+| "Coaches won't author content" | Then the tool fails. Authoring effort is the real success criterion; ERI listed it first |
+
+**Kill it if:** a coach cannot build a basic guide from a template, or an
+employee cannot complete a five-step task unaided.
+
+## 11. Monday owner
+
+ERI to name — likely employment services rather than the web team.
+
+## 12. Demo script (3 min)
+
+An employee opens "Stock the Shelves," is walked through gathering supplies,
+checking labels, placing product and cleaning up, marks each step, and
+finishes.
+
+
+<!-- FILE: wiki/prds/p3-job-coach-connection.md -->
+
+# PRD: Job Coach Connection
+
+**ERI project 3** · **Status:** from ERI, 2026-10-26 · **Source:** [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md#project-3-job-coach-connection)
+
+**Suggested stack:** `starters/static-web` with two tabs (employee + coach inbox) synced by `BroadcastChannel`. A backend only if requests must cross devices. See [tech-stack.md](../company/tech-stack.md#pick-by-project).
+
+> **This PRD is downstream of ERI's own words.** Where it differs from the
+> source, the source wins. Our additions are marked *(ours)*.
+
+## 1. Problem
+
+Employees sometimes need help with a task, a change in routine, or something
+unexpected — but asking is hard: a communication disability, not knowing who to
+contact, or not wanting to interrupt a supervisor. Coaches support several
+people across worksites and cannot always be there in person.
+
+## 2. Users
+
+| Persona | Goal | Pain today |
+| --- | --- | --- |
+| Employee receiving job coaching | Ask for help without a phone call | Typing is hard; interrupting feels worse |
+| Job coach | See what kind of help is needed before responding | A missed call says nothing about urgency |
+| Workplace support staff | Step in when authorized | No clear boundary of who may receive what |
+
+## 3. Hackathon MVP (ERI's list, verbatim scope)
+
+- [ ] A clearly labelled **"I Need Help"** option
+- [ ] Choose from **four** common support needs
+- [ ] An optional short text message
+- [ ] Send to a demonstration coach dashboard
+- [ ] Coach acknowledges and responds
+- [ ] Response appears on the employee's screen
+
+**Out of scope today (ERI):** personnel system integration, medical or
+emergency response, video calling, automated monitoring, production case
+management, multi-agency coordination.
+
+## 4. User stories
+
+- As an employee, I want to ask for help using pictures because typing is hard.
+- As an employee, I want to know when my coach has received my request.
+- As a coach, I want to see what type of help is needed before contacting them.
+- As an employee, I want a simple way to say I am confused or something
+  unexpected happened.
+- As a coach, I want to reply with a short, clear, easy-to-understand message.
+
+## 5. Data
+
+`challenges/p3-job-coach-connection/data/` — the four support-need options with
+icons, a set of predefined employee messages, and predefined coach replies. All
+synthetic; the coach inbox is simulated, per ERI's MVP wording.
+
+## 6. Acceptance criteria
+
+- **AC-P3.1** Given any screen, then "I Need Help" is present, large, and
+  labelled with both icon and text.
+- **AC-P3.2** Given a help request, when the employee uses predefined options,
+  then it is submitted in **three interactions or fewer**.
+- **AC-P3.3** Given a request, then **at least one** non-typed path exists
+  (picture or predefined message).
+- **AC-P3.4** Given a sent request, then the employee sees clear confirmation
+  and a status of sent / seen / answered.
+- **AC-P3.5** Given a sent request, then it appears in the coach dashboard with
+  its support-need type visible before opening.
+- **AC-P3.6** Given a request, when the coach responds, then the response
+  appears on the employee's screen.
+- **AC-P3.7** Given the session, then the employee can review previous messages.
+- **AC-P3.8** Given any screen, then it is clear **who** will receive the
+  message.
+- **AC-P3.9** Given an urgent or unsafe situation, then the product routes to
+  established emergency procedures and does **not** present itself as the path.
+- **AC-P3.10** *(ours)* Given the coach dashboard, then the product never
+  implies the coach is currently available or will reply within any time.
+
+## 7. Accessibility
+
+Large buttons with icons **and** text labels, short plain-language options,
+screen reader and keyboard, alternatives to typing, clear send confirmation,
+easy review of prior messages, no deep menus.
+
+## 8. Risks and guardrails
+
+- **AC-P3.9 is the one that matters most.** A help button that looks like it
+  summons help, in a real emergency, is harmful. Routine coaching and emergency
+  must be visibly different paths.
+- Never imply a coach is always available. Status must not read as presence.
+- The recipient must be named. "Sent to your coach" is not enough if the
+  employee cannot tell who that is.
+- This is not monitoring. Coaches see requests, not activity.
+
+## 9. What ERI needs to adopt it
+
+A production version needs real authentication, protected transport, a record
+retention policy and stated response expectations. Say that out loud in the
+demo — ERI wrote it into the statement and it is the honest framing.
+
+## 10. Adversarial debate
+
+| Against | Response |
+| --- | --- |
+| "It's a chat app" | A chat app starts with a blank box. Everything here is about not needing one |
+| "Creates dependence on the coach" | ERI's own key design question. Favour predefined answers that resolve without contact |
+| "Simulated inbox isn't a product" | For one day it is the honest scope; ERI specified a simulated coach inbox |
+
+**Kill it if:** a request takes more than three interactions, or the employee
+cannot tell whether it was received.
+
+## 11. Monday owner
+
+ERI to name — employment services, with a web-team review of the transport
+question.
+
+## 12. Demo script (3 min)
+
+An employee doesn't understand a new task. They tap "I Need Help," then "I
+don't understand my task." The coach sees the type, responds, and the employee
+reads it and carries on.
+
+
+<!-- FILE: wiki/prds/p4-employer-hub.md -->
+
+# PRD: Employer Opportunity & Support Hub
+
+**ERI project 4** · **Status:** from ERI, 2026-10-26 · **Source:** [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub)
+
+**Suggested stack:** `starters/static-web`, then wrap as a WordPress plugin — the most WordPress-ready of the four. No LLM scoring of candidates; see [tech-stack.md](../company/tech-stack.md#eris-limits-on-ai).
+
+> **This PRD is downstream of ERI's own words.** Where it differs from the
+> source, the source wins. Our additions are marked *(ours)*.
+
+## 1. Problem
+
+Employers may want to hire people with disabilities but lack the experience to
+connect a person's skills to their business needs, shape meaningful
+responsibilities, respond well to a disclosure, handle an accommodation
+request, or plan onboarding. Good resources exist; they are not joined into one
+workflow.
+
+## 2. Users
+
+| Persona | Goal | Pain today |
+| --- | --- | --- |
+| Small/midsize employer, hiring manager | See how a candidate's strengths meet real business needs | Job descriptions are fixed; strengths don't map onto them |
+| Supervisor / HR | Respond correctly to a disclosure or request | Fear of getting it legally wrong |
+| Job developer / ERI business services | Facilitate the employer conversation | No shared artifact to work from |
+
+## 3. Hackathon MVP (ERI's list — they named the focus)
+
+ERI: *"focus primarily on the skills-to-tasks matching feature."*
+
+- [ ] Select an industry or business type
+- [ ] Describe **three to five** workplace needs or recurring tasks
+- [ ] Enter a **fictional** candidate's skills, interests and preferences
+- [ ] Suggest matches between skills and tasks
+- [ ] **Explain why** each task might be a good match
+- [ ] Show a simple employer action plan with next steps
+
+**Optional if time:** disclosure scenario guide, accommodation resource links,
+basic onboarding checklist.
+
+**Out of scope today (ERI):** applicant tracking, automatic employment
+decisions, ADA compliance management, payroll/HR integration, production
+storage of medical or disability information, cross-organization matchmaking.
+
+## 4. User stories
+
+- As an employer, I want to understand how a candidate's skills could meet my
+  business needs.
+- As a hiring manager, I want to know how to respond when an applicant
+  discloses a disability.
+- As a supervisor, I want practical ideas for adapting how tasks are taught.
+- As an employer, I want help with an accommodation request without assuming
+  anything about the person's disability.
+- As a job developer, I want something that helps me run the employer
+  conversation.
+
+## 5. Data
+
+`challenges/p4-employer-hub/data/` — industries with recurring tasks, a skills
+vocabulary, and fictional candidate profiles. *(ours)* Share the skill
+vocabulary with P1 so the handoff ERI describes in §12 can be demonstrated.
+Resource links: JAN, EEOC, DVR.
+
+## 6. Acceptance criteria
+
+- **AC-P4.1** Given the start, when an employer picks an industry and enters
+  three to five needs, then the assessment completes.
+- **AC-P4.2** Given a fictional candidate's skills and preferences, then **at
+  least three** plausible workplace tasks are suggested.
+- **AC-P4.3** Given each suggestion, then the reasoning is shown — which skill
+  and which stated business need it connects.
+- **AC-P4.4** Given the suggestions, then they derive from the employer's own
+  entered needs, **never from an assumption about disability**.
+- **AC-P4.5** Given a completed session, then a simple next-steps plan is
+  produced, including questions to discuss with an employment specialist.
+- **AC-P4.6** Given any output, then it links to JAN, EEOC, DVR or equivalent
+  trusted resources.
+- **AC-P4.7** Given the tool, then it never ranks or scores candidates and
+  never makes a hiring or accommodation decision.
+- **AC-P4.8** Given any screen, then keyboard and screen reader work, the
+  language is plain, and it is usable on a phone.
+- **AC-P4.9** *(ours)* Given a complex legal question, then the tool refers to
+  qualified professionals rather than answering.
+
+## 7. Accessibility
+
+Keyboard and screen reader, plain-language explanations, clear navigation,
+mobile-friendly, accessible forms, no time limits, and no disability-based
+assumptions or stereotypes in any copy.
+
+## 8. Risks and guardrails
+
+This PRD has the longest guardrail list because ERI wrote one:
+
+- Do not require a candidate to disclose a disability or diagnosis.
+- Get permission before sharing candidate portfolio information.
+- Do not rank candidates by disability — automatically or otherwise.
+- Do not make automated hiring or accommodation decisions.
+- Protect confidential employee information.
+- **Never suggest an accommodation from a disability label alone.**
+- Refer complex legal questions to qualified professionals.
+
+The failure mode to design against: a tool that looks like it is telling an
+employer what a disabled person can do. It matches *stated skills* to *stated
+business needs*, and shows its reasoning so a human can disagree with it.
+
+## 9. What ERI needs to adopt it
+
+This is the one with outreach value for ERI Business Services — an employer who
+works through it and reaches a next-steps plan is a warm conversation. Worth
+asking ERI where that should point.
+
+## 10. Adversarial debate
+
+| Against | Response |
+| --- | --- |
+| "Skills-to-tasks matching is a lookup table" | For one day, yes — and the explanation of *why* is the product, not the match |
+| "Employers won't fill in five needs" | Then the MVP is wrong and it should start from the industry template. Test it on a real employer at the event |
+| "This edges toward automated hiring" | AC-P4.7 forbids it and ERI put it out of scope. No scores, no ranking, no decisions |
+
+**Kill it if:** suggestions don't trace to the employer's own stated needs, or
+the reasoning isn't shown.
+
+## 11. Monday owner
+
+ERI to name — business services, with the web team on hosting.
+
+## 12. Demo script (3 min)
+
+A retail business needs inventory, merchandising and display upkeep. A
+fictional candidate has strong organizational skills and prefers routine work
+with merchandise. The tool proposes responsibilities, explains each, and ends
+with a draft task plan and questions for an employment specialist.
 
 
 <!-- FILE: wiki/stack/README.md -->

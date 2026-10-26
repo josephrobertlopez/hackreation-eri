@@ -55,7 +55,7 @@ infra/       day-of hosting: per-team browser VS Code + WordPress (Docker Compos
 deck/        attendee kickoff slides (Marp)
 ```
 
-Run every smoke test: `bash tools/check.sh`. CI runs one workflow per challenge plus repo guardrails (`.github/workflows/`).
+Run every smoke test: `bash tools/check.sh`. It exits **0** when everything ran and passed, **2** when something was skipped for a missing tool (the day-of team images ship without `node_modules`, so both BDD suites skip there), and **1** on a real failure. CI runs one workflow per challenge plus repo guardrails (`.github/workflows/`).
 
 **Work like a real team:** [CONTRIBUTING.md](CONTRIBUTING.md) covers issues tied to acceptance criteria, branches, Conventional Commits, TDD/BDD, PRs with review, the Definition of Done and ADRs ([docs/adr/](docs/adr/)).
 

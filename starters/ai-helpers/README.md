@@ -1,5 +1,16 @@
 # AI helpers
 
+> **ERI put some AI uses out of scope, in writing.** No AI-generated assessment
+> of applicant suitability, no automated hiring or applicant scoring, never rank
+> candidates based on disability, never suggest an accommodation from a
+> disability label alone, and no automated accommodation decisions. Use a model
+> to help you write code, to turn text into plain language, or to explain a
+> match **your own rules already made** — never to judge a person. Full list:
+> [ERI's limits on AI](../../wiki/company/tech-stack.md#eris-limits-on-ai).
+>
+> `prompts/classify-service-note.md` and `prompts/inclusive-job-post.md` were
+> written for the retired challenges and map to none of ERI's four projects.
+
 Prototypes here stay standalone and use synthetic data only. There are two ways to use AI:
 
 1. **In chat (no code):** paste a prompt from `prompts/` plus a few rows of synthetic data into Claude or ChatGPT.

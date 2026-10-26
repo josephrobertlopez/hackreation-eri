@@ -1,5 +1,12 @@
 # PRD 03: Inclusive job post checker
 
+> **SUPERSEDED, 2026-10-26.** ERI supplied their own four problem statements;
+> this PRD was our guess and is not one of them. See
+> [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md) and
+> [ADR 0003](../../docs/adr/0003-pivot-to-eri-problem-statements.md). The code
+> under `challenges/` stays until its replacement runs, because its test
+> harness is being ported, not thrown away.
+
 **Status:** v0.2, **Hello world:** [`challenges/03-job-post-checker`](../../challenges/03-job-post-checker/), **Data:** `data/job_postings.csv` (46/60 contain planted barrier phrases), **Persona:** hiring manager ([job-seekers.md #6](../personas/job-seekers.md))
 
 > **Our assumptions (ERI: keep / kill / change)**

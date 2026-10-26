@@ -14,7 +14,7 @@ You are an SRE setting up a one-day, disposable coding environment for about 6 t
 4. `python3 infra/generate.py --teams <N> --domain <domain> --email <email>`, then `cd infra/out && docker compose up -d --build`.
 5. **Verify each team**, and fix any item marked (verify) in `infra/README.md`:
    - `https://teamN.<domain>` shows the code-server login; the password from `teams.csv` works
-   - In its terminal: `cd ~/hackreation-eri && bash tools/check.sh` passes
+   - In its terminal: `cd ~/hackreation-eri && bash tools/check.sh` exits **0 or 2**. 2 means a suite was skipped for a missing tool, which is expected here: the images ship without `node_modules`, so cucumber cannot run. **Exit 1 is a real failure** -- read the FAILED list.
    - `php -S 0.0.0.0:8000 -t challenges/01-funding-gap-finder/public`, then `https://teamN.<domain>/proxy/8000/` loads
    - `https://wp-teamN.<domain>` finishes the WP install wizard; the 4 ERI plugins appear under Plugins; `[eri_job_fit]` renders on a page
 6. Record `docker stats --no-stream` with all teams idle.

@@ -33,8 +33,18 @@ step() {
     return 0
   fi
   printf '== %s\n' "$label"
-  if "$@"; then
+  # rc 3 is the in-band "ran, passed, but skipped an inner step" signal. A step
+  # that runs in a subshell -- node_challenge does, because its `cd` must not
+  # escape -- cannot append to SKIPPED, so before 2026-10-26 an inner skip was
+  # invisible to the exit-code contract at the top of this file: the day-of
+  # image has no node_modules, and the run printed "passed: 10 failed: 0" and
+  # exited 0 having executed NEITHER BDD suite.
+  "$@"; local rc=$?
+  if [ "$rc" -eq 0 ]; then
     PASSED=$((PASSED + 1))
+  elif [ "$rc" -eq 3 ]; then
+    PASSED=$((PASSED + 1))
+    SKIPPED+=("$label (an inner step was skipped; see its output above)")
   else
     printf '   FAILED: %s\n' "$label" >&2
     FAILED+=("$label")
@@ -62,24 +72,28 @@ block()      { php -l starters/eri-job-card/eri-job-card.php >/dev/null && test 
 ai_helpers() { php starters/ai-helpers/php/hello_llm.php | head -1; }
 challenge01(){ ( cd challenges/01-funding-gap-finder && php tests/smoke.php && rm -f ledger.csv ); }
 node_challenge() (
-  cd "challenges/$1" &&
-  node --test test/*.test.js >/dev/null && echo "  PASS node:test" &&
+  cd "challenges/$1" || exit 1
+  inner_skip=0
+  node --test test/*.test.js >/dev/null && echo "  PASS node:test" || exit 1
   # Skip cucumber when deps are not installed, but never swallow a real BDD
   # failure. The previous `... || true` did both, and node_modules IS present
   # in both node challenges, so a failing suite was silently passing.
-  # Say so when cucumber is skipped. It used to vanish in silence, and
   # infra/generate.py drops node_modules from the team images, so the day-of
-  # workspace ran NEITHER BDD suite while printing "All smoke tests passed".
-  # Still not counted in SKIPPED (this runs in a subshell and cannot reach
-  # that array), so the run can exit 0 having skipped cucumber -- visible now,
-  # but short of the exit-2 contract at the top of this file.
-  { if [ -d node_modules ]; then npx cucumber-js --format summary >/dev/null && echo "  PASS cucumber"; \
-    else echo "  SKIP cucumber (no node_modules; run npm install)"; fi; } &&
+  # workspace runs NEITHER BDD suite. That now exits 3, step() records it in
+  # SKIPPED, and the whole run exits 2 -- the contract at the top of this file.
+  if [ -d node_modules ]; then
+    npx cucumber-js --format summary >/dev/null && echo "  PASS cucumber" || exit 1
+  else
+    echo "  SKIP cucumber (no node_modules; run npm install)"
+    inner_skip=1
+  fi
   # Skip the lint when php is absent, but NEVER swallow a real lint failure.
   # `have php && php -l ... || true` did both: measured 2026-10-26, a genuine
   # syntax error gave php -l rc=255 while check.sh still reported rc=0 and
   # "passed: 10 failed: 0".
-  { if have php; then php -l "wp-plugin/$2/$2.php" >/dev/null; fi; }
+  if have php; then php -l "wp-plugin/$2/$2.php" >/dev/null || exit 1; fi
+  [ "$inner_skip" -eq 1 ] && exit 3
+  exit 0
 )
 static_web() { ( cd starters/static-web && node --test test/*.test.js >/dev/null && echo "  PASS node:test" ); }
 guardrails() { python3 tools/check_synthetic.py && python3 tools/check_links.py && python3 tools/check_derived.py && bash tools/check_secrets.sh; }
