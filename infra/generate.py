@@ -67,6 +67,8 @@ def _ignore(dirpath, names):
 
 
 shutil.copytree(os.path.join(here, ".."), os.path.join(ctx, "repo"), ignore=_ignore)
+# Mounted read-only into the fix-plugin-perms one-shot; see its service block below.
+shutil.copy2(os.path.join(here, "fix-plugin-perms.sh"), os.path.join(out, "fix-plugin-perms.sh"))
 
 env = {"MYSQL_ROOT_PASSWORD": pw()}
 # The `,z` on the two bind mounts below is load-bearing on an SELinux host
@@ -97,6 +99,7 @@ svc = ['''services:
 caddy = [("{\n  email %s\n}\n" % a.email) if a.email else ""]
 init, sheet, vols = [], ["team,vscode_url,vscode_password,wordpress_url,db_name,db_user,db_password"], ["caddy_data:", "mysql:"]
 scheme = "http" if a.domain == "localhost" else "https"
+perm_mounts, perm_deps = [], []
 for t in range(1, a.teams + 1):
     T = f"team{t}"
     env[f"{T.upper()}_PASSWORD"] = pw(10)
@@ -115,6 +118,8 @@ for t in range(1, a.teams + 1):
     depends_on: {{ mysql: {{ condition: service_healthy }} }}
     deploy: {{ resources: {{ limits: {{ memory: 512m }} }} }}''')
     vols += [f"{T}_home:", f"{T}_wp:", f"{T}_plugins:"]
+    perm_mounts.append(f'"{T}_plugins:/plugins/{T}:z"')
+    perm_deps.append(f"wp-{T}")
     host = "localhost" if a.domain == "localhost" else a.domain
     caddy.append(f"{scheme}://{T}.{host} {{\n  reverse_proxy {T}:8080\n}}\n{scheme}://wp-{T}.{host} {{\n  reverse_proxy wp-{T}:80\n}}\n")
     init.append(f"CREATE DATABASE IF NOT EXISTS {T}; CREATE DATABASE IF NOT EXISTS {T}_wp;\n"
@@ -122,10 +127,59 @@ for t in range(1, a.teams + 1):
                 f"GRANT ALL ON {T}.* TO '{T}'@'%'; GRANT ALL ON {T}_wp.* TO '{T}'@'%';\n")
     sheet.append(f"{T},{scheme}://{T}.{host},{env[T.upper()+'_PASSWORD']},{scheme}://wp-{T}.{host},{T},{T},{env[T.upper()+'_DB_PASSWORD']}")
 
+# Each team<N>_plugins volume is mounted by TWO images that run as different
+# users: code-server as coder (uid 1000) and wordpress:php8.3-apache as
+# www-data (uid 33). Whichever container mounts it first seeds its ownership,
+# and the wordpress entrypoint then rewrites BOTH the owner and the mode over
+# wp-content -- and because wp-team<N> waits on MySQL's healthcheck, it is
+# always the one that acts last. Measured 2026-10-26, isolated stage by stage:
+#   team<N> alone        -> coder:www-data 2775   (what the image sets)
+#   wp-team<N> then up   -> www-data:www-data 755 (what wordpress leaves)
+# At 755 owned by www-data, a team could still edit the four seeded plugins but
+# `mkdir` and `touch` in ~/wp-plugins both returned EACCES -- so they could not
+# create a plugin, which is exactly what infra/README.md says that folder is
+# for, and `docker compose up` was fully green while it was true.
+#
+# No image-side fix can win a race it always loses, so the ordering is made
+# explicit instead: this one-shot depends on every wp-team<N>, then re-asserts
+# group-ownership and mode 2775 (setgid, group-writable) on a bounded loop, and
+# exits NON-ZERO if any volume is still not group-writable at the end. That
+# makes a silent permissions regression a visibly failed container in
+# `docker compose ps` rather than something a team discovers at 10am.
+if perm_mounts:
+    svc.append('  fix-plugin-perms:\n'
+               '    image: alpine:3\n'
+               '    restart: "no"\n'
+               '    command: ["sh", "/fix-plugin-perms.sh"]\n'
+               '    volumes: ["./fix-plugin-perms.sh:/fix-plugin-perms.sh:ro,z", '
+               + ", ".join(perm_mounts) + ']\n'
+               '    depends_on: [' + ", ".join(perm_deps) + ']')
+
 open(os.path.join(out, "docker-compose.yml"), "w").write("\n".join(svc) + "\nvolumes:\n" + "\n".join("  " + v for v in vols) + "\n")
 open(os.path.join(out, "Caddyfile"), "w").write("\n".join(caddy))
 os.makedirs(os.path.join(out, "mysql-init"), exist_ok=True)
 open(os.path.join(out, "mysql-init", "01-teams.sql"), "w").write("".join(init) + "FLUSH PRIVILEGES;\n")
 open(os.path.join(out, ".env"), "w").write("".join(f"{k}={v}\n" for k, v in env.items()))
 open(os.path.join(out, "teams.csv"), "w").write("\n".join(sheet) + "\n")
+
+# These two hold every team's credentials and are read only by the operator and
+# by `docker compose` running as that same user, so 0600 costs nothing. They
+# were 0644 until 2026-10-26 (umask 022) on a host that other people may have
+# accounts on, while the README said only "Keep .env private" and nothing
+# enforced it.
+for _f in (".env", "teams.csv"):
+    os.chmod(os.path.join(out, _f), 0o600)
+
+# mysql-init/01-teams.sql deliberately stays world-readable, and this is the
+# one place in here where that is the correct call. mysql:8.4's entrypoint
+# re-execs as the mysql user (uid 999) before it processes
+# docker-entrypoint-initdb.d, so a 0600 file owned by the operator is
+# unreadable to it. Measured 2026-10-26: at 0600 the container reported
+# **healthy**, logged no permission error of any kind, and created ZERO of the
+# four team databases -- a silent fake-green that would have surfaced as six
+# WordPress sites failing to connect at 9am. Hence infra/verify.sh, which
+# asserts the databases and users actually exist rather than trusting health.
+# The proportionate control is the one the README already names: synthetic data
+# only, and the host is wiped the same night.
+os.chmod(os.path.join(out, "mysql-init", "01-teams.sql"), 0o644)
 print(f"Wrote infra/out/ for {a.teams} teams on {a.domain}. Hand out teams.csv rows (one per team). Keep .env private.")

@@ -27,7 +27,9 @@ cd infra/out && docker compose up -d --build
 ```
 Dry run on a laptop: `python3 infra/generate.py --teams 2 --domain localhost`, then open `http://team1.localhost`.
 
-**Validated here:** the generator runs and `docker compose config` passes. **Not yet run end to end** (this sandbox can't pull images), so do a full dry run on the host at least 2 days before.
+**Validated here (2026-10-26, first real end-to-end run):** 2 teams on Fedora with SELinux enforcing, Docker 29.8.2 / Compose 5.6.0. All 7 containers up from the single documented command; `bash ../verify.sh` **23/23, exit 0**; `bash tools/check.sh` inside a team image **14 passed, 0 failed, 2 skipped, exit 2** exactly as the T-2 step below predicts. Four defects were found and fixed in the process — three of them while `docker compose ps` showed everything up (see the comments in `generate.py` and `workspace/Dockerfile`).
+
+**Still unproven, so do a dry run on the real host anyway:** TLS (this run used `--domain localhost`, so no ACME certificate was ever issued), the `/proxy/<port>/` preview serving real content (it routes and is auth-gated, but nothing logged in), the spoken-instructions voice list, and anything about the host's own CPU/RAM/egress. Host port 443 was already taken on this box, so Caddy ran on an alternate port via a throwaway `docker-compose.override.yml`; **check 80 and 443 are free on the real host first** — Docker binds the wildcard address and fails if anything holds that port, even on one interface.
 
 ## Sizing (6 teams)
 | Piece | Each | Total |
@@ -47,7 +49,7 @@ Dry run on a laptop: `python3 infra/generate.py --teams 2 --domain localhost`, t
 ## Runbook
 - **T-7 days:** confirm the answers above. `CODE_SERVER_VERSION` is already pinned to
   `4.143.1` in `workspace/Dockerfile`; only change it if the dry run then re-passes.
-- **T-2 days:** full dry run with 2 teams. Open VS Code, run `bash tools/check.sh` (expect exit **2** on a team image: no `node_modules`, so both BDD suites skip. Exit 1 is a real failure), activate a plugin in WordPress, and **check spoken instructions actually speak on the image** -- if the voice list is empty, no team can rely on audio and P2 needs pre-recorded files instead.
+- **T-2 days:** full dry run with 2 teams. **First: `cd infra/out && bash ../verify.sh`** — 23 checks that a team can actually work, and it must exit 0 before anything else is trusted. It exists because on 2026-10-26 a stack where `docker compose ps` showed all 7 containers up had no team databases at all in one configuration, and in another a team could not create a WordPress plugin; both were invisible to `up` and to `ps`. Then open VS Code, run `bash tools/check.sh` (expect exit **2** on a team image: no `node_modules`, so both BDD suites skip. Exit 1 is a real failure), activate a plugin in WordPress, and **check spoken instructions actually speak on the image** -- if the voice list is empty, no team can rely on audio and P2 needs pre-recorded files instead.
 - **T-1 day:** **`docker compose down -v` FIRST**, then `generate.py --teams <N+1>`
   (one spare), then `up -d --build`, then print the `teams.csv` slips.
   The `down -v` is not optional and this step used to omit it. `generate.py`

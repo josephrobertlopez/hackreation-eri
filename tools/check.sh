@@ -137,7 +137,14 @@ fi
 if [ ${#SKIPPED[@]} -gt 0 ]; then
   printf '\nSKIPPED (not proven, not passing):\n'
   printf '  - %s\n' "${SKIPPED[@]}"
-  cat <<'HINT'
+  # Only offer the install-the-tools advice when something was actually skipped
+  # for a MISSING TOOL. Measured 2026-10-26 in the day-of team image: the only
+  # skips there are the two BDD suites, skipped for absent node_modules, and
+  # this block still told the attendee to install php, node and git -- all three
+  # already present, and no sudo in that container anyway. Wrong next step is
+  # worse than none when someone has six hours.
+  if printf '%s\n' "${SKIPPED[@]}" | grep -q '(needs '; then
+    cat <<'HINT'
 
 To run the skipped steps, install the missing tools:
   Fedora/RHEL   sudo dnf install -y php-cli php-xml php-mbstring php-pdo composer nodejs git
@@ -145,6 +152,14 @@ To run the skipped steps, install the missing tools:
   macOS         brew install php composer node git
 Or use GitHub Codespaces / the day-of browser IDE, which have everything.
 HINT
+  else
+    cat <<'HINT'
+
+Nothing is missing from this machine. The skips above are inner steps that
+need dependencies installed in the project folder -- run `npm install` in the
+challenge the skip names, then re-run this script.
+HINT
+  fi
 fi
 
 [ ${#FAILED[@]} -gt 0 ] && exit 1
