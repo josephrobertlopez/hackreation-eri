@@ -1,0 +1,162 @@
+/*
+ * One stylesheet, both screens. No framework, no build step.
+ *
+ * The two things here that are requirements rather than taste:
+ *
+ * 1. Large controls. ERI section 7 asks for large buttons with clear icons and
+ *    text labels. `.big` is 72px tall with a 40px icon beside a 1.25rem label;
+ *    nothing relies on the icon alone.
+ * 2. The emergency path looks nothing like the help path. ERI section 10 asks
+ *    the product to distinguish routine coaching from emergencies, so routine
+ *    is a filled blue button in the page flow and emergency is a separate
+ *    red-bordered panel at the edge of the screen with a different shape. If
+ *    you only ever saw the colours you would still not confuse them, which is
+ *    the point - colour is never the only difference.
+ *
+ * No animation and no transition anywhere, so there is nothing to disable for
+ * reduced motion, and no timed UI (see src/requests.js).
+ */
+
+:root {
+  --fg: #16191d;
+  --bg: #ffffff;
+  --panel: #f4f6f8;
+  --accent: #0b5cad;
+  --accent-fg: #ffffff;
+  --muted: #4a5159;
+  --line: #9aa3ab;
+  --danger: #a3161b;
+  --danger-bg: #fdf3f3;
+  --ok: #1d6b3f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #f1f3f5; --bg: #15181c; --panel: #21262c; --accent: #8fc2ff;
+    --accent-fg: #10131a; --muted: #c2c9d0; --line: #767e86;
+    --danger: #ff9a9e; --danger-bg: #2a1a1c; --ok: #7bd39c;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font: 18px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+  margin: 0 auto;
+  max-width: 44rem;
+  padding: 1rem 1rem 3rem;
+}
+
+h1 { font-size: 1.7rem; margin: .2rem 0 .6rem; }
+h2 { font-size: 1.35rem; margin: 1.4rem 0 .5rem; }
+h3 { font-size: 1.1rem; margin: 1rem 0 .3rem; }
+p { margin: .5rem 0; }
+.lede { font-size: 1.05rem; }
+.muted { color: var(--muted); }
+.small { font-size: .95rem; }
+
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--bg); padding: .6rem; border: 3px solid var(--accent); z-index: 10; }
+
+:focus-visible, [tabindex="-1"]:focus { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.banner {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+  padding: .6rem .8rem; font-size: .95rem; margin-bottom: 1rem;
+}
+
+/* ---- buttons ------------------------------------------------------------ */
+
+button {
+  font: inherit; cursor: pointer; border-radius: 10px;
+  border: 2px solid transparent; background: var(--accent); color: var(--accent-fg);
+  min-height: 48px; padding: .6rem 1rem;
+}
+button.secondary { background: var(--bg); color: var(--fg); border-color: var(--line); }
+
+button.big {
+  display: flex; align-items: center; gap: 1rem; width: 100%;
+  min-height: 72px; font-size: 1.25rem; font-weight: 600; text-align: left;
+  padding: .8rem 1.1rem; margin: .7rem 0;
+}
+button.big .icon { flex: 0 0 auto; }
+button.big .stack { display: block; }
+button.big .stack .sub { display: block; font-size: .95rem; font-weight: 400; }
+
+button.primary-help { font-size: 1.45rem; min-height: 88px; }
+
+.row { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.2rem; }
+
+.choice-list { list-style: none; padding: 0; margin: 0; }
+
+/* ---- the emergency path: a different shape, not a brighter button ------- */
+
+.emergency-rail {
+  margin-top: 2.5rem; border-top: 4px double var(--danger); padding-top: 1rem;
+}
+.emergency-rail button {
+  background: var(--danger-bg); color: var(--danger);
+  border: 3px solid var(--danger); border-radius: 0;
+  display: flex; align-items: center; gap: .7rem; width: 100%;
+  min-height: 64px; font-size: 1.1rem; font-weight: 700;
+}
+.emergency-screen {
+  border: 4px solid var(--danger); border-radius: 0;
+  background: var(--danger-bg); padding: 1rem;
+}
+.emergency-screen h1 { color: var(--danger); }
+.emergency-steps { list-style: none; padding: 0; counter-reset: step; }
+.emergency-steps li {
+  counter-increment: step; border-top: 1px solid var(--danger);
+  padding: .8rem 0 .8rem 2.6rem; position: relative;
+}
+.emergency-steps li::before {
+  content: counter(step); position: absolute; left: 0; top: .8rem;
+  width: 1.9rem; height: 1.9rem; border: 2px solid var(--danger); border-radius: 50%;
+  display: grid; place-items: center; font-weight: 700; color: var(--danger);
+}
+.emergency-steps strong { font-size: 1.1rem; }
+
+/* ---- status ------------------------------------------------------------- */
+
+.card {
+  border: 2px solid var(--line); border-radius: 10px;
+  padding: .9rem; margin: .9rem 0; background: var(--bg);
+}
+.card h3 { margin-top: 0; }
+.status { display: flex; align-items: center; gap: .6rem; font-weight: 700; margin: .3rem 0; }
+.status .icon { width: 28px; height: 28px; }
+.status-sent { color: var(--muted); }
+.status-seen { color: var(--accent); }
+.status-answered { color: var(--ok); }
+.reply { background: var(--panel); border-left: 5px solid var(--ok); padding: .7rem .9rem; margin-top: .6rem; }
+.confirm { border: 3px solid var(--ok); border-radius: 10px; padding: .9rem; }
+.confirm h1 { color: var(--ok); }
+
+.pill {
+  display: inline-block; border: 2px solid var(--accent); border-radius: 999px;
+  padding: .15rem .7rem; font-size: .9rem; font-weight: 700;
+}
+
+dl.facts { margin: .6rem 0; }
+dl.facts dt { font-weight: 700; margin-top: .6rem; }
+dl.facts dd { margin: .1rem 0 0; }
+
+label { display: block; font-weight: 600; margin-top: 1rem; }
+textarea {
+  font: inherit; width: 100%; padding: .7rem; border: 2px solid var(--line);
+  border-radius: 8px; background: var(--bg); color: var(--fg); min-height: 5.5rem;
+}
+select { font: inherit; width: 100%; padding: .7rem; min-height: 48px; border: 2px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--fg); }
+
+.chosen { border-color: var(--accent); background: var(--panel); }
+button.chosen::after { content: " \2713"; }
+
+.inbox { list-style: none; padding: 0; }
+
+@media (forced-colors: active) {
+  button, .card, .emergency-screen { border: 2px solid ButtonText; }
+  .status, .pill { forced-color-adjust: none; }
+}

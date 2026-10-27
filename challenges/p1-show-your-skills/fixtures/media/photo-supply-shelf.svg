@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-labelledby="t-shelf d-shelf">
+  <title id="t-shelf">A supply shelf after it was organized</title>
+  <desc id="d-shelf">Three shelves. The top shelf holds four boxes of the same size lined up in a row. The middle shelf holds six labeled jars. The bottom shelf holds stacked paper, squared to the edge.</desc>
+  <rect width="320" height="200" fill="#f4f1ea"/>
+  <rect x="24" y="24" width="272" height="152" fill="none" stroke="#6b5e4a" stroke-width="4"/>
+  <line x1="24" y1="76" x2="296" y2="76" stroke="#6b5e4a" stroke-width="4"/>
+  <line x1="24" y1="128" x2="296" y2="128" stroke="#6b5e4a" stroke-width="4"/>
+  <g fill="#3f6d8e">
+    <rect x="38" y="40" width="52" height="32"/><rect x="100" y="40" width="52" height="32"/>
+    <rect x="162" y="40" width="52" height="32"/><rect x="224" y="40" width="52" height="32"/>
+  </g>
+  <g fill="#8e5a3f">
+    <rect x="40" y="94" width="30" height="30" rx="4"/><rect x="82" y="94" width="30" height="30" rx="4"/>
+    <rect x="124" y="94" width="30" height="30" rx="4"/><rect x="166" y="94" width="30" height="30" rx="4"/>
+    <rect x="208" y="94" width="30" height="30" rx="4"/><rect x="250" y="94" width="30" height="30" rx="4"/>
+  </g>
+  <g fill="#d9d2c4" stroke="#6b5e4a" stroke-width="2">
+    <rect x="40" y="140" width="110" height="10"/><rect x="40" y="152" width="110" height="10"/>
+    <rect x="40" y="164" width="110" height="10"/>
+  </g>
+</svg>

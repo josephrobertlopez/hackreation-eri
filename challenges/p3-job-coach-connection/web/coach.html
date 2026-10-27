@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coach dashboard - Job Coach Connection</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <p class="banner">
+    Hackathon demonstration. This is the simulated inbox for Maria Delgado, job coach,
+    ERI Employment Services. <a href="index.html" target="_blank" rel="noopener">Open the employee screen
+    in another tab</a> and send a request.
+  </p>
+
+  <!-- A separate document, in a separate tab, with its own store. The two
+       screens meet only through localStorage and a BroadcastChannel, so the
+       handoff ERI asked for is a real one rather than two panels pretending. -->
+  <main id="main">
+    <h1 tabindex="-1">Requests for Maria Delgado</h1>
+    <p class="muted" id="not-monitoring"></p>
+    <div id="inbox"></div>
+  </main>
+
+  <p class="status" id="live" role="status" aria-live="polite"></p>
+
+  <script type="module" src="coach.js"></script>
+</body>
+</html>

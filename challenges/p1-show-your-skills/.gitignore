@@ -1,0 +1,49 @@
+# ERI §10: "Demonstration content should be used only with consent, and sample
+# media should be used for the hackathon." A recording of a real person must
+# never end up in this repo by accident, so the formats a camera or microphone
+# produces are refused outright. Sample imagery is inline SVG (text) and is
+# tracked normally.
+#
+# If you have consented demo media for a live demo, keep it OUTSIDE the repo and
+# load it from disk at demo time. Do not force-add it.
+
+*.mp4
+*.m4v
+*.mov
+*.webm
+*.avi
+*.mkv
+*.mp3
+*.m4a
+*.wav
+*.aac
+*.ogg
+*.oga
+*.opus
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.bmp
+*.tif
+*.tiff
+*.heic
+*.heif
+*.pdf
+
+# Places a person's own media would land.
+recordings/
+uploads/
+media-in/
+
+# Portfolios exported while testing. They may contain someone's real details.
+*-portfolio.html
+*-portfolio.json
+my-portfolio*.html
+my-portfolio*.json
+
+# Sample imagery generated from fixtures/media.js is text and IS tracked.
+!fixtures/media/*.svg
+
+node_modules/

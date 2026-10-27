@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Show Your Skills - make a page about what you can do</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the main part</a>
+
+  <main id="main">
+    <h1>Show what you can do</h1>
+    <p class="lede">
+      Make a short page about your skills. You choose everything that goes on it.
+    </p>
+    <ul class="promises">
+      <li>There is no timer. You can stop and come back to any part.</li>
+      <li>There is no score. Nothing here rates you or ranks you.</li>
+      <li>We never ask about health, disability or a diagnosis.</li>
+      <li>Nothing leaves this page. There is no sign-up and no upload.</li>
+    </ul>
+
+    <p id="form-error" class="error" role="alert" tabindex="-1" hidden></p>
+    <p id="live" class="live" role="status" aria-live="polite"></p>
+
+    <noscript>
+      <p class="error">
+        This page needs JavaScript turned on. Nothing is sent anywhere either way.
+      </p>
+    </noscript>
+
+    <section aria-labelledby="h-start">
+      <h2 id="h-start">Start here</h2>
+      <p>You can fill this in yourself, or start from a finished example and change it.</p>
+      <button type="button" id="load-sample">Show me a finished example</button>
+      <button type="button" id="start-over">Start over with an empty page</button>
+    </section>
+
+    <section aria-labelledby="h-profile">
+      <h2 id="h-profile">1. About you</h2>
+      <p>Use any name you like. You do not have to use your legal name.</p>
+      <label for="display-name">What name do you want on your page?</label>
+      <input type="text" id="display-name" name="display-name" autocomplete="nickname"
+             spellcheck="false" aria-describedby="name-hint">
+      <p class="hint" id="name-hint">A first name, a nickname, or just initials is fine.</p>
+      <div id="interest-chips"></div>
+      <div id="activity-chips"></div>
+      <p class="hint" id="disclosure-hint" hidden>
+        You never have to share health or disability information here. It is your page
+        and your choice. You can leave that out and talk about the work instead.
+      </p>
+    </section>
+
+    <section aria-labelledby="h-skills">
+      <h2 id="h-skills">2. Your skills</h2>
+      <p>Pick three or more. Tick the ones you can do, then press the add button.</p>
+      <div id="skill-picker"></div>
+      <button type="button" id="add-picked-skills">Add the ticked skills</button>
+
+      <h3>Or write a skill of your own</h3>
+      <label for="custom-skill">A skill you want to add</label>
+      <input type="text" id="custom-skill" name="custom-skill" aria-describedby="custom-skill-hint">
+      <p class="hint" id="custom-skill-hint">Write what you do, like &ldquo;Water the plants&rdquo;.</p>
+      <button type="button" id="add-custom-skill">Add my own skill</button>
+
+      <h3 id="h-chosen" tabindex="-1">Skills on your page</h3>
+      <div id="chosen-skills"></div>
+    </section>
+
+    <section aria-labelledby="h-preview">
+      <h2 id="h-preview">3. Look at your page</h2>
+      <p>This is what an employer sees. It changes as you fill things in.</p>
+      <div id="preview" class="preview"></div>
+    </section>
+
+    <section aria-labelledby="h-share">
+      <h2 id="h-share">4. Save or share your page</h2>
+      <p>
+        Nothing is ticked to start with. Tick what you want to include, then save it
+        as a file. The file is yours: you decide who ever sees it.
+      </p>
+      <div id="share-checklist"></div>
+      <button type="button" id="share-all">Tick everything</button>
+      <button type="button" id="share-none">Untick everything</button>
+      <button type="button" id="make-file">Make my file</button>
+      <div id="share-result"></div>
+    </section>
+
+    <aside aria-labelledby="h-progress">
+      <h2 id="h-progress">How far along you are</h2>
+      <p>A checklist of the parts, not a mark out of ten.</p>
+      <div id="progress"></div>
+    </aside>
+  </main>
+
+  <!--
+    The read-only view an employer lands on. Its heading is the portfolio's own
+    <h1> ("<name> - what I can do"), rendered into #employer-portfolio, so the
+    first thing announced is the person rather than our chrome. The section is
+    named with aria-label for the same reason: a visible <h2> above the
+    portfolio would put our words ahead of theirs and invert the heading order.
+  -->
+  <section id="employer-view" aria-label="A portfolio someone shared with you" hidden>
+    <p class="hint">
+      This page is read-only. It was built from the address you opened, not from a
+      server, and it holds only what the person chose to include.
+    </p>
+    <div id="employer-portfolio"></div>
+    <p><a href="./index.html">Make a portfolio of your own</a></p>
+  </section>
+
+  <footer>
+    <p>
+      Show Your Skills is a prototype for the ERI hackathon. Sample media only.
+      It makes no judgement about any person, and it asks for no health or
+      disability information.
+    </p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

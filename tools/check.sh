@@ -95,8 +95,18 @@ node_challenge() (
   [ "$inner_skip" -eq 1 ] && exit 3
   exit 0
 )
+# ERI's four projects. Runs each project's `npm test` only -- the node suite,
+# no dependencies, no browser. Each folder also defines `npm run ci`, which is
+# the fuller run (P1 adds a headless-browser smoke, P2 adds BDD + a11y stages);
+# CI runs that via tools/run_project_suite.sh. Keeping check.sh to `npm test`
+# means this file still works on a laptop with nothing but node installed,
+# which is the whole point of the SKIP-by-name design above.
+#
+# These four were absent from this runner until 2026-10-26, while README said
+# "run every smoke test: bash tools/check.sh". It ran none of ERI's four.
+eri_project() ( cd "challenges/$1" && npm test --silent >/dev/null 2>&1 && echo "  PASS node:test" )
 static_web() { ( cd starters/static-web && node --test test/*.test.js >/dev/null && echo "  PASS node:test" ); }
-guardrails() { python3 tools/check_synthetic.py && python3 tools/check_links.py && python3 tools/check_derived.py && bash tools/check_secrets.sh; }
+guardrails() { python3 tools/check_synthetic.py && python3 tools/check_links.py && python3 tools/check_quotes.py && python3 tools/check_derived.py && bash tools/check_secrets.sh; }
 
 step "data"         python3 data_summary
 step "php-mysql"    php     php_mysql
@@ -106,6 +116,10 @@ step "ai-helpers"   php     ai_helpers
 step "challenge 01" php     challenge01
 step "challenge 02" node    node_challenge 02-job-fit-checker      eri-job-fit
 step "challenge 03" node    node_challenge 03-job-post-checker     eri-job-post-checker
+step "P1 skills"    node    eri_project p1-show-your-skills
+step "P2 workday"   node    eri_project p2-my-workday-assistant
+step "P3 coach"     node    eri_project p3-job-coach-connection
+step "P4 employer"  node    eri_project p4-employer-hub
 step "static-web"   node    static_web
 # Gated on python3 only. The guards were deliberately taught to work without
 # git (the day-of workspace has no .git), so requiring git here would skip all

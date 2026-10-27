@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Employer Opportunity &amp; Support Hub - Hello ERI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <main id="main">
+    <h1>Match your real work to skills a candidate shared</h1>
+
+    <p class="lede">
+      Tell us your industry and three to five jobs that keep coming up. Then open
+      a profile a candidate chose to share. The hub shows where the two line up,
+      and says exactly which line of yours and which skill of theirs produced
+      each suggestion.
+    </p>
+
+    <p><strong>Nothing you type leaves this page.</strong> There is no account, no
+    server, no storage and no time limit. Close the tab and it is gone.</p>
+
+    <section class="notice" aria-labelledby="not-h">
+      <h2 id="not-h">What this will not do</h2>
+      <ul>
+        <li>It will never ask you, or the candidate, about a disability or a diagnosis. There is no such field in this tool.</li>
+        <li>It does not score, rate or rank anybody, and it will not put two people in an order.</li>
+        <li>It does not decide anything: not hiring, not a change to how work is done.</li>
+        <li>It does not answer legal questions. It points you at JAN, the EEOC and Wisconsin DVR, who can.</li>
+      </ul>
+    </section>
+
+    <div id="figure-trace" class="figure-wrap"></div>
+
+    <form id="hub-form" novalidate>
+      <div id="error-summary" class="errors" role="alert" hidden tabindex="-1"></div>
+
+      <!-- Step 1 -->
+      <section aria-labelledby="s1-h">
+        <h2 id="s1-h"><span class="num">Step 1</span> Your business</h2>
+        <label for="industry">Industry or business type</label>
+        <select id="industry" name="industry" aria-describedby="industry-hint">
+          <option value="">Choose an industry</option>
+        </select>
+        <p id="industry-hint" class="hint">Picking one gives you a starting list of recurring tasks. You can ignore the list and type your own.</p>
+      </section>
+
+      <!-- Step 2 -->
+      <section aria-labelledby="s2-h">
+        <h2 id="s2-h"><span class="num">Step 2</span> Three to five things that keep coming up</h2>
+        <fieldset>
+          <legend>Your recurring work, in your own words</legend>
+          <p id="needs-hint" class="hint">Three at least, five at most. Plain sentences are better than job-ad language: &ldquo;nobody resets the displays by Thursday&rdquo; works.</p>
+          <label for="need-1">Recurring need 1</label>
+          <input type="text" id="need-1" name="need-1" aria-describedby="needs-hint" autocomplete="off">
+          <label for="need-2">Recurring need 2</label>
+          <input type="text" id="need-2" name="need-2" autocomplete="off">
+          <label for="need-3">Recurring need 3</label>
+          <input type="text" id="need-3" name="need-3" autocomplete="off">
+          <label for="need-4">Recurring need 4 <span class="opt">(optional)</span></label>
+          <input type="text" id="need-4" name="need-4" autocomplete="off">
+          <label for="need-5">Recurring need 5 <span class="opt">(optional)</span></label>
+          <input type="text" id="need-5" name="need-5" autocomplete="off">
+        </fieldset>
+
+        <fieldset id="template-tasks" hidden>
+          <legend>Or borrow a line from the industry list</legend>
+          <p class="hint">Tick one and it drops into the first empty box above, in your own edit.</p>
+          <div id="template-list"></div>
+        </fieldset>
+      </section>
+
+      <!-- Step 3 -->
+      <section aria-labelledby="s3-h">
+        <h2 id="s3-h"><span class="num">Step 3</span> The candidate&rsquo;s own account of their skills</h2>
+
+        <fieldset>
+          <legend>Where do the skills come from?</legend>
+          <p class="hint" id="mode-hint">
+            The default is the profile the person sent, because they are the
+            authority on their own work. Typing it yourself is the fallback, and
+            the hub will label it as your account rather than theirs.
+          </p>
+          <label class="choice">
+            <input type="radio" name="mode" value="shared" checked aria-describedby="mode-hint">
+            A profile the candidate chose to share
+          </label>
+          <label class="choice">
+            <input type="radio" name="mode" value="manual">
+            I will type what they told me
+          </label>
+        </fieldset>
+
+        <div id="shared-pane">
+          <label for="candidate">Shared profile</label>
+          <select id="candidate" name="candidate" aria-describedby="candidate-hint">
+            <option value="">Choose a shared profile</option>
+          </select>
+          <p id="candidate-hint" class="hint">Sample profiles. Everyone in them is fictional. Each one records that the person agreed to share it, and what they agreed to share.</p>
+          <div id="candidate-preview" class="preview"></div>
+        </div>
+
+        <div id="manual-pane" hidden>
+          <label for="manual-name">What should we call them on the plan?</label>
+          <input type="text" id="manual-name" name="manual-name" autocomplete="off" aria-describedby="manual-name-hint">
+          <p id="manual-name-hint" class="hint">A first name or initials is plenty. Do not type anything about their health.</p>
+
+          <fieldset>
+            <legend>Skills they told you about</legend>
+            <p class="hint">Same plain words a portfolio would use, so the two tools can talk to each other.</p>
+            <div id="manual-skills" class="checks"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>How they said they like to work</legend>
+            <div id="manual-prefs" class="checks"></div>
+          </fieldset>
+        </div>
+      </section>
+
+      <button type="submit">Show possible matches</button>
+      <button type="button" id="demo">Fill in the retail example</button>
+    </form>
+
+    <section id="results" aria-labelledby="results-h" hidden>
+      <h2 id="results-h" tabindex="-1">Possible matches</h2>
+      <div id="results-body"></div>
+    </section>
+
+    <section id="plan-out" aria-labelledby="plan-h" hidden>
+      <h2 id="plan-h">Draft action plan</h2>
+      <div id="plan-body"></div>
+    </section>
+
+    <section aria-labelledby="res-h">
+      <h2 id="res-h">Where to take the questions this tool will not answer</h2>
+      <p>Accommodation and legal questions go to people who do this for a living.
+      These are their own pages and their own phone numbers; nothing below is this
+      tool&rsquo;s own advice.</p>
+      <ul id="resource-list"></ul>
+    </section>
+
+    <noscript>
+      <p><strong>This prototype needs JavaScript</strong> because all the matching
+      runs in your browser rather than on a server. Nothing is sent anywhere.</p>
+    </noscript>
+  </main>
+
+  <footer>
+    <p><small>
+      Hackreation x ERI prototype. Synthetic data only. Guidance, not legal advice,
+      and not a hiring or accommodation decision. Employers decide; people with
+      disabilities are the authority on their own abilities.
+    </small></p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

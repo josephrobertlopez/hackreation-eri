@@ -48,7 +48,7 @@ assessments of suitability, identity verification, production hosting.
 
 ## 5. Data
 
-`challenges/p1-show-your-skills/data/` — a skills vocabulary and a set of
+`challenges/p1-show-your-skills/fixtures/` — a skills vocabulary and a set of
 sample work examples with captions and transcripts, all synthetic. Sample media
 only, per ERI §10. *(ours)* Keep the skill names consistent with P4's task
 vocabulary so a team can demo the P1→P4 handoff ERI names in P4 §12.

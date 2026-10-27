@@ -46,7 +46,7 @@ management, multi-agency coordination.
 
 ## 5. Data
 
-`challenges/p3-job-coach-connection/data/` — the four support-need options with
+`challenges/p3-job-coach-connection/fixtures/` — the four support-need options with
 icons, a set of predefined employee messages, and predefined coach replies. All
 synthetic; the coach inbox is simulated, per ERI's MVP wording.
 

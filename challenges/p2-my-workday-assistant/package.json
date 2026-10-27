@@ -1,0 +1,16 @@
+{
+  "name": "@hackreation-eri/my-workday-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "ERI project 2: accessible step-by-step workplace task support",
+  "license": "MIT",
+  "scripts": {
+    "start": "python3 -m http.server -d . 8002",
+    "test": "node --test test/*.test.js",
+    "bdd": "node scripts/run-features.mjs features/workday.feature",
+    "test:a11y": "node --test e2e/*.test.mjs",
+    "check:tasks": "node scripts/validate-task.mjs fixtures/stock-the-shelves.js && node scripts/validate-task.mjs fixtures/wipe-the-break-room.js && node scripts/validate-task.mjs fixtures/sort-the-mail-cart.js && node scripts/validate-task.mjs fixtures/TEMPLATE.task.js",
+    "ci": "npm test && npm run bdd && npm run test:a11y && npm run check:tasks"
+  }
+}

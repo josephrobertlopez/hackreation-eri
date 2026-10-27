@@ -55,7 +55,7 @@ storage of medical or disability information, cross-organization matchmaking.
 
 ## 5. Data
 
-`challenges/p4-employer-hub/data/` — industries with recurring tasks, a skills
+`challenges/p4-employer-hub/fixtures/` — industries with recurring tasks, a skills
 vocabulary, and fictional candidate profiles. *(ours)* Share the skill
 vocabulary with P1 so the handoff ERI describes in §12 can be demonstrated.
 Resource links: JAN, EEOC, DVR.

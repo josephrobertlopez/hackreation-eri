@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-labelledby="t-counter d-counter">
+  <title id="t-counter">A front counter set up to greet customers</title>
+  <desc id="d-counter">A clean service counter. A sign on the counter reads Hello. Two shapes stand on opposite sides of the counter, facing each other, as a greeting happens.</desc>
+  <rect width="320" height="200" fill="#eef2f4"/>
+  <rect x="0" y="140" width="320" height="60" fill="#c9d4da"/>
+  <circle cx="86" cy="86" r="20" fill="#3f6d8e"/>
+  <path d="M60 140 q26 -34 52 0 z" fill="#3f6d8e"/>
+  <circle cx="236" cy="92" r="18" fill="#8e5a3f"/>
+  <path d="M212 140 q24 -30 48 0 z" fill="#8e5a3f"/>
+  <rect x="128" y="120" width="68" height="44" fill="#fff" stroke="#44515a" stroke-width="3"/>
+  <text x="162" y="148" font-family="system-ui, sans-serif" font-size="18" text-anchor="middle" fill="#1b1b1b">Hello</text>
+</svg>

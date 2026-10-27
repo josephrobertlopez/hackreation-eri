@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-labelledby="t-video d-video">
+  <title id="t-video">Sample video stand-in</title>
+  <desc id="d-video">A still picture with a play triangle in the middle. This prototype ships no recorded video; what happens in it is written out in the captions below.</desc>
+  <rect width="320" height="180" fill="#e9eceb"/>
+  <rect x="0" y="130" width="320" height="50" fill="#ccd3cf"/>
+  <circle cx="160" cy="84" r="40" fill="#44515a"/>
+  <polygon points="148,62 148,106 184,84" fill="#fff"/>
+</svg>

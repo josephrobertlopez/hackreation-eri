@@ -13,6 +13,14 @@ jobs:
         run: python3 tools/check_synthetic.py
       - name: Wiki links resolve
         run: python3 tools/check_links.py
+      # ERI's own words are the repo's source of truth. On 2026-10-26 four
+      # quotations of them were found cut at a comma, each dropping the
+      # qualifying clause so their rule read stricter than they wrote it -- and
+      # three of those truncations were load-bearing for a conclusion. A wrong
+      # cost estimate gets re-derived by the next reader; a prohibition ERI
+      # never wrote gets obeyed. Hence a gate, not a style note.
+      - name: ERI is quoted whole
+        run: python3 tools/check_quotes.py
       # llms-full.txt is the flattened wiki that AI coding tools read, and
       # challenges/01/data is a copy of the shared data/. Both have generators
       # and neither had a gate, so both were correct only until someone edited

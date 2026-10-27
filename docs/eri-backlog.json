@@ -1,0 +1,500 @@
+{
+  "source": "docs/eri-problem-statements.md",
+  "generator": "tools/gen_backlog.py",
+  "counts": {
+    "projects": 4,
+    "features": 28,
+    "stories": 19,
+    "entries": 47
+  },
+  "projects": [
+    {
+      "id": "P1",
+      "title": "Show Your Skills"
+    },
+    {
+      "id": "P2",
+      "title": "My Workday Assistant"
+    },
+    {
+      "id": "P3",
+      "title": "Job Coach Connection"
+    },
+    {
+      "id": "P4",
+      "title": "Employer Opportunity & Support Hub"
+    }
+  ],
+  "entries": [
+    {
+      "id": "P1-F1",
+      "kind": "feature",
+      "project": "P1",
+      "project_title": "Show Your Skills",
+      "section": "4. Core features",
+      "feature": "Create a profile",
+      "text": "Enter a name or display name, interests, and preferred work activities.",
+      "source": "docs/eri-problem-statements.md#project-1-show-your-skills"
+    },
+    {
+      "id": "P1-F2",
+      "kind": "feature",
+      "project": "P1",
+      "project_title": "Show Your Skills",
+      "section": "4. Core features",
+      "feature": "Add skills",
+      "text": "Select skills from a list or enter custom skills.",
+      "source": "docs/eri-problem-statements.md#project-1-show-your-skills"
+    },
+    {
+      "id": "P1-F3",
+      "kind": "feature",
+      "project": "P1",
+      "project_title": "Show Your Skills",
+      "section": "4. Core features",
+      "feature": "Show examples",
+      "text": "Add photos, short videos, audio, or written examples demonstrating a skill.",
+      "source": "docs/eri-problem-statements.md#project-1-show-your-skills"
+    },
+    {
+      "id": "P1-F4",
+      "kind": "feature",
+      "project": "P1",
+      "project_title": "Show Your Skills",
+      "section": "4. Core features",
+      "feature": "Describe abilities",
+      "text": "Use simple prompts such as \"I am good at…\" and \"Here is something I can do…\"",
+      "source": "docs/eri-problem-statements.md#project-1-show-your-skills"
+    },
+    {
+      "id": "P1-F5",
+      "kind": "feature",
+      "project": "P1",
+      "project_title": "Show Your Skills",
+      "section": "4. Core features",
+      "feature": "Preview portfolio",
+      "text": "View a simple, employer-friendly presentation.",
+      "source": "docs/eri-problem-statements.md#project-1-show-your-skills"
+    },
+    {
+      "id": "P1-F6",
+      "kind": "feature",
+      "project": "P1",
+      "project_title": "Show Your Skills",
+      "section": "4. Core features",
+      "feature": "Share portfolio",
+      "text": "Generate a view-only link or downloadable portfolio.",
+      "source": "docs/eri-problem-statements.md#project-1-show-your-skills"
+    },
+    {
+      "id": "P1-US1",
+      "kind": "story",
+      "project": "P1",
+      "project_title": "Show Your Skills",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As a job seeker, I want to show a video of myself completing a work task so employers can see my skills.",
+      "source": "docs/eri-problem-statements.md#project-1-show-your-skills"
+    },
+    {
+      "id": "P1-US2",
+      "kind": "story",
+      "project": "P1",
+      "project_title": "Show Your Skills",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As a person who has difficulty writing, I want to use pictures or audio to explain my abilities.",
+      "source": "docs/eri-problem-statements.md#project-1-show-your-skills"
+    },
+    {
+      "id": "P1-US3",
+      "kind": "story",
+      "project": "P1",
+      "project_title": "Show Your Skills",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As a job coach, I want to help someone organize their work examples.",
+      "source": "docs/eri-problem-statements.md#project-1-show-your-skills"
+    },
+    {
+      "id": "P1-US4",
+      "kind": "story",
+      "project": "P1",
+      "project_title": "Show Your Skills",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As an employer, I want to quickly understand an applicant's skills without navigating a complicated website.",
+      "source": "docs/eri-problem-statements.md#project-1-show-your-skills"
+    },
+    {
+      "id": "P2-F1",
+      "kind": "feature",
+      "project": "P2",
+      "project_title": "My Workday Assistant",
+      "section": "4. Core features",
+      "feature": "Create a task",
+      "text": "Add a workplace task and describe its steps.",
+      "source": "docs/eri-problem-statements.md#project-2-my-workday-assistant"
+    },
+    {
+      "id": "P2-F2",
+      "kind": "feature",
+      "project": "P2",
+      "project_title": "My Workday Assistant",
+      "section": "4. Core features",
+      "feature": "Visual instructions",
+      "text": "Include an image or icon for each step.",
+      "source": "docs/eri-problem-statements.md#project-2-my-workday-assistant"
+    },
+    {
+      "id": "P2-F3",
+      "kind": "feature",
+      "project": "P2",
+      "project_title": "My Workday Assistant",
+      "section": "4. Core features",
+      "feature": "Audio support",
+      "text": "Allow users to hear task instructions.",
+      "source": "docs/eri-problem-statements.md#project-2-my-workday-assistant"
+    },
+    {
+      "id": "P2-F4",
+      "kind": "feature",
+      "project": "P2",
+      "project_title": "My Workday Assistant",
+      "section": "4. Core features",
+      "feature": "Step-by-step navigation",
+      "text": "Show one step at a time with Back and Next controls.",
+      "source": "docs/eri-problem-statements.md#project-2-my-workday-assistant"
+    },
+    {
+      "id": "P2-F5",
+      "kind": "feature",
+      "project": "P2",
+      "project_title": "My Workday Assistant",
+      "section": "4. Core features",
+      "feature": "Task completion",
+      "text": "Allow workers to mark individual steps or tasks complete.",
+      "source": "docs/eri-problem-statements.md#project-2-my-workday-assistant"
+    },
+    {
+      "id": "P2-F6",
+      "kind": "feature",
+      "project": "P2",
+      "project_title": "My Workday Assistant",
+      "section": "4. Core features",
+      "feature": "Daily routine",
+      "text": "Display a simple list of assigned tasks for the day.",
+      "source": "docs/eri-problem-statements.md#project-2-my-workday-assistant"
+    },
+    {
+      "id": "P2-F7",
+      "kind": "feature",
+      "project": "P2",
+      "project_title": "My Workday Assistant",
+      "section": "4. Core features",
+      "feature": "Reminders",
+      "text": "Provide optional reminders or prompts for scheduled activities.",
+      "source": "docs/eri-problem-statements.md#project-2-my-workday-assistant"
+    },
+    {
+      "id": "P2-F8",
+      "kind": "feature",
+      "project": "P2",
+      "project_title": "My Workday Assistant",
+      "section": "4. Core features",
+      "feature": "Request help",
+      "text": "Provide an easy way to indicate when assistance is needed.",
+      "source": "docs/eri-problem-statements.md#project-2-my-workday-assistant"
+    },
+    {
+      "id": "P2-US1",
+      "kind": "story",
+      "project": "P2",
+      "project_title": "My Workday Assistant",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As an employee, I want to see pictures showing each step of a task so I can complete it without asking my supervisor repeatedly.",
+      "source": "docs/eri-problem-statements.md#project-2-my-workday-assistant"
+    },
+    {
+      "id": "P2-US2",
+      "kind": "story",
+      "project": "P2",
+      "project_title": "My Workday Assistant",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As an employee, I want to listen to instructions rather than read them.",
+      "source": "docs/eri-problem-statements.md#project-2-my-workday-assistant"
+    },
+    {
+      "id": "P2-US3",
+      "kind": "story",
+      "project": "P2",
+      "project_title": "My Workday Assistant",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As a job coach, I want to quickly create a task checklist for someone I support.",
+      "source": "docs/eri-problem-statements.md#project-2-my-workday-assistant"
+    },
+    {
+      "id": "P2-US4",
+      "kind": "story",
+      "project": "P2",
+      "project_title": "My Workday Assistant",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As a supervisor, I want to update instructions when a process changes.",
+      "source": "docs/eri-problem-statements.md#project-2-my-workday-assistant"
+    },
+    {
+      "id": "P2-US5",
+      "kind": "story",
+      "project": "P2",
+      "project_title": "My Workday Assistant",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As an employee, I want to indicate that I need help without feeling embarrassed.",
+      "source": "docs/eri-problem-statements.md#project-2-my-workday-assistant"
+    },
+    {
+      "id": "P3-F1",
+      "kind": "feature",
+      "project": "P3",
+      "project_title": "Job Coach Connection",
+      "section": "4. Core features",
+      "feature": "Request help",
+      "text": "Provide a clearly labeled \"I Need Help\" option.",
+      "source": "docs/eri-problem-statements.md#project-3-job-coach-connection"
+    },
+    {
+      "id": "P3-F2",
+      "kind": "feature",
+      "project": "P3",
+      "project_title": "Job Coach Connection",
+      "section": "4. Core features",
+      "feature": "Select support need",
+      "text": "Offer choices such as \"I have a question,\" \"I don't understand a task,\" or \"My schedule changed.\"",
+      "source": "docs/eri-problem-statements.md#project-3-job-coach-connection"
+    },
+    {
+      "id": "P3-F3",
+      "kind": "feature",
+      "project": "P3",
+      "project_title": "Job Coach Connection",
+      "section": "4. Core features",
+      "feature": "Multiple communication options",
+      "text": "Allow text, predefined messages, and picture-based selections.",
+      "source": "docs/eri-problem-statements.md#project-3-job-coach-connection"
+    },
+    {
+      "id": "P3-F4",
+      "kind": "feature",
+      "project": "P3",
+      "project_title": "Job Coach Connection",
+      "section": "4. Core features",
+      "feature": "Send request",
+      "text": "Deliver the request to a designated job coach or simulated coach inbox.",
+      "source": "docs/eri-problem-statements.md#project-3-job-coach-connection"
+    },
+    {
+      "id": "P3-F5",
+      "kind": "feature",
+      "project": "P3",
+      "project_title": "Job Coach Connection",
+      "section": "4. Core features",
+      "feature": "View request status",
+      "text": "Display whether the request has been sent, seen, or answered.",
+      "source": "docs/eri-problem-statements.md#project-3-job-coach-connection"
+    },
+    {
+      "id": "P3-F6",
+      "kind": "feature",
+      "project": "P3",
+      "project_title": "Job Coach Connection",
+      "section": "4. Core features",
+      "feature": "Job coach response",
+      "text": "Allow the coach to send a short written or predefined response.",
+      "source": "docs/eri-problem-statements.md#project-3-job-coach-connection"
+    },
+    {
+      "id": "P3-F7",
+      "kind": "feature",
+      "project": "P3",
+      "project_title": "Job Coach Connection",
+      "section": "4. Core features",
+      "feature": "Communication history",
+      "text": "Allow the employee to review messages within the current session.",
+      "source": "docs/eri-problem-statements.md#project-3-job-coach-connection"
+    },
+    {
+      "id": "P3-US1",
+      "kind": "story",
+      "project": "P3",
+      "project_title": "Job Coach Connection",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As an employee, I want to ask for help using pictures because typing messages can be difficult.",
+      "source": "docs/eri-problem-statements.md#project-3-job-coach-connection"
+    },
+    {
+      "id": "P3-US2",
+      "kind": "story",
+      "project": "P3",
+      "project_title": "Job Coach Connection",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As an employee, I want to know when my job coach has received my request.",
+      "source": "docs/eri-problem-statements.md#project-3-job-coach-connection"
+    },
+    {
+      "id": "P3-US3",
+      "kind": "story",
+      "project": "P3",
+      "project_title": "Job Coach Connection",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As a job coach, I want to see what type of help someone needs before contacting them.",
+      "source": "docs/eri-problem-statements.md#project-3-job-coach-connection"
+    },
+    {
+      "id": "P3-US4",
+      "kind": "story",
+      "project": "P3",
+      "project_title": "Job Coach Connection",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As an employee, I want a simple way to explain that I am confused or that something unexpected happened.",
+      "source": "docs/eri-problem-statements.md#project-3-job-coach-connection"
+    },
+    {
+      "id": "P3-US5",
+      "kind": "story",
+      "project": "P3",
+      "project_title": "Job Coach Connection",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As a job coach, I want to respond with a short, clear message that is easy to understand.",
+      "source": "docs/eri-problem-statements.md#project-3-job-coach-connection"
+    },
+    {
+      "id": "P4-F1",
+      "kind": "feature",
+      "project": "P4",
+      "project_title": "Employer Opportunity & Support Hub",
+      "section": "4. Core product features",
+      "feature": "Employer needs assessment",
+      "text": "Allow employers to describe their business, staffing needs, and job tasks.",
+      "source": "docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub"
+    },
+    {
+      "id": "P4-F2",
+      "kind": "feature",
+      "project": "P4",
+      "project_title": "Employer Opportunity & Support Hub",
+      "section": "4. Core product features",
+      "feature": "Skills-to-tasks matching",
+      "text": "Identify potential connections between candidate strengths and workplace responsibilities.",
+      "source": "docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub"
+    },
+    {
+      "id": "P4-F3",
+      "kind": "feature",
+      "project": "P4",
+      "project_title": "Employer Opportunity & Support Hub",
+      "section": "4. Core product features",
+      "feature": "Job task development",
+      "text": "Help employers explore combinations of tasks that could create meaningful employment opportunities.",
+      "source": "docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub"
+    },
+    {
+      "id": "P4-F4",
+      "kind": "feature",
+      "project": "P4",
+      "project_title": "Employer Opportunity & Support Hub",
+      "section": "4. Core product features",
+      "feature": "Disclosure guidance",
+      "text": "Offer examples and explanations of appropriate employer responses to disability disclosures.",
+      "source": "docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub"
+    },
+    {
+      "id": "P4-F5",
+      "kind": "feature",
+      "project": "P4",
+      "project_title": "Employer Opportunity & Support Hub",
+      "section": "4. Core product features",
+      "feature": "Accommodation explorer",
+      "text": "Suggest possible accommodations and connect users to authoritative resources.",
+      "source": "docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub"
+    },
+    {
+      "id": "P4-F6",
+      "kind": "feature",
+      "project": "P4",
+      "project_title": "Employer Opportunity & Support Hub",
+      "section": "4. Core product features",
+      "feature": "Onboarding planner",
+      "text": "Create a simple checklist for training, communication, and workplace supports.",
+      "source": "docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub"
+    },
+    {
+      "id": "P4-F7",
+      "kind": "feature",
+      "project": "P4",
+      "project_title": "Employer Opportunity & Support Hub",
+      "section": "4. Core product features",
+      "feature": "Resource connections",
+      "text": "Provide links to JAN, EEOC, DVR, and other trusted resources.",
+      "source": "docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub"
+    },
+    {
+      "id": "P4-US1",
+      "kind": "story",
+      "project": "P4",
+      "project_title": "Employer Opportunity & Support Hub",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As an employer, I want to understand how a candidate's skills could meet my business needs.",
+      "source": "docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub"
+    },
+    {
+      "id": "P4-US2",
+      "kind": "story",
+      "project": "P4",
+      "project_title": "Employer Opportunity & Support Hub",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As a hiring manager, I want to know how to respond when an applicant discloses a disability.",
+      "source": "docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub"
+    },
+    {
+      "id": "P4-US3",
+      "kind": "story",
+      "project": "P4",
+      "project_title": "Employer Opportunity & Support Hub",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As a supervisor, I want practical ideas for adapting how work tasks are taught or completed.",
+      "source": "docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub"
+    },
+    {
+      "id": "P4-US4",
+      "kind": "story",
+      "project": "P4",
+      "project_title": "Employer Opportunity & Support Hub",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As an employer, I want help understanding accommodation requests without making assumptions about a person's disability.",
+      "source": "docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub"
+    },
+    {
+      "id": "P4-US5",
+      "kind": "story",
+      "project": "P4",
+      "project_title": "Employer Opportunity & Support Hub",
+      "section": "5. User stories",
+      "feature": "",
+      "text": "As a job developer, I want a tool that helps facilitate conversations with employers about potential job opportunities.",
+      "source": "docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub"
+    }
+  ]
+}

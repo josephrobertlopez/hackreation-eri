@@ -1,0 +1,232 @@
+# Conformance: run the suite of the project this pull request touches, and only
+# that one.
+#
+# The shape this solves for: an unknown number of teams, four projects, several
+# attempts at the SAME project, and every attempt arriving as its own pull
+# request that stays open for comparison. Forty open PRs each running four
+# suites is 160 suite runs, most of them against code the PR never touched.
+#
+# So: detect -> matrix over touched projects -> ONE aggregator job.
+#
+# The aggregator exists because branch protection cannot name a check that
+# change-aware skipping removes. Require `P2 suite` and every PR that does not
+# touch P2 waits forever on a check that will never report. Require the
+# aggregator instead: it has `if: always()`, it maps a SKIPPED matrix to green
+# and a FAILED or CANCELLED matrix to red, and its name never changes.
+#
+# Per-leg results stay visible in the PR's checks list. They are just not the
+# thing branch protection is pinned to.
+#
+# The matrix is DISCOVERED from `challenges/p<n>-*`, never listed here. A
+# hardcoded matrix would be wrong the first time a folder is renamed, and wrong
+# silently: the leg disappears and this file still goes green.
+#
+# Works in a freshly generated repository with nothing configured: no secrets,
+# no variables, read-only token, and zero project folders (the matrix is then
+# empty, every leg skips, and the aggregator is green because there was nothing
+# to run -- which is true).
+name: Conformance
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Read-only. Nothing here needs to write to the repository, and a generated
+# copy should not inherit a token that can.
+permissions:
+  contents: read
+
+# One run per pull request. A team pushing five times in ten minutes should
+# cost one suite run, not five.
+concurrency:
+  group: conformance-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  detect:
+    name: Detect changed projects
+    runs-on: ubuntu-latest
+    outputs:
+      projects: ${{ steps.derive.outputs.projects }}
+      reason: ${{ steps.derive.outputs.reason }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Pinned, and PyYAML installed explicitly. Every other script here is
+      # stdlib-only on purpose, but the YAML checker needs a parser, and
+      # "the runner happened to have PyYAML" is not something to depend on:
+      # that checker exits non-zero when it cannot run, so an absent parser
+      # would read as a red gate rather than a missing one.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 -m pip install --quiet pyyaml
+
+      # ERI's problem statements are the only source of backlog IDs, and the
+      # backlog is generated from them. If the document is gone, or the
+      # generated files are stale, say so here rather than letting every
+      # downstream ID check validate against whatever happens to be committed.
+      - name: Backlog is generated from ERI's problem statements, and current
+        run: python3 tools/gen_backlog.py --check
+
+      # The issue forms list every claimable ID as a checkbox, generated from
+      # the backlog. Ungated, they would be correct only until ERI edits a
+      # table -- the same shape as every other derived file here.
+      - name: Issue forms match the backlog
+        run: python3 tools/gen_issue_forms.py --check
+
+      - name: Workflows and issue forms parse
+        run: python3 tools/check_github_yaml.py
+
+      # The gates' own falsifiers. A gate nobody has watched go red is a
+      # decoration that happens to exit 0, and these are the gates deciding
+      # whether every attempt in the event counts as passing. No network, no
+      # Docker, no npm: about two seconds.
+      - name: The gates themselves can still go red
+        run: bash tools/t/all.sh
+
+      - name: Changed files
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT" = "pull_request" ]; then
+            base="$(git merge-base "$BASE_SHA" HEAD)"
+            git diff --name-only "$base" HEAD > changed.txt
+          else
+            : > changed.txt   # push to the default branch: full fan-out below
+          fi
+          echo "changed files:"
+          sed 's/^/  /' changed.txt
+
+      - id: derive
+        name: Derive the project matrix
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          # Pull requests are change-aware. A push to the default branch runs
+          # every project: that is the defence-in-depth pass that catches a
+          # cross-project break a per-PR trim could not have seen.
+          if [ "$EVENT" = "pull_request" ]; then
+            python3 tools/derive_touched_projects.py --changed changed.txt --github-output
+          else
+            python3 tools/derive_touched_projects.py --all --github-output
+          fi
+
+      - name: Explain the decision in the run summary
+        if: always()
+        run: |
+          {
+            echo "## Conformance routing"
+            echo
+            echo "- event: \`${{ github.event_name }}\`"
+            echo "- projects to run: \`${{ steps.derive.outputs.projects }}\`"
+            echo "- why: ${{ steps.derive.outputs.reason }}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  project-suite:
+    # Visible per leg, so a reviewer sees WHICH project ran. Not the required
+    # context -- see the aggregator below.
+    name: ${{ matrix.project.id }} suite (${{ matrix.project.dir }})
+    needs: detect
+    if: needs.detect.outputs.projects != '[]' && needs.detect.outputs.projects != ''
+    runs-on: ubuntu-latest
+    strategy:
+      # One team's broken attempt must not cancel another team's leg.
+      fail-fast: false
+      matrix:
+        project: ${{ fromJson(needs.detect.outputs.projects) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: lock
+        name: Look for a committed lockfile
+        env:
+          DIR: ${{ matrix.project.dir }}
+        run: |
+          set -euo pipefail
+          # setup-node fails hard when told to cache a path that does not
+          # exist, which would turn "you forgot the lockfile" into an opaque
+          # red. Decide here and let the runner script say the useful thing.
+          if [ -f "$DIR/package-lock.json" ]; then
+            echo "path=$DIR/package-lock.json" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: matrix.project.runner == 'npm'
+        with:
+          node-version: "22"
+          cache: ${{ steps.lock.outputs.path && 'npm' || '' }}
+          cache-dependency-path: ${{ steps.lock.outputs.path }}
+
+      - uses: shivammathur/setup-php@v2
+        if: matrix.project.runner == 'composer'
+        with:
+          php-version: "8.3"
+          tools: composer
+
+      - name: ${{ matrix.project.id }} — unit, bdd, accessibility
+        env:
+          # CI opts into browser install; a laptop does not, because
+          # `playwright install --with-deps` wants sudo there.
+          ERI_INSTALL_BROWSERS: "1"
+          DIR: ${{ matrix.project.dir }}
+        run: bash tools/run_project_suite.sh "$DIR"
+
+  conformance:
+    # THIS is the required status check. One name, stable across every PR
+    # shape, mapping a skipped matrix to green.
+    name: Conformance (changed projects)
+    needs: [detect, project-suite]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The mapping lives in a script, not inline here, because inline gate
+      # logic never gets tested and this is the one piece whose failure mode
+      # is a GREEN check on work that did not run.
+      # Truth table: bash tools/t/aggregate_cases.sh
+      - name: Map the matrix result to one verdict
+        env:
+          DETECT: ${{ needs.detect.result }}
+          SUITE: ${{ needs.project-suite.result }}
+          PROJECTS: ${{ needs.detect.outputs.projects }}
+          REASON: ${{ needs.detect.outputs.reason }}
+        run: bash tools/aggregate_conformance.sh
+
+  declaration:
+    # The second required context. Mechanical facts only: does this PR say
+    # which project and which backlog IDs it claims, do those IDs exist, is it
+    # one attempt, and has the author declared ERI's prohibitions.
+    name: Attempt declaration (backlog IDs)
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Backlog is current
+        run: python3 tools/gen_backlog.py --check
+
+      - name: Changed files
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          base="$(git merge-base "$BASE_SHA" HEAD)"
+          git diff --name-only "$base" HEAD > changed.txt
+
+      - name: Check what this pull request declares
+        env:
+          # Never interpolate a pull request body into a shell command: the
+          # body is attacker-controlled text and `${{ }}` pastes it verbatim
+          # into the script. Hand it over as an environment variable instead.
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: python3 tools/check_claims.py --changed changed.txt

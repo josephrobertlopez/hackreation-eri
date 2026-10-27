@@ -10,14 +10,22 @@ disagrees with this page, this page wins and the other page is a bug.
 | Last modified | 2026-10-26T20:02:33Z |
 | Converted to Markdown | 2026-10-26, for diffability and so AI tools can read it |
 
-**Fidelity note.** The wording below is ERI's, carried over verbatim. The only
-change is formatting: the PDF's feature tables extract as one run-on line
+**Fidelity note.** The wording below is ERI's, carried over verbatim. Two
+formatting changes: the PDF's feature tables extract as one run-on line
 (`Feature Requirement Create a profile Enter a name…`), so they are
-reconstructed here as two-column tables. No requirement was added, dropped or
-reworded. Check the PDF if a line looks wrong.
+reconstructed here as two-column tables; and section headings are
+sentence-cased rather than ERI's Title Case. No requirement was added, dropped
+or reworded. Check the PDF if a line looks wrong.
 
-**There are four projects, and six teams.** How they are allocated is an
-organizer decision, not a repo decision.
+**Checked, not asserted.** Project 4 was diffed sentence by sentence against
+ERI's original text on 2026-10-26 — 46 sentences each side, zero missing, zero
+added. That check caught one real defect: the `(MVP)` in ERI's P1 and P4
+heading had been dropped. It is restored. **Projects 1 to 3 have not been
+diffed against the PDF**, only read carefully; the same check can be run
+against them the moment their text is to hand.
+
+**There are four projects.** Anyone may attempt one or more of them, and
+multiple attempts per project are expected.
 
 ---
 
@@ -73,7 +81,7 @@ ways to understand how those skills relate to job responsibilities.
 - As an employer, I want to quickly understand an applicant's skills without
   navigating a complicated website.
 
-### 6. Minimum viable product
+### 6. Minimum viable product (MVP)
 
 For the hackathon, build a working prototype that:
 
@@ -415,7 +423,7 @@ employer engagement professionals.
 - As a job developer, I want a tool that helps facilitate conversations with
   employers about potential job opportunities.
 
-### 6. Minimum viable product
+### 6. Minimum viable product (MVP)
 
 For a one-day hackathon, focus primarily on the skills-to-tasks matching
 feature. The prototype should:

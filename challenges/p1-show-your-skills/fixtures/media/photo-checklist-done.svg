@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-labelledby="t-list d-list">
+  <title id="t-list">A finished opening checklist</title>
+  <desc id="d-list">A clipboard holding a list of three tasks. All three have a check mark drawn in the box beside them.</desc>
+  <rect width="320" height="200" fill="#f2f4ee"/>
+  <rect x="80" y="20" width="160" height="164" rx="8" fill="#fff" stroke="#55614a" stroke-width="4"/>
+  <rect x="136" y="10" width="48" height="20" rx="6" fill="#55614a"/>
+  <g stroke="#55614a" stroke-width="3" fill="none">
+    <rect x="100" y="60" width="20" height="20"/><rect x="100" y="104" width="20" height="20"/><rect x="100" y="148" width="20" height="20"/>
+  </g>
+  <g stroke="#2f6b3f" stroke-width="5" fill="none" stroke-linecap="round">
+    <polyline points="103,71 109,77 119,61"/><polyline points="103,115 109,121 119,105"/><polyline points="103,159 109,165 119,149"/>
+  </g>
+  <g fill="#9aa392">
+    <rect x="132" y="64" width="86" height="8"/><rect x="132" y="108" width="72" height="8"/><rect x="132" y="152" width="90" height="8"/>
+  </g>
+</svg>

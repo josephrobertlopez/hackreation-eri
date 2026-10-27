@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ask for help - Job Coach Connection</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <p class="banner" id="demo-banner">
+    Hackathon demonstration. The coach inbox on this computer is simulated. No message leaves this browser.
+    <a href="coach.html" target="_blank" rel="noopener">Open the coach dashboard in another tab</a>
+    to see the other side.
+  </p>
+
+  <!-- ERI section 10: "The system must clearly identify who can receive
+       messages." This sits outside the screen that changes, so the recipient is
+       named on every screen by construction. -->
+  <p class="banner" id="recipient">
+    Any message you send here goes to Maria Delgado, job coach, ERI Employment Services. Nobody else.
+  </p>
+
+  <!-- The screen itself. The static copy below is the home screen; web/employee.js
+       re-renders it from fixtures/ on load and renders every other screen.
+       test/conformance.test.mjs checks this markup against the fixture strings,
+       so the two cannot drift apart quietly. -->
+  <main id="main">
+    <div id="screen">
+      <h1 tabindex="-1">Ask for help</h1>
+      <p class="lede">Send a message to Maria Delgado, your job coach.</p>
+      <button type="button" class="big primary-help" data-action="need-help">
+        I Need Help
+      </button>
+      <button type="button" class="big secondary" data-action="open-history">
+        My messages
+      </button>
+      <h2>Who gets this message</h2>
+      <p>Only Maria Delgado, your job coach at ERI Employment Services.</p>
+    </div>
+  </main>
+
+  <!-- A separate path, on every screen, that sends nothing.
+       ERI section 10: distinguish routine coaching requests from emergencies
+       and point people at the procedures that already exist. -->
+  <aside class="emergency-rail" aria-labelledby="emergency-rail-heading">
+    <h2 id="emergency-rail-heading" class="small">If something is wrong now</h2>
+    <button type="button" data-action="open-emergency" id="emergency-trigger">
+      Is this an emergency?
+    </button>
+  </aside>
+
+  <p class="status" id="live" role="status" aria-live="polite"></p>
+
+  <script type="module" src="employee.js"></script>
+</body>
+</html>

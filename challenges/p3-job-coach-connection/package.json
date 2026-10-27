@@ -1,0 +1,13 @@
+{
+  "name": "@hackreation-eri/job-coach-connection",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "ERI project 3: Job Coach Connection. Zero dependencies, no build step.",
+  "license": "MIT",
+  "scripts": {
+    "start": "python3 -m http.server 8003",
+    "test": "node --test test/*.test.mjs",
+    "ci": "node --test test/*.test.mjs"
+  }
+}

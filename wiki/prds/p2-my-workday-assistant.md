@@ -47,7 +47,7 @@ task analysis.
 
 ## 5. Data
 
-`challenges/p2-my-workday-assistant/data/` — three synthetic tasks with ordered
+`challenges/p2-my-workday-assistant/fixtures/` — three synthetic tasks with ordered
 steps, each step carrying text, an image or icon, and an audio transcript.
 "Stock the Shelves" is ERI's suggested demo and should be one of them.
 

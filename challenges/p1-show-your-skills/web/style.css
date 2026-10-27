@@ -1,0 +1,106 @@
+/*
+ * Plain, high-contrast, big targets. Honours the reader's own settings:
+ * dark mode, reduced motion (there is no motion to reduce), and text scaling
+ * via rem units. No web fonts, so nothing is fetched.
+ */
+:root {
+  --fg: #1b1b1b;
+  --bg: #fff;
+  --accent: #0b5cad;
+  --muted: #555;
+  --panel: #f5f7f9;
+  --ok: #1d6b32;
+  --warn: #8a2b1e;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #f2f2f2;
+    --bg: #141414;
+    --accent: #7db7ff;
+    --muted: #bbb;
+    --panel: #1e2228;
+    --ok: #7fd79a;
+    --warn: #ffab9b;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font: 18px/1.6 system-ui, sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+  margin: 0 auto;
+  max-width: 50rem;
+  padding: 1rem;
+}
+
+h1 { font-size: 1.9rem; }
+h2 { font-size: 1.4rem; margin-top: 2.5rem; }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; margin-bottom: .25rem; }
+
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 1rem; top: 1rem; background: var(--bg); padding: .5rem; z-index: 2; }
+
+.lede { font-size: 1.15rem; }
+.promises { background: var(--panel); border-radius: 8px; padding: 1rem 1rem 1rem 2.2rem; }
+.hint { color: var(--muted); }
+.error { color: var(--warn); font-weight: 600; border: 2px solid var(--warn); border-radius: 6px; padding: .6rem; }
+.live { color: var(--ok); font-weight: 600; min-height: 1.6rem; }
+
+label { display: block; font-weight: 600; margin-top: 1rem; }
+input[type="text"], textarea {
+  font: inherit; width: 100%; padding: .6rem; color: var(--fg); background: var(--bg);
+  border: 2px solid var(--muted); border-radius: 6px;
+}
+textarea { min-height: 5rem; }
+
+/* A focus ring that is visible in both themes and never removed. */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible,
+h3:focus, h4:focus, p:focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button {
+  font: inherit; margin: 1rem .5rem 0 0; padding: .7rem 1.1rem; border-radius: 6px;
+  border: 2px solid transparent; background: var(--accent); color: var(--bg);
+  min-height: 44px; cursor: pointer;
+}
+button:hover { border-color: var(--fg); }
+
+fieldset { border: 2px solid var(--muted); border-radius: 6px; margin-top: 1rem; padding: .5rem 1rem 1rem; }
+legend { font-weight: 600; padding: 0 .3rem; }
+
+.chip { display: flex; align-items: center; gap: .5rem; font-weight: 400; min-height: 44px; margin: 0; }
+.chip-wide { align-items: flex-start; padding: .4rem 0; }
+input[type="checkbox"] { width: 1.3rem; height: 1.3rem; margin: 0; flex: 0 0 auto; }
+.added { color: var(--ok); font-weight: 600; }
+.alt-text { color: var(--muted); }
+.kind {
+  display: inline-block; font-size: .85rem; border: 1px solid var(--accent);
+  border-radius: 999px; padding: 0 .6rem;
+}
+
+.skill-card { border: 2px solid var(--muted); border-radius: 8px; padding: 1rem; margin-top: 1.5rem; }
+.starters { list-style: none; padding: 0; }
+.starters button { text-align: left; }
+.statements, .own-examples { padding-left: 1.2rem; }
+
+.preview { border: 2px solid var(--accent); border-radius: 8px; padding: 1rem; margin-top: 1rem; }
+.preview h1 { font-size: 1.5rem; }
+.preview h2 { font-size: 1.2rem; margin-top: 1.5rem; border-bottom: 3px solid var(--accent); }
+.preview figure { margin: 1rem 0; border: 1px solid var(--muted); border-radius: 8px; padding: .8rem; }
+.preview svg { max-width: 100%; height: auto; }
+.skill-summary li { font-weight: 600; }
+
+.progress { list-style: none; padding: 0; }
+.progress li { padding: .3rem 0; }
+.tick { color: var(--ok); font-weight: 700; }
+.todo { color: var(--muted); font-weight: 700; }
+
+footer { margin-top: 3rem; border-top: 1px solid var(--muted); padding-top: 1rem; color: var(--muted); }
+
+#share-result { margin-top: 1rem; }
+#share-result a { font-weight: 600; }

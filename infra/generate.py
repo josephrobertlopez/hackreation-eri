@@ -69,17 +69,26 @@ def _ignore(dirpath, names):
 shutil.copytree(os.path.join(here, ".."), os.path.join(ctx, "repo"), ignore=_ignore)
 
 env = {"MYSQL_ROOT_PASSWORD": pw()}
+# The `,z` on the two bind mounts below is load-bearing on an SELinux host
+# (Fedora, RHEL, CentOS), and compose.yaml at the repo root already explains
+# why at length: an unlabelled bind mount is unreadable inside the container
+# and the only symptom is a bare "Permission denied". Added 2026-10-26 after a
+# review found both of them missing it, while `:z` WAS applied to two named
+# volumes further down, where it decides nothing. Without these two labels the
+# morning of the event looks like this: Caddy cannot read its config, so no
+# team has routing, AND MySQL cannot read its init SQL, so no team database or
+# user is ever created. Both at `docker compose up`, both at once.
 svc = ['''services:
   caddy:
     image: caddy:2
     restart: unless-stopped
     ports: ["80:80", "443:443"]
-    volumes: ["./Caddyfile:/etc/caddy/Caddyfile:ro", "caddy_data:/data"]
+    volumes: ["./Caddyfile:/etc/caddy/Caddyfile:ro,z", "caddy_data:/data"]
   mysql:
     image: mysql:8.4
     restart: unless-stopped
     environment: { MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}" }
-    volumes: ["mysql:/var/lib/mysql", "./mysql-init:/docker-entrypoint-initdb.d:ro"]
+    volumes: ["mysql:/var/lib/mysql", "./mysql-init:/docker-entrypoint-initdb.d:ro,z"]
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
       interval: 5s
