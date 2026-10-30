@@ -160,7 +160,6 @@ Checks: `tools/check_links.py` links ok (138 files). `tools/check.sh` all smoke 
 ### Unresolved questions
 - Do attendees get push access to the repo, or must they fork? "Branch from main" and CI on PRs from forks behave differently. Organizers need to decide and say so at check-in.
 - Who, if anyone, merges PRs after the event, and into which repo (Mitobyte's or an ERI-owned GitHub org, as the value plan suggests)?
-- `teams/README.md` (outside this round's scope) still tells teams to copy a starter into `teams/` and fill in a PRD template. It should be aligned with the challenge-folder workflow, or trimmed to the starter-only path.
 - Is a 3:00 PR checkpoint acceptable to the organizers, given the schedule may change?
 - Will ERI's benefits manager and Employment Services manager actually have time for the evening-2 copy reviews in PRDs 02 and 03? The Monday-owner lines depend on it.
 - Does ERI's billing system already report the gaps PRD 01 targets? If so, 01 should be killed or reframed before teams pick it.
@@ -215,7 +214,6 @@ Deck: 14 slides. Checks: `tools/check_links.py` links ok (138 files); `tools/che
 - ERI: will the benefits manager and the Employment Services manager have time for the evening-2 copy reviews in PRDs 02 and 03? Can the web team take more than one plugin?
 - ERI and Mitobyte: which GitHub org holds the repo after the event, and does anyone merge PRs, or do they stay open?
 - Mitobyte: has anyone tested the browser IDE (code-server) with a screen reader before Oct 31? The deck tells screen reader users to start on a laptop or in Codespaces until then.
-- Out of scope but contradictory: `teams/README.md` still describes the old `teams/` workflow, and should be aligned with the challenge-folder plus team-branch path.
 
 ## Resolved by Joey (2026-10-23, real input)
 - **MIT license:** confirmed fine. Code stays MIT.

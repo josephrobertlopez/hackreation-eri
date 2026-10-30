@@ -1,3 +1,5 @@
+> **Status for Saturday Oct 31:** the five hosted VS Code editors at `https://hack-teamN.taild76c1b.ts.net` (one shared session per team, team password, no account) are the BACKUP only (no account, a laptop that cannot run Node, or a Codespace not ready in 10 minutes). The primary paths are GitHub Codespaces (`.devcontainer/`) and your own laptop ([START-HERE.md](../START-HERE.md), [event page](../wiki/event/hackreation.md)). This design is the earlier plan. It is kept as history and as the source of the workspace images. The per-team deploy box described here is **optional**, and nothing else depends on it.
+
 # Day-of hosting: nothing to install
 
 **Goal:** an attendee opens a URL, types a team password, and is coding in VS Code in the browser within 2 minutes. They get PHP 8, Node 22, the monorepo and their own WordPress. No laptop setup.
@@ -6,7 +8,7 @@
 | Option | Verdict | Why |
 | --- | --- | --- |
 | **One host, Docker Compose, one container per team** (this folder) | **Chosen** | One machine, one command, easy to reason about and tear down the same night. code-server is single-user, so one per team is the documented pattern |
-| GitHub Codespaces (`.devcontainer/`) | **Fallback** | Zero infra, but needs a GitHub account per person; free tier is about 60 hours a month on 2 cores. Good backup if the host dies |
+| GitHub Codespaces (`.devcontainer/`) | **Primary for Saturday** | Zero infra, but needs a GitHub account per person and takes about 10 minutes to start (one of three test starts stalled for 30+). The hosted editors below are the backup when it does not come up |
 | Kubernetes / per-person containers | Cut | Overkill for about 18 people for 6 hours |
 | Everyone installs locally | Cut as default | Install problems eat the first hour. Still works: every starter runs locally |
 
@@ -43,7 +45,7 @@ Dry run on a laptop: `python3 infra/generate.py --teams 2 --domain localhost`, t
 1. What is it: a VM, bare metal, or Kubernetes? Docker + Compose v2 available?
 2. Can we get a domain or subdomain with **wildcard DNS** (`*.hack.<domain>`) and open 80/443? (If not: one hostname with path routing. Ask me to switch the Caddyfile.)
 3. CPU/RAM available on the day (see sizing)? Any egress limits? npm and Packagist are needed.
-4. Who is on call during 9:00-4:00 if it falls over?
+4. Who is on call during 8:00-5:00 if it falls over?
 5. OK to wipe everything that evening?
 
 ## Runbook
@@ -60,7 +62,7 @@ Dry run on a laptop: `python3 infra/generate.py --teams 2 --domain localhost`, t
   an existing user anyway. The symptom is every WordPress showing "Error
   establishing a database connection" at 9am, with the slips already handed out.
   If you must keep the T-2 data, reuse the existing `.env` instead of regenerating.
-- **Day of:** hand out slips at team formation; watch `docker stats`; the Codespaces fallback is in `.devcontainer/`.
+- **Day of:** hand out slips at team formation; watch `docker stats`; Codespaces (`.devcontainer/`) and own laptops are the primary paths and carry the day if the host dies.
 - **Same night:** teams push to GitHub (or download a zip from VS Code); then `docker compose down -v` to delete everything.
 
 ## Security (one-day event)

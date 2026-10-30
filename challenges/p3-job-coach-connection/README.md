@@ -1,5 +1,7 @@
 # Challenge P3: Job Coach Connection
 
+What ERI would need: (your team writes this)
+
 **ERI's ask:** [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md#project-3-job-coach-connection) ·
 **PRD:** [wiki/prds/p3-job-coach-connection.md](../../wiki/prds/p3-job-coach-connection.md) ·
 **Acceptance:** [spec/acceptance.md](spec/acceptance.md)
@@ -21,7 +23,7 @@ server. There is nothing to compile and nothing to configure.
 
 ```bash
 cd challenges/p3-job-coach-connection
-npm test                     # 108 tests, node:test, zero dependencies
+npm test                     # node:test, zero dependencies
 npm start                    # http://localhost:8003/web/
 ```
 
@@ -125,8 +127,8 @@ on the list below.
 | `src/channel.js` | cross-tab transport: `BroadcastChannel`, falling back to the `storage` event |
 | `src/flow.js` | the employee screen's navigation as data, so the three-interaction budget is measurable |
 | `src/views.js` | every screen as a pure function from state to HTML, so what an employee sees is asserted and not inferred |
-| `fixtures/` | the four support needs with icons, predefined employee messages, predefined coach replies, the people, the emergency procedure, and every word the screens say |
-| `test/` | 108 tests, `node:test`: 40 state machine, 42 conformance, 12 flow, 11 views, 3 end-to-end demo |
+| `fixtures/` | the four support needs ("I have a question", "I do not understand my task", "My schedule changed" and "Something unexpected happened"; ERI's text lists three examples, and the fourth comes from its user story about being confused or something unexpected) with icons, predefined employee messages, predefined coach replies, the people, the emergency procedure, and every word the screens say |
+| `test/` | `node:test`: state machine, conformance, flow, views, end-to-end demo |
 
 Icons are inline SVG on a 24×24 grid with `<title>` and `<desc>`, stroke-only
 in `currentColor`, so they scale with the button text and survive dark mode.

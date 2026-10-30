@@ -9,9 +9,11 @@
 
 ## PRDs
 - [PRD index](wiki/prds/README.md)
-- [PRD 01: Funding gap finder](wiki/prds/01-funding-gap-finder.md) · code: challenges/01-funding-gap-finder
-- [PRD 02: Is this job right for me?](wiki/prds/02-job-fit-checker.md) · code: challenges/02-job-fit-checker
-- [PRD 03: Inclusive job post checker](wiki/prds/03-job-post-checker.md) · code: challenges/03-job-post-checker
+- [P1 Show Your Skills](wiki/prds/p1-show-your-skills.md) · code: challenges/p1-show-your-skills
+- [P2 My Workday Assistant](wiki/prds/p2-my-workday-assistant.md) · code: challenges/p2-my-workday-assistant
+- [P3 Job Coach Connection](wiki/prds/p3-job-coach-connection.md) · code: challenges/p3-job-coach-connection
+- [P4 Employer Opportunity & Support Hub](wiki/prds/p4-employer-hub.md) · code: challenges/p4-employer-hub
+- ERI's own words: [problem statements](docs/eri-problem-statements.md). The folders challenges/01 to 03 are retired; ignore them.
 - [Cut list](wiki/prds/cut-list.md)
 
 ## Company

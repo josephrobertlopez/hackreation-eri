@@ -1,3 +1,5 @@
+> **RETIRED for Hackreation 2026. Not in scope.** The projects are ERI's four, in [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md). Start at [START-HERE.md](../../START-HERE.md).
+
 # Challenge 03: Inclusive job post checker (hello world)
 
 **PRD:** [wiki/prds/03-job-post-checker.md](../../wiki/prds/03-job-post-checker.md)

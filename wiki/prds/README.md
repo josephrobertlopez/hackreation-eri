@@ -1,15 +1,14 @@
-# PRDs: three, on purpose
+# PRDs: four, one per ERI project
 
-We cut every idea down with one razor: **does ERI walk away with something real?** ERI asked for two things: connect job seekers to jobs, and DVR billing. Their web team is the group most likely to adopt something, and a volunteer can give about two evenings of follow-up.
+The projects, in ERI's own words, are in [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md). Each PRD turns one of them into acceptance criteria (`AC-P2.3`). Where a PRD and ERI's document disagree, ERI wins. Which event day, which team and which door: the [event page](../event/hackreation.md).
 
-| # | PRD | User | Why it survived | Ships how |
-| --- | --- | --- | --- | --- |
-| 01 | [Funding gap finder](01-funding-gap-finder.md) | ERI finance and program staff | ERI named DVR billing; real money; one pattern across DVR, Ticket and county | **Prototype + recommendation** (internal data means ERI decides later) |
-| 02 | [Is this job right for me?](02-job-fit-checker.md) | Job seekers on ERI's website | The event theme, made concrete; addresses the #1 fear (benefits) | **WordPress plugin** ERI can review for its site; no data stored |
-| 03 | [Inclusive job post checker](03-job-post-checker.md) | Employers | Visibility + leads for ERI Business Services; small to host | **WordPress plugin** ERI can review for its site; no data stored |
+| # | PRD | Code |
+| --- | --- | --- |
+| P1 | [Show Your Skills](p1-show-your-skills.md) | [challenges/p1-show-your-skills](../../challenges/p1-show-your-skills) |
+| P2 | [My Workday Assistant](p2-my-workday-assistant.md) | [challenges/p2-my-workday-assistant](../../challenges/p2-my-workday-assistant) |
+| P3 | [Job Coach Connection](p3-job-coach-connection.md) | [challenges/p3-job-coach-connection](../../challenges/p3-job-coach-connection) |
+| P4 | [Employer Opportunity & Support Hub](p4-employer-hub.md) | [challenges/p4-employer-hub](../../challenges/p4-employer-hub) |
 
-Everything else is in the [cut list](cut-list.md), with the reason it was cut.
+**Each PRD has:** an assumptions box, a working hello world in `challenges/`, mock data, personas, and a "who owns it Monday" line. Each project has its own folder, data, tests and spec, so a team never depends on another team.
 
-**Each PRD has:** an *assumptions box* (ERI: keep / kill / change), a working hello world in `challenges/`, mock data, personas, an adversarial debate, and a "who owns it Monday" line.
-
-**Decoupled by design:** each PRD has its own folder, its own copy of the data, its own tests and its own CI workflow. A team never depends on another team. If teams are few, run 02 first (the theme), then 01, then 03.
+**Retired:** `01-funding-gap-finder.md`, `02-job-fit-checker.md`, `03-job-post-checker.md` and [cut-list.md](cut-list.md) are kept as history. They are not event challenges: ignore them.

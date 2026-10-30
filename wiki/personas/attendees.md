@@ -1,6 +1,6 @@
 # Attendee personas (who's in the room on Oct 31)
 
-**Composite and fictional**, based on who typically comes to Milwaukee community meetups like Mitobyte's Code & Coffee (students, working developers, career changers, designers). About 18 RSVPs, organizers included. Use these to design the kickoff, the repo and the help desk, not to judge anyone.
+**Composite and fictional**, based on who typically comes to Milwaukee community meetups like Mitobyte's Code & Coffee (students, working developers, career changers, designers). About 31 RSVPs as of Oct 29 (about 5 teams), organizers included; this page was first written at about 18. Use these to design the kickoff, the repo and the help desk, not to judge anyone.
 
 | Persona | Background | What they need from us | Risk if we miss it |
 | --- | --- | --- | --- |
@@ -18,8 +18,8 @@
 5. **The guardrails and why:** synthetic data (privacy law), estimates route to WIPA (wrong benefits info hurts people), flags not decisions (public money).
 
 ## Design implications
-- **Kickoff:** one slide on ERI, one on the rules, one per challenge, then "how to start in 2 minutes." The deep material stays in the repo.
+- **Kickoff:** one slide on ERI, one on the rules, one per challenge, then "how to start". The deep material stays in the repo.
 - **Team formation:** mix roles. Every team needs at least one person who can run the hello world and one who owns accessibility and plain language.
 - **Roles for non-coders:** persona testing (`agents/`), copywriting at a 6th-grade level, axe and keyboard testing, demo storytelling.
-- **Access:** slides with real text and good contrast, a hosted IDE that works with a screen reader (code-server is VS Code, but test it; offer local setup as an alternative), and captions or a written run of show.
+- **Access:** slides with real text and good contrast, a way to start that works with a screen reader. The backup team editor (code-server) and the Codespace are untested with a screen reader. The laptop is the only path we trust, so pair a screen reader user with a mentor on a laptop, and captions or a written run of show.
 - **Portfolio value:** PRs, tests, CI badges and a README count, so CONTRIBUTING.md makes the "real SWE experience" explicit.

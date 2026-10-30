@@ -1,6 +1,6 @@
 # Recommended stack
 
-ERI's public sites run on **WordPress** (see [digital-properties.md](digital-properties.md)), so for anything ERI might keep, the safest bet is PHP, MySQL, WordPress and plain HTML/CSS/JavaScript. For a phone-first prototype, Expo + Supabase. **Confirm with ERI before you count on any of these being adopted.**
+**The recommended stack is plain HTML, CSS and JavaScript that could be pasted into WordPress as a block or shortcode.** ERI's public sites run on **WordPress** (see [digital-properties.md](digital-properties.md)), so that is what ERI can keep. P1 to P4 already ship that way. The starters below are optional; PHP, MySQL and WordPress plugins are there if your project outgrows a plain page. For a phone-first prototype, Expo + Supabase. **Confirm with ERI before you count on any of these being adopted.**
 
 | Target | Tools | Starter in this repo |
 | --- | --- | --- |

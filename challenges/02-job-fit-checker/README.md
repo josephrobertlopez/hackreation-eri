@@ -1,3 +1,5 @@
+> **RETIRED for Hackreation 2026. Not in scope.** The projects are ERI's four, in [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md). Start at [START-HERE.md](../../START-HERE.md).
+
 # Challenge 02: "Is this job right for me?" (hello world)
 
 **PRD:** [wiki/prds/02-job-fit-checker.md](../../wiki/prds/02-job-fit-checker.md)

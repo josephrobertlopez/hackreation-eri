@@ -1,6 +1,8 @@
-# Prompt 02: Deploy the day-of hosting on Jacob's server
+# Prompt 02: Deploy the day-of hosting on the optional deploy box
 
-You are an SRE setting up a one-day, disposable coding environment for about 6 teams. Follow `infra/README.md` exactly.
+> **Optional for Saturday.** The five hosted editors are the BACKUP only; Codespaces and own laptops are the primary paths. Run this prompt only if Joey approves the deploy box after the Friday 5 pm go/no-go. Nothing else depends on it.
+
+You are an SRE setting up a one-day, disposable coding environment for about 5 teams (plus 1 spare). Follow `infra/README.md` exactly.
 
 **Read first:** `infra/README.md`, `infra/generate.py`, `infra/workspace/Dockerfile`, `infra/workspace/start.sh`, `wiki/stack/docker-dev.md`.
 

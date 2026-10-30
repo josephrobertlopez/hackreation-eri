@@ -1,10 +1,28 @@
 {
-  // Fallback if the hosted workspaces are down: open this repo in GitHub Codespaces (needs a free GitHub account).
-  // The universal image already has PHP, Node and Python (verify the tag before the event).
-  "name": "Hackreation x ERI",
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "postCreateCommand": "bash tools/check.sh",
-  "forwardPorts": [8000, 8080],
-  "portsAttributes": { "8000": { "label": "static / challenge web" }, "8080": { "label": "php -S" } },
-  "customizations": { "vscode": { "extensions": ["bmewburn.vscode-intelephense-client", "deque-systems.vscode-axe-linter"] } }
+  // DEFAULT Codespace for Hackreation (Sat Oct 31): the slim image. Open the TEAM FORK in GitHub Codespaces
+  // (needs a free, verified GitHub account). Not ready after 10 minutes? Delete it and use the backup team
+  // editor (START-HERE.md, path 3).
+  //
+  // WHY THIS IMAGE AND NOT universal:2. Measured on 2026-10-29: with universal:2 (about 10 GB) five cold
+  // creates from this repo took 6-8 minutes or stalled in "Provisioning" for 20-30+ minutes (2 of 5). A repo
+  // with no devcontainer started in 13 seconds. javascript-node:1-20-bookworm is about 1.4 GB and has
+  // everything the four ERI projects need: Node 20.19, Python 3.11 (npm start runs python3 -m http.server),
+  // git 2.49 and npm 10.8. All four project suites pass inside it (P1: 271 of 271).
+  //
+  // WHAT IT DELIBERATELY LEAVES OUT: Docker and PHP. Those are only for the optional warm-up challenges and
+  // the WordPress / php-mysql starters. For those, create the Codespace with the "full" configuration
+  // instead (Code -> Codespaces -> ... -> New with options -> Dev container configuration: full).
+  //
+  // Ports: P1 and P4 serve on 8000, P2 on 8002, P3 on 8003. To demo from the venue laptop, set the port
+  // to Public in the Ports tab (fake data only).
+  "name": "Hackreation x ERI (slim: Node + Python)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+  "postCreateCommand": "bash tools/check.sh || true",
+  "forwardPorts": [8000, 8002, 8003],
+  "portsAttributes": {
+    "8000": { "label": "P1 / P4 web (open /web/)", "onAutoForward": "notify" },
+    "8002": { "label": "P2 web (open /web/)", "onAutoForward": "notify" },
+    "8003": { "label": "P3 web (open /web/ and /web/coach.html)", "onAutoForward": "notify" }
+  },
+  "customizations": { "vscode": { "extensions": ["deque-systems.vscode-axe-linter"] } }
 }

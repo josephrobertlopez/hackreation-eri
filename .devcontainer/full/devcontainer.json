@@ -1,0 +1,21 @@
+{
+  // FULL Codespace: only if you need Docker, WordPress or PHP (the optional warm-up challenges and the
+  // wordpress-plugin / php-mysql starters). The four ERI projects P1-P4 do NOT need this; use the default
+  // (slim) configuration for them.
+  //
+  // Expect a slow start: with this image (universal:2, about 10 GB) cold creates from this repo took 6-8
+  // minutes and sometimes stalled for 20+ minutes (measured 2026-10-29). Create it before you need it, and
+  // if it is not ready after 10 minutes, delete it and try the slim one or the backup team editor.
+  "name": "Hackreation x ERI (full: Docker, PHP, Node, Python)",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "postCreateCommand": "bash tools/check.sh || true",
+  "forwardPorts": [8000, 8002, 8003, 8080, 8081],
+  "portsAttributes": {
+    "8000": { "label": "P1 / P4 web, or the WordPress starter", "onAutoForward": "notify" },
+    "8002": { "label": "P2 web (open /web/)", "onAutoForward": "notify" },
+    "8003": { "label": "P3 web (open /web/ and /web/coach.html)", "onAutoForward": "notify" },
+    "8080": { "label": "php -S (starters)", "onAutoForward": "silent" },
+    "8081": { "label": "phpMyAdmin (starters; keep Private)", "onAutoForward": "silent" }
+  },
+  "customizations": { "vscode": { "extensions": ["bmewburn.vscode-intelephense-client", "deque-systems.vscode-axe-linter"] } }
+}

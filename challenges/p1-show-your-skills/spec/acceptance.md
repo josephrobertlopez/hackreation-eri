@@ -20,7 +20,7 @@ words, ERI wins and this file is the bug. PRD cross-reference:
 Run everything machine-checkable:
 
 ```bash
-node --test test/*.test.js          # 271 checks, no dependencies
+node --test test/*.test.js          # no dependencies
 bash test/browser-smoke.sh          # real browser, needs chromium
 ```
 

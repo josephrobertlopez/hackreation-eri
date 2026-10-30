@@ -20,5 +20,5 @@ docker compose up
 
 Needs PHP 8.1+ with `pdo_sqlite` (or `pdo_mysql`). On a Mac: `brew install php`.
 
-**Good for:** PRD 01 (funding gap finder).
+**Good for:** a project whose data outgrows a CSV. Optional: P1 to P4 already run without it.
 **Ships to ERI as:** a small app on their host, or code moved into a WordPress plugin (see `../wordpress-plugin`).

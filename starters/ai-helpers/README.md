@@ -23,9 +23,9 @@ LLM_PROVIDER=anthropic LLM_API_KEY=sk-... LLM_MODEL=<model id> php starters/ai-h
 
 | Prompt | For |
 | --- | --- |
-| `classify-service-note.md` | PRD 01: which DVR milestone a note supports, plus what's missing |
-| `explain-job-match.md` | PRD 02: a plain-language "why this job fits" |
-| `inclusive-job-post.md` | Brief 3: flags job-post barriers |
+| `classify-service-note.md` | RETIRED, not in scope: billing; none of P1 to P4 needs it |
+| `explain-job-match.md` | Example: a plain-language "why this job fits" |
+| `inclusive-job-post.md` | RETIRED, not in scope: flags job-post barriers (retired challenge 03) |
 | `plain-language.md` | Any content for job seekers or families |
 
 **Rules:** synthetic data only. Bring your own API key and never commit it. A person makes every billing decision.

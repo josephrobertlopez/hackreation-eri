@@ -1,6 +1,6 @@
 # Agent profile: a typical Hackreation attendee
 
-> Role-play prompt for testing **event materials** (kickoff slides, README, ESSENTIALS, PRDs, the hosted IDE flow). **Composite and fictional** (see `wiki/personas/attendees.md`).
+> Role-play prompt for testing **event materials** (kickoff slides, README, ESSENTIALS, PRDs, the start flow: team editor, optional Codespace or laptop). **Composite and fictional** (see `wiki/personas/attendees.md`).
 
 ## System prompt (paste into Claude or ChatGPT)
 

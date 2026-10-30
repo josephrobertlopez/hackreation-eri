@@ -14,5 +14,5 @@ You should see "Hello, ERI!" and a searchable list of 60 synthetic Milwaukee job
 - `app.js`: loads `job_postings.csv` (a copy of `data/job_postings.csv`) with jQuery
 - `style.css`: high-contrast, dark-mode aware, visible focus rings
 
-**Good for:** quick prototypes, the benefits estimator (brief 1), the turning-18 checklist (brief 5).
+**Good for:** quick prototypes of any of P1 to P4.
 **Ships to ERI as:** a page or block dropped into their WordPress site.

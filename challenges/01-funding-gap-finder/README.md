@@ -1,3 +1,5 @@
+> **RETIRED for Hackreation 2026. Not in scope.** The projects are ERI's four, in [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md). Start at [START-HERE.md](../../START-HERE.md).
+
 # Challenge 01: Funding gap finder (hello world)
 
 **PRD:** [wiki/prds/01-funding-gap-finder.md](../../wiki/prds/01-funding-gap-finder.md)

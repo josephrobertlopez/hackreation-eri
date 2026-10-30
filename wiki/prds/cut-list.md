@@ -1,5 +1,7 @@
 # Cut list (Occam's razor)
 
+> **RETIRED history for Hackreation 2026. Not in scope.** It describes the old three ideas (01 to 03), not ERI's four projects. See [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md).
+
 The razor: **asked for by ERI?** · **usable by ERI's web team within two volunteer evenings?** · **demo-able in about 4 hours?** · **safe without real data?**
 
 | Idea | Verdict | Why |

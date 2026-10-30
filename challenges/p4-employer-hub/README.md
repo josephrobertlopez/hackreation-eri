@@ -1,5 +1,7 @@
 # Challenge P4: Employer Opportunity & Support Hub
 
+What ERI would need: (your team writes this)
+
 **PRD:** [wiki/prds/p4-employer-hub.md](../../wiki/prds/p4-employer-hub.md) ·
 **ERI's own words:** [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md#project-4-employer-opportunity--support-hub) ·
 **Acceptance:** [spec/acceptance.md](spec/acceptance.md) (39 rows)
@@ -21,7 +23,7 @@ framework, no network calls, no storage, no timers.
 
 ```bash
 cd challenges/p4-employer-hub
-npm test                     # node:test - 123 tests, nothing to install
+npm test                     # node:test, nothing to install
 npm run bdd                  # the tagged scenarios in features/
 npm run test:a11y            # the accessibility and page-wiring checks
 npm run ci                   # all three, same as tools/run_project_suite.sh
@@ -39,8 +41,7 @@ throws rather than skipping, and the runner asserts it executed every step of
 every scenario, because a partial run must not read as a pass. `test:a11y` is
 the source and page-wiring checks. Neither drives a real browser, and the
 `human` rows in [spec/acceptance.md](spec/acceptance.md) say plainly what that
-leaves uncovered. Retiring those rows with Playwright and axe, the way
-`challenges/02` and `challenges/03` do, is on the job list below.
+leaves uncovered. Retiring those rows with Playwright and axe is on the job list below.
 
 First 10 minutes: run `npm test`, open `http://localhost:8000/web/` and press
 **Fill in the retail example**, then read `web/match.js` - it is the whole
@@ -132,8 +133,8 @@ If ERI wants their literal step 3, it is a one-line change in `web/index.html`.
 - [ ] Widen the skill vocabulary, and add a test that every keyword stem is
       whole-word safe (see the "counter" / "count" case in
       `test/match.test.js`).
-- [ ] Browser-level accessibility testing with Playwright and axe, as
-      `challenges/02` and `challenges/03` do, to retire the `human` rows.
+- [ ] Browser-level accessibility testing with Playwright and axe, to retire the
+      `human` rows.
 
 ### ⚠️ The warning on F4 and F5
 

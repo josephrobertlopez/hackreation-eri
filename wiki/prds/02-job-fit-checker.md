@@ -1,5 +1,7 @@
 # PRD 02: "Is this job right for me?"
 
+> **RETIRED for Hackreation 2026. Not in scope.** See [START-HERE.md](../../START-HERE.md).
+>
 > **SUPERSEDED, 2026-10-26.** ERI supplied their own four problem statements;
 > this PRD was our guess and is not one of them. See
 > [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md) and

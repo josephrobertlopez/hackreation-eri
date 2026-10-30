@@ -1,5 +1,7 @@
 # Challenge P2: My Workday Assistant
 
+What ERI would need: (your team writes this)
+
 **PRD:** [wiki/prds/p2-my-workday-assistant.md](../../wiki/prds/p2-my-workday-assistant.md) ·
 **Spec → tests:** [spec/acceptance.md](spec/acceptance.md) ·
 **ERI's words:** [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md)
@@ -18,7 +20,7 @@ intentions.
 ```bash
 cd challenges/p2-my-workday-assistant
 npm start                    # http://localhost:8002/web/
-npm test                     # TDD: node:test (test/) — 116 tests
+npm test                     # TDD: node:test (test/)
 npm run bdd                  # BDD: features/workday.feature — 11 scenarios, tagged with AC ids
 npm run test:a11y            # static accessibility audit (e2e/) — 26 checks
 npm run check:tasks          # the checker a job coach runs on a task guide
@@ -62,11 +64,11 @@ passes all three stages it requires (`test`, `bdd`, `test:a11y`).
 `npm run ci` is the same thing plus the task checker. No workflow file
 ships in this folder.
 
-**Claiming ids in a PR:** `docs/eri-backlog.md` only generates `P2-F1…F8`
-and `P2-US1…US5`, so `tools/check_claims.py` will reject a body claiming
-`P2-M3` or `P2-A4`. Claim the `P2-F*` and `P2-US*` ids (mapping table at
-the end of [spec/acceptance.md](spec/acceptance.md)) and cite the rest as
-evidence, or extend the backlog generator — that file is not ours.
+**Claiming ids in a PR:** `docs/eri-backlog.md` generates `P2-F1…F8`
+and `P2-US1…US5`. Claim those on the `Backlog IDs claimed:` line (mapping table at
+the end of [spec/acceptance.md](spec/acceptance.md)). `tools/check_claims.py`
+also accepts the frozen-spec ids (`P2-M3`, `P2-A4`), so cite those in the table
+or text as evidence. This is the same rule as CONTRIBUTING.md.
 
 Each of these gates has been shown to fail, not just to pass: adding a
 `fetch`, a `setInterval`, a diagnosis field, a renamed element id, or
@@ -138,7 +140,9 @@ so the next reader gets the reasoning, not a silent choice.
 - [ ] **Spanish**, and a plain-language pass on every word a worker sees
 
 Every team: one screen reader pass (it counts in judging), and one run at
-320px wide on an actual phone.
+320px wide (on a phone if you have one; otherwise resize the browser window).
+Audio comes from the browser you view it in, so test sound there, not in the
+editor's container.
 
 **Guardrails:** never time, score or rank the worker; never a field for a
 disability or diagnosis; progress stays local unless the worker knowingly

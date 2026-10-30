@@ -206,7 +206,7 @@ written. `S1` is the row to argue about.
 
 | command | what it is | count |
 | --- | --- | --- |
-| `npm test` | unit + conformance, `node --test test/*.test.js` | 116 tests |
+| `npm test` | unit + conformance, `node --test test/*.test.js` | all must pass |
 | `npm run bdd` | `features/workday.feature`, every scenario tagged with the ids above, run by `scripts/run-features.mjs` (no cucumber: this folder ships no packages) | 11 scenarios |
 | `npm run test:a11y` | `e2e/a11y.test.mjs` — a **static** audit: accessible names, heading order, label targets, duplicate ids, tab order, 48px targets, and WCAG contrast computed from the colour tokens | 26 checks |
 | `npm run check:tasks` | the coach's checker over all three guides and the template | 4 files |

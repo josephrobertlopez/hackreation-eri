@@ -5,6 +5,23 @@ own pull request, all open at the same time. Nothing here assumes a team owns a
 project, or that there is one right answer, or that the attempts get merged
 into one thing at the end. They are **compared**.
 
+> **At the Hackreation event (Oct 31), work happens in a team fork.** Your
+> team's captain forks this repo, adds teammates as collaborators on the fork,
+> and everyone opens a Codespace or clones from the team fork (steps:
+> [START-HERE.md](START-HERE.md)). Branch in the fork, merge into the team
+> branch, and the captain opens **one** pull request to this repo, titled
+> `Team N: <project>`, **by 3:00**. Then tell Joey its address at the front table.
+> The pull request is five answers: **Project** (P1 to P4), the
+> **Backlog IDs claimed** (at least one `F` or `US` ID your team added, changed or tested; CI needs only a valid one, not new code),
+> the first three boxes in section 5 of the template ticked (disability or diagnosis, scores or ranks, automated decision), one sentence under section 4 on what a person
+> who did not write it found, and your "What ERI would need" line (the labelled line in section 1; the README copy is described in [START-HERE.md](START-HERE.md#one-team-pull-request)).
+> **Backup team editor:** it cannot push. A team whose work lives only there tells Joey (times: [START-HERE.md](START-HERE.md#path-3-backup-the-team-editor));
+> Joey saves the project folder to a branch `attempt/N/<project folder>` and opens the pull request with the driver, ticking the three prohibition boxes from the driver's spoken answer and saying so in the body.
+> A red check never disqualifies a team and is not a score row. If a check shows as
+> waiting for approval, Joey approves it as the pull request opens (2:30 to 3:00).
+> Found a defect in the spec? Tell Joey or write it in the notes doc; Joey files one issue after the event (section 8).
+> Sections 2, 4, 7, 9 and 10 are for after the event; at the event only the five answers above matter (send your branch to the fork when you can). Merging teammates' branches inside your fork is expected; never merge the pull request into the main repo (section 5).
+
 Read this once before you branch. It is short, and it is the difference between
 an attempt a reviewer can judge and an attempt they have to reverse-engineer.
 
@@ -22,10 +39,12 @@ an attempt a reviewer can judge and an attempt they have to reverse-engineer.
 things somebody *builds*, so they are what an attempt claims and what two
 attempts at the same problem are compared on. Frozen-spec IDs (`M`, `A`, `S`,
 `X`, and any others a project defines) are what an attempt is *checked
-against*. Cite both in your pull request — "this is the fix for `P2-A4`" is
-exactly what a reviewer wants to read. A fix or a test that cites only spec IDs
+against*. Claim the `F` and `US` IDs on the `Backlog IDs claimed:` line; cite `M`, `A`,
+`S` and `X` IDs in the table or text — "this is the fix for `P2-A4`" is
+exactly what a reviewer wants to read. CI accepts both families anywhere. After the event, a fix or a test that cites only spec IDs
 and claims no feature is a perfectly good pull request; it just is not an
-attempt competing on coverage.
+attempt competing on coverage. At the event, every team pull request lists at
+least one `F` or `US` ID.
 
 The backlog is **generated** from ERI's document by
 `python3 tools/gen_backlog.py`. Don't edit it. If a line in it looks wrong,
@@ -35,7 +54,7 @@ Where a PRD and ERI's problem statements disagree, ERI wins. That is not a
 formality: the PRDs were written from ERI's document in a hurry, and a
 contradiction is a real defect, not a difference of emphasis.
 
-## 2. Pick a project and claim backlog IDs
+## 2. Pick a project and claim backlog IDs (after the event)
 
 1. Open an issue with your project's form: **New issue → `P2 attempt — My
    Workday Assistant`** (one form per project). The form lists every one of
@@ -57,7 +76,7 @@ Branch from `main`:
 attempt/<team>/p<n>-<short-thing>
 ```
 
-e.g. `attempt/bus-buddies/p2-step-navigation`. The `attempt/` prefix matters:
+e.g. `attempt/bus-buddies/p2-step-navigation`. At the Hackreation event the names are in [START-HERE.md](START-HERE.md#branch-names) and `<team>` is your team number. CI does not read branch names, and the template's Branch field is free text. The `attempt/` prefix matters:
 four branches may be working the same project at once, and `team/…/steps` from
 two teams reads as the same work.
 
@@ -68,13 +87,13 @@ two teams reads as the same work.
 Commit small, push at least every hour. An unpushed branch is work nobody can
 see, compare, or recover when your laptop dies at 2pm.
 
-## 4. Test first
+## 4. Test first (after the event)
 
 | Level | Tool | Where | Naming |
 | --- | --- | --- | --- |
 | Unit | `node:test` (JS) or PHPUnit (PHP) | `test/*.test.js`, `tests/Unit/*Test.php` | the test name cites the AC ID |
 | Behaviour | Cucumber.js or Behat | `features/*.feature` | one scenario per AC, tagged `@AC-P2.4` |
-| Accessibility + browser | Playwright + axe | `e2e/*.test.mjs` | zero axe violations is the floor, not the bar |
+| Accessibility | static audit, `npm run test:a11y` (P2 and P4) | `e2e/*.test.mjs` | Playwright and axe are a stretch task, not present today |
 
 Run exactly what CI runs:
 
@@ -82,10 +101,15 @@ Run exactly what CI runs:
 bash tools/run_project_suite.sh challenges/p2-my-workday-assistant
 ```
 
-That runs `npm test`, `npm run bdd` and `npm run test:a11y`. All three are
-**required to exist**. Deleting a script is not a way to make a suite pass —
-the runner goes red on a missing script, on purpose, because "the accessibility
-suite is gone" and "the accessibility suite passed" must never look the same.
+That runs the project's own `npm run ci`, whatever the project declares. P2 and
+P4 declare all three stages: `npm test`, `npm run bdd` and `npm run test:a11y`.
+P1 and P3 declare fewer (P1 runs `npm test` and `npm run test:browser`; P3 runs
+`npm test`), and the runner prints a warning, not a failure, for a missing bdd
+or accessibility stage. The runner goes red when the project has no suite at
+all, or a stage fails. Deleting a script is not a way to make a suite pass: the
+warning exists so that "the accessibility suite is gone" and "the accessibility
+suite passed" never look the same. Adding the missing stage to P1 or P3 is a
+good piece of work.
 
 The loop: failing scenario for the AC → smallest change that passes it →
 refactor → commit.
@@ -108,19 +132,26 @@ CI fails your PR if:
 - the cited IDs span two projects;
 - you declare a project and the diff touches two project folders;
 - the declared project is not the folder the diff touches;
-- one of ERI's three prohibitions is unticked in section 5 of the template.
+- one of ERI's three prohibitions (the first three boxes in section 5 of the template) is unticked.
 
-**Not an attempt?** A shared fix across two projects — the same focus trap, one
+**Not an attempt?** (After the event, not for a team's pull request.) A shared fix across two projects — the same focus trap, one
 corrected fixture — is a normal pull request. Leave the `**Project:**` line out
 and it is read as a cross-project change: every touched project's suite still
 runs, and no attempt is claimed. Declare a project only when you are claiming
 one.
 
 One project per PR. Attempting two projects means two PRs, so each is judged on
-its own. **Don't merge your own PR.** Leave it open: judges and ERI review it
+its own.
+
+**At the Hackreation event, one pull request per team.** A judge must see one
+entry per team, so each team opens exactly one, titled `Team N: <project>`
+(for example `Team 3: Job Coach Connection`). The team's captain opens it from the team fork by 3:00 (Joey opens a backup-editor team's with its driver, from 2:30)
+(times: [wiki/event/hackreation.md](wiki/event/hackreation.md)). Teammates work
+on branches in the team fork and the captain merges them into the team branch; they do not open
+their own pull requests to this repo. **Don't merge your own PR.** Leave it open: judges and ERI review it
 there, and a merged attempt stops being comparable with the ones beside it.
 
-Open it by 3:00pm so CI finishes before demos.
+Have it open by 3:00 (code freeze) so CI finishes before presentations start at 3:30. The retired `challenge-01` to `challenge-03` workflows run only when a file in their own folder changes, so a team pull request does not trigger them.
 
 ## 6. How attempts at the same problem are compared
 
@@ -160,17 +191,19 @@ can actually see, run it, and file issues rather than rewriting their code.
 Non-coders review too, and the keyboard and plain-language passes are the most
 valuable review in the room.
 
-## 7. Definition of Done — per claimed ID
+## 7. Definition of Done — per claimed ID (after the event)
 
-An attempt is done for `P2-F4` when **all** of these are true. Shipping partial
+An attempt is done for `P2-F4` when **all** of these are true. At the event, do what you have time for; this is the full bar for after it. Shipping partial
 work is fine; calling it done when it is partial is not.
 
 - [ ] `P2-F4` maps to at least one acceptance criterion (`AC-P2.x`) in your PRD
 - [ ] A **named** test proves that AC, and a reviewer can find it from the PR
       table without searching
-- [ ] A BDD scenario is tagged with the AC ID
+- [ ] A BDD scenario is tagged with the AC ID (P1 and P3: a named test in the
+      project's own suite stands in for it)
 - [ ] The keyboard-only path through the feature completes
-- [ ] Automated accessibility checks pass (`npm run test:a11y`)
+- [ ] Automated accessibility checks pass (`npm run test:a11y`, or for P1 and P3
+      the stage named in their README; P3 has none, so do the keyboard and screen-reader passes by hand)
 - [ ] Controls are named, images have text alternatives, audio or video has a
       caption or transcript
 - [ ] Nothing in the feature expires or needs a fast response
@@ -183,7 +216,7 @@ work is fine; calling it done when it is partial is not.
 - [ ] Nothing in ERI's "out of scope for the hackathon" list was built
 - [ ] Your project README says how to run it in under 10 minutes
 
-And for the attempt as a whole:
+And for the attempt as a whole (the checks are informational at the event and required for an after-event merge):
 
 - [ ] **Conformance (changed projects)** is green
 - [ ] **Attempt declaration (backlog IDs)** is green
@@ -209,9 +242,9 @@ Don't work around a spec defect silently inside your own folder. Four teams
 quietly working around the same ambiguity in four different ways is how a
 comparison becomes meaningless.
 
-## 9. Repo rules
+## 9. Repo rules (after the event)
 
-- Work inside your project folder. **Don't import from another project's
+- Work inside your project folder (`challenges/p<n>-.../`). Starters are copy-from-only. **Don't import from another project's
   folder** — projects are decoupled on purpose.
 - Don't hand-edit `data/`. Change the generator and regenerate.
 - Don't edit generated files: `docs/eri-backlog.md`, `docs/eri-backlog.json`,
@@ -235,7 +268,7 @@ the project runner. If you change one of them, run it. It has already caught a
 real bug: a regex that let an empty `**Project:**` line absorb the next line,
 so a PR declaring no project read as declaring one.
 
-## 10. Running this as your own event
+## 10. Running this as your own event (after the event)
 
 This repo is meant to be used as a GitHub template. A generated copy carries
 the files and almost nothing else — see

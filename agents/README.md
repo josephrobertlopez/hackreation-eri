@@ -11,7 +11,7 @@ Four role-play profiles for **fast, early** usability checks of hackathon protot
 
 ## How to use
 - **Chat (Claude Pro / ChatGPT):** paste the system prompt, then describe your screens step by step or paste screenshots.
-- **Claude Code:** the same profiles are subagents in `.claude/agents/`. Ask: *"Use the avg-job-seeker agent to review teams/my-team/app/index.html."*
+- **Claude Code:** the same profiles are subagents in `.claude/agents/`. Ask: *"Use the avg-job-seeker agent to review challenges/p2-my-workday-assistant/web/index.html."*
 
 ## Rules
 - These are **composites, not people**. They're a cheap first pass, not evidence. Test with real disabled users and ERI staff before claiming "users love it."

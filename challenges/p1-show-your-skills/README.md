@@ -1,5 +1,7 @@
 # Challenge P1: "Show Your Skills" (hello world)
 
+What ERI would need: (your team writes this)
+
 **ERI's brief:** [docs/eri-problem-statements.md](../../docs/eri-problem-statements.md#project-1-show-your-skills) · **PRD:** [wiki/prds/p1-show-your-skills.md](../../wiki/prds/p1-show-your-skills.md) · **Acceptance:** [spec/acceptance.md](spec/acceptance.md)
 
 A job seeker makes a short page showing what they can do at work — three
@@ -15,7 +17,7 @@ Both are enforced by tests that fail, not by promises in a file like this one.
 ```bash
 cd challenges/p1-show-your-skills
 npm start                    # http://localhost:8000/web/
-npm test                     # 271 checks, node:test, NO npm install needed
+npm test                     # node:test, NO npm install needed
 npm run test:browser         # renders it in real headless Chromium; skips if you have none
 npm run ci                   # both of the above — what CI runs
 npm run fixtures             # regenerate fixtures/media/*.svg from fixtures/media.js
@@ -45,7 +47,7 @@ first.
 | --- | --- | --- | --- |
 | §4 core features | P1-F1 … F6 | `test/conformance.test.js`, `test/portfolio.test.js` | `test/share.test.js` |
 | §6 MVP steps | P1-M1 … M5 | `test/conformance.test.js` | `test/browser-smoke.sh` |
-| §7 accessibility | P1-A1 … A6 | `test/accessibility.test.js` (84 checks) | 4 human protocols, H1–H5 |
+| §7 accessibility | P1-A1 … A6 | `test/accessibility.test.js` (84 checks) | 5 human protocols, H1–H5 |
 | §8 success criteria | P1-S1 … S4 | `test/fixtures.test.js`, `test/conformance.test.js` | H1, H6, H7 — **S1 and S3 are human-judged** |
 | §9 out of scope | P1-X1 … X5 | `test/guardrails.test.js` | `test/conformance.test.js` |
 | §10 privacy | P1-D1, P1-D2 | `test/guardrails.test.js` | `.gitignore`, `test/fixtures.test.js` |

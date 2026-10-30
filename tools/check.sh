@@ -150,7 +150,7 @@ To run the skipped steps, install the missing tools:
   Fedora/RHEL   sudo dnf install -y php-cli php-xml php-mbstring php-pdo composer nodejs git
   Debian/Ubuntu sudo apt install -y php-cli php-xml php-mbstring composer nodejs git
   macOS         brew install php composer node git
-Or use GitHub Codespaces / the day-of browser IDE, which have everything.
+Or use a GitHub Codespace, or the backup team editor if you have no account (tool versions not yet confirmed).
 HINT
   else
     cat <<'HINT'

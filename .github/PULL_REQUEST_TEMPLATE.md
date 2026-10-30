@@ -5,6 +5,8 @@ comparable: same project line, same claimed IDs, same checks, same protocol.
 
 Keep every heading and every checkbox line. CI reads some of them.
 Do not delete a box you did not do -- leave it unticked and say why.
+At the Hackreation event the unticked boxes are expected. Your captain ticks the three
+prohibition boxes in section 5 (for a backup-editor team, Joey ticks them from the driver's spoken answer).
 -->
 
 ## 1. What this attempt is
@@ -12,6 +14,7 @@ Do not delete a box you did not do -- leave it unticked and say why.
 **Project:** P?
 **Backlog IDs claimed:** P?-F?, P?-US?
 **Team or attempt name:**
+**What ERI would need:**
 **Branch:** `attempt/<team>/p?-<short-thing>`
 
 One or two sentences, in plain words, on what a person can now do:
@@ -95,7 +98,7 @@ ERI than one that says nothing. -->
 ## 5. ERI's prohibitions — author's declaration
 
 ERI wrote these constraints. Ticking them is a statement of fact about this
-diff that only the author can make.
+diff that only the author can make. At Hackreation the driver says it aloud and Joey ticks the first three boxes on the team's behalf.
 
 - [ ] No field, question or required step asks for a **disability or diagnosis**,
       anywhere in this attempt

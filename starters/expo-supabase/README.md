@@ -21,4 +21,4 @@ Row Level Security is on, and the policy only lets anyone read rows marked synth
 
 Built on Expo SDK 58. Use `npx expo install <pkg>` (not `npm install`) so versions match the SDK. See `AGENTS.md` for Expo notes written for AI coding tools.
 
-**Good for:** a phone version of PRD 02.
+**Good for:** a phone version of P2 (My Workday Assistant).
