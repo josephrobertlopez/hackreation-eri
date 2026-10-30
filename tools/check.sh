@@ -150,7 +150,9 @@ To run the skipped steps, install the missing tools:
   Fedora/RHEL   sudo dnf install -y php-cli php-xml php-mbstring php-pdo composer nodejs git
   Debian/Ubuntu sudo apt install -y php-cli php-xml php-mbstring composer nodejs git
   macOS         brew install php composer node git
-Or use a GitHub Codespace, or the backup team editor if you have no account (tool versions not yet confirmed).
+Or use a GitHub Codespace created with the "full" configuration (Code, Codespaces, New with options, Dev
+container configuration: full), or the team editor (its image is documented to have PHP 8; check with `php -v`).
+The default (slim) Codespace has Node and Python but no PHP and no Docker. Details: START-HERE.md.
 HINT
   else
     cat <<'HINT'

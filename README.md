@@ -16,25 +16,25 @@ Sat, Oct 31, 2026, Penrod, Milwaukee, [Mitobyte](https://www.meetup.com/mitobyte
    - **P4** [Employer Opportunity & Support Hub](wiki/prds/p4-employer-hub.md): Employer decision-support and workplace accessibility tool ([hello world](challenges/p4-employer-hub))
 3. **Start from your challenge's hello world.** It already runs and has tests. P1 to P4 need no install, only Node 20 or newer (and Python 3 for `npm start`, which runs `python3 -m http.server`): on the day do the fork steps in [START-HERE.md](START-HERE.md) first, so your work can be sent; then `cd challenges/p<n>-...` and `npm start` (a web page) and `npm test`. Ports and preview addresses: [START-HERE.md](START-HERE.md#ports-and-preview-addresses). The recommended stack is plain HTML, CSS and JavaScript that could be pasted into WordPress ([details](wiki/company/tech-stack.md)). The starters below are not recommended at the event: the rubric favours plain HTML, CSS and JavaScript, and several need Docker, PHP or an outside account. Use one only if you must, and copy files into your challenge folder, because CI fails a diff that touches anything outside it:
 
-| Starter | Stack | Hello world | Works in the backup team editor? |
-| --- | --- | --- | --- |
-| [`starters/static-web`](starters/static-web) | HTML/CSS/jQuery | `python3 -m http.server` | Yes |
-| [`starters/php-mysql`](starters/php-mysql) | PHP 8 + MySQL (or SQLite) + phpMyAdmin | `php seed.php && php -S localhost:8080 -t public` | Yes, with SQLite |
-| [`starters/wordpress-plugin`](starters/wordpress-plugin) | WordPress plugin: shortcode + REST + admin | `docker compose up` or `npx @wordpress/env start` | No (needs Docker); `php tests/smoke.php` only |
-| [`starters/eri-job-card`](starters/eri-job-card) | WordPress Gutenberg block | `npm install && npm run build` | No; its build is already committed |
-| [`starters/expo-supabase`](starters/expo-supabase) | React Native/Expo + Supabase (iOS, Android, web) | `npm install && npx expo start` | Untested; assume no |
-| [`starters/ai-helpers`](starters/ai-helpers) | Prompts + PHP client for Claude/OpenAI | `php starters/ai-helpers/php/hello_llm.php` | Yes, in mock mode |
+| Starter | Stack | Hello world | Works in the backup team editor? | Works in the default (slim) Codespace? |
+| --- | --- | --- | --- | --- |
+| [`starters/static-web`](starters/static-web) | HTML/CSS/jQuery | `python3 -m http.server` | Yes | Yes |
+| [`starters/php-mysql`](starters/php-mysql) | PHP 8 + MySQL (or SQLite) + phpMyAdmin | `php seed.php && php -S localhost:8080 -t public` | Yes, with SQLite | No (no PHP): use the full configuration |
+| [`starters/wordpress-plugin`](starters/wordpress-plugin) | WordPress plugin: shortcode + REST + admin | `docker compose up` or `npx @wordpress/env start` | No (needs Docker); `php tests/smoke.php` only | No: use the full configuration |
+| [`starters/eri-job-card`](starters/eri-job-card) | WordPress Gutenberg block | `npm install && npm run build` | No; its build is already committed | Untested; its build is already committed |
+| [`starters/expo-supabase`](starters/expo-supabase) | React Native/Expo + Supabase (iOS, Android, web) | `npm install && npx expo start` | Untested; assume no | Untested; assume no |
+| [`starters/ai-helpers`](starters/ai-helpers) | Prompts + PHP client for Claude/OpenAI | `php starters/ai-helpers/php/hello_llm.php` | Yes, in mock mode | The PHP client: no (full configuration) |
 
 4. **Build in your challenge folder.** That's where CI runs. Work on a branch in your team fork (names: [START-HERE.md](START-HERE.md#branch-names); backup editor teams: Joey saves your folder). The folders `challenges/01-...` to `03-...` are retired; ignore them. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Day-of
 - **Schedule, challenges and judging:** [wiki/event/hackreation.md](wiki/event/hackreation.md)
-- **Where to work:** a GitHub Codespace (`.devcontainer/`, free account, about 10 minutes to start) or your own laptop (git, Node 20 or newer, and Python 3). Backup only: each team has a shared VS Code in the browser (team password, no account) for no account, a laptop that cannot run Node, or a Codespace not ready in 10 minutes. Paths and addresses are on the event page. Using a screen reader? Start on your laptop. The backup hosting design is in [infra/README.md](infra/README.md).
+- **Where to work:** a GitHub Codespace (`.devcontainer/`, free account; the default is a slim Node + Python image, start time in the [event page](wiki/event/hackreation.md#paths-how-you-get-a-workspace); not ready after 10 minutes, delete it) or your own laptop (git, Node 20 or newer, and Python 3). Backup only: each team has a shared VS Code in the browser (team password, no account) for no account, a laptop that cannot run Node, or a Codespace not ready in 10 minutes. Paths and addresses are on the event page. Which door to use: [START-HERE.md](START-HERE.md#which-door). Using a screen reader? Start on your laptop. The backup hosting design is in [infra/README.md](infra/README.md).
 - **Kickoff slides:** [deck/attendee-kickoff.md](deck/attendee-kickoff.md). The `.md` file is the plain-text version and the only committed copy; PDF, HTML and PowerPoint renders are optional and not stored here (see [deck/README.md](deck/README.md) for the command).
 - **Stack how-tos for people and AI:** [wiki/stack/](wiki/stack/README.md) covers WordPress plugins and blocks, PHP/MySQL, JS/jQuery, HTML/CSS accessibility, Expo, Supabase, Docker and AI-assisted coding
 
 ## Knowledge base and simulated users
-- [`wiki/knowledge/`](wiki/knowledge/README.md): 55+ sourced pages on benefits, employment law, compliance, the Wisconsin service landscape, public datasets, and ERI's finances and strategy
+- [`wiki/knowledge/`](wiki/knowledge/README.md): 60+ sourced pages on benefits, employment law, compliance, the Wisconsin service landscape, public datasets, and ERI's finances and strategy
 - [`wiki/personas/`](wiki/personas/README.md) and [`agents/`](agents/README.md): composite personas and role-play profiles for quick usability checks
 - Public data: `bash tools/fetch_public_data.sh` on your own machine (O*NET, BLS wages, MCTS + Madison Metro GTFS, Census)
 

@@ -18,7 +18,7 @@ The context for this hackathon, in plain markdown, so people and AI coding tools
 | [domain/privacy-and-data.md](domain/privacy-and-data.md) | Data rules: synthetic only |
 | [personas/](personas/README.md) | Job seeker and ERI staff personas (composite), backed by DVR stats |
 | [stack/](stack/README.md) | **How to build on each tech:** WordPress plugin/block, PHP/MySQL, JS/jQuery, HTML/CSS a11y, Expo, Supabase, Docker, AI-assisted coding, security checklist |
-| [knowledge/](knowledge/README.md) | **Deep, sourced knowledge base:** benefits, employment law, compliance, the Wisconsin landscape, datasets, ERI org and consulting brief (55+ pages) |
+| [knowledge/](knowledge/README.md) | **Deep, sourced knowledge base:** benefits, employment law, compliance, the Wisconsin landscape, datasets, ERI org and consulting brief (60+ pages) |
 | [../agents/](../agents/README.md) | AI role-play profiles: average job seeker, average ERI employee, average attendee and average employer |
 
 Facts were gathered from public sources on Oct 19-23, 2026 (links on each page). They're "fuzzy" where marked, so confirm with ERI before you rely on them.

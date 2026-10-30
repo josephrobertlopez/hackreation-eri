@@ -116,7 +116,7 @@ cover. The trap in each is named, because that is the part that takes the time.
       25-word sentence test in `test/accessibility.test.js` is a crude proxy —
       beat it, don't just satisfy it.
 
-Every team: one screen reader pass (it counts in judging) — protocol H2 in
+Every team: a screen reader pass is the best evidence for the Accessible row; a keyboard pass honestly reported still scores (event page, Judging). Protocol H2 in
 [spec/acceptance.md](spec/acceptance.md#h2--keyboard-and-screen-reader-p1-a1).
 
 **Guardrails.** Never a field, prompt, label or column for a disability or

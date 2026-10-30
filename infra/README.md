@@ -2,13 +2,17 @@
 
 # Day-of hosting: nothing to install
 
+> **History banner.** The numbers and names below come from the earlier plan and are out of date: it says about 18 people, 6 teams,
+> `teamN.<domain>` addresses and a WordPress per team. Saturday is about 31 people, 5 teams and `hack-teamN.taild76c1b.ts.net`
+> with no per-team WordPress. For event facts see the [event page](../wiki/event/hackreation.md); this page only describes how the images are built.
+
 **Goal:** an attendee opens a URL, types a team password, and is coding in VS Code in the browser within 2 minutes. They get PHP 8, Node 22, the monorepo and their own WordPress. No laptop setup.
 
 ## Why this design (and not something fancier)
 | Option | Verdict | Why |
 | --- | --- | --- |
 | **One host, Docker Compose, one container per team** (this folder) | **Chosen** | One machine, one command, easy to reason about and tear down the same night. code-server is single-user, so one per team is the documented pattern |
-| GitHub Codespaces (`.devcontainer/`) | **Primary for Saturday** | Zero infra, but needs a GitHub account per person and takes about 10 minutes to start (one of three test starts stalled for 30+). The hosted editors below are the backup when it does not come up |
+| GitHub Codespaces (`.devcontainer/`) | **Primary for Saturday** | Zero infra, but needs a GitHub account per person; start times are on the [event page](../wiki/event/hackreation.md#paths-how-you-get-a-workspace) (single source). The hosted editors below are the backup when it does not come up |
 | Kubernetes / per-person containers | Cut | Overkill for about 18 people for 6 hours |
 | Everyone installs locally | Cut as default | Install problems eat the first hour. Still works: every starter runs locally |
 

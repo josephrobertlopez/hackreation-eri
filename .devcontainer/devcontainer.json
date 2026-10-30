@@ -9,14 +9,21 @@
   // everything the four ERI projects need: Node 20.19, Python 3.11 (npm start runs python3 -m http.server),
   // git 2.49 and npm 10.8. All four project suites pass inside it (P1: 271 of 271).
   //
-  // WHAT IT DELIBERATELY LEAVES OUT: Docker and PHP. Those are only for the optional warm-up challenges and
-  // the WordPress / php-mysql starters. For those, create the Codespace with the "full" configuration
-  // instead (Code -> Codespaces -> ... -> New with options -> Dev container configuration: full).
+  // START TIME OF THIS SLIM IMAGE (measured 2026-10-30): 4 of 4 cold creates started at the same time were
+  // ready in about 76 seconds. Rule for attendees stays: not ready after 10 minutes, delete it.
+  //
+  // WHAT IT DELIBERATELY LEAVES OUT: Docker and PHP. Those are only for the retired folders 01 to 03 and the
+  // WordPress / php-mysql starters (and `php tests/smoke.php` for the WordPress lead). For those, create the
+  // Codespace with the "full" configuration instead (Code -> Codespaces -> ... -> New with options -> Dev
+  // container configuration: full), or use the backup team editor. Node 20 or newer is required: P3 fails on 18.
   //
   // Ports: P1 and P4 serve on 8000, P2 on 8002, P3 on 8003. To demo from the venue laptop, set the port
   // to Public in the Ports tab (fake data only).
   "name": "Hackreation x ERI (slim: Node + Python)",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+  // sshd: the slim image has no SSH server, so `gh codespace ssh` (command-line access, used by organizers
+  // and automated checks) was refused. Attendees in the browser editor do not need it.
+  "features": { "ghcr.io/devcontainers/features/sshd:1": { "version": "latest" } },
   "postCreateCommand": "bash tools/check.sh || true",
   "forwardPorts": [8000, 8002, 8003],
   "portsAttributes": {

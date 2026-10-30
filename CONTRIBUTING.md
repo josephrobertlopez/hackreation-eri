@@ -5,6 +5,8 @@ own pull request, all open at the same time. Nothing here assumes a team owns a
 project, or that there is one right answer, or that the attempts get merged
 into one thing at the end. They are **compared**.
 
+> **At the event, read only this banner and section 5.** The other sections (issues, TDD, ADRs, merging) are for after the event.
+>
 > **At the Hackreation event (Oct 31), work happens in a team fork.** Your
 > team's captain forks this repo, adds teammates as collaborators on the fork,
 > and everyone opens a Codespace or clones from the team fork (steps:

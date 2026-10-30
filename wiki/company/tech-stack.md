@@ -19,7 +19,7 @@ These are [ERI's four problem statements](../../docs/eri-problem-statements.md).
 | **P1** Show Your Skills | `static-web` | Media + a preview page; nothing needs a server if the portfolio exports as a file | `expo-supabase` — if you want a real **view-only link** and native camera. Then you own the hosting question |
 | **P2** My Workday Assistant | `static-web`, phone-first | One step at a time is local state. Must work at 320px and on a tablet | `expo-supabase` — if you want it installable with offline tasks |
 | **P3** Job Coach Connection | `static-web`, two browser tabs | Employee view and coach inbox are two views over one state. Two tabs on one laptop is an honest demo of a simulated inbox | `php-mysql` or Supabase — if requests must cross **devices**, not tabs |
-| **P4** Employer Opportunity Hub | `static-web`, then wrap as a WordPress plugin | Form in, explained matches out. **The most WordPress-ready of the four** and the likeliest for ERI's web team to host first | `php-mysql` — if the industry/task library outgrows a CSV |
+| **P4** Employer Opportunity & Support Hub | `static-web`, then wrap as a WordPress plugin | Form in, explained matches out. **The most WordPress-ready of the four** and the likeliest for ERI's web team to host first | `php-mysql` — if the industry/task library outgrows a CSV |
 
 **WordPress fit, honestly:** P4 is a natural plugin. P1 can be one, but media uploads are the hard part. **P2 and P3 are stateful apps, not page content** — forcing them into a plugin costs you the day. Build them standalone and say so in the demo.
 

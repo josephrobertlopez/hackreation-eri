@@ -91,12 +91,12 @@ Captain, navigator, designer, writer, tester, ERI expert, presenter, WordPress l
 
 # Get started: two doors and a backup
 
-1. **Codespace** (free GitHub account). The captain forks the repo and adds teammates; everyone opens a Codespace **from the team fork**. It takes about 10 minutes, so start now. Not ready in 10 minutes? Delete it and use path 3
+1. **Codespace** (free GitHub account). The captain forks the repo and adds teammates; everyone opens a Codespace **from the team fork**. Start it now; if it is not ready after 10 minutes, delete it and use path 3
 2. **Your own laptop** (git and Node 20 or newer): clone the team fork, then in your project folder `npm start` and `npm test`
 Backup: **the team editor.** No account, any browser: the address and password are on your team card. One shared session, one driver. For no account, a laptop that cannot run Node, or a Codespace that is not ready
 
 Everything step by step: `START-HERE.md`. Stuck? Ask a teammate or neighbour. 15 minutes: raise a hand.
-Screen reader user? The optional session with Joey is 9:30 to 9:50, at a table he names now and writes on the front-table sheet.
+Not sure which door? `START-HERE.md`, "Which door" (screen reader: start on your laptop). Screen reader user? The optional session with Joey is 9:30 to 9:50, at a table he names now and writes on the front-table sheet.
 
 ---
 
