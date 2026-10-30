@@ -12,7 +12,7 @@ into one thing at the end. They are **compared**.
 > and everyone opens a Codespace or clones from the team fork (steps:
 > [START-HERE.md](START-HERE.md)). Branch in the fork, merge into the team
 > branch, and the captain opens **one** pull request to this repo, titled
-> `Team N: <project>`, **by 3:00**. Then tell Joey its address at the front table.
+> `Team N: <project>`, **any time before 3:30**. Then tell Joey its address at the front table.
 > The pull request is five answers: **Project** (P1 to P4), the
 > **Backlog IDs claimed** (at least one `F` or `US` ID your team added, changed or tested; CI needs only a valid one, not new code),
 > the first three boxes in section 5 of the template ticked (disability or diagnosis, scores or ranks, automated decision), one sentence under section 4 on what a person
@@ -20,7 +20,7 @@ into one thing at the end. They are **compared**.
 > **Backup team editor:** it cannot push. A team whose work lives only there tells Joey (times: [START-HERE.md](START-HERE.md#path-3-backup-the-team-editor));
 > Joey saves the project folder to a branch `attempt/N/<project folder>` and opens the pull request with the driver, ticking the three prohibition boxes from the driver's spoken answer and saying so in the body.
 > A red check never disqualifies a team and is not a score row. If a check shows as
-> waiting for approval, Joey approves it as the pull request opens (2:30 to 3:00).
+> waiting for approval, Joey approves it as the pull request opens (as it opens).
 > Found a defect in the spec? Tell Joey or write it in the notes doc; Joey files one issue after the event (section 8).
 > Sections 2, 4, 7, 9 and 10 are for after the event; at the event only the five answers above matter (send your branch to the fork when you can). Merging teammates' branches inside your fork is expected; never merge the pull request into the main repo (section 5).
 
@@ -147,13 +147,13 @@ its own.
 
 **At the Hackreation event, one pull request per team.** A judge must see one
 entry per team, so each team opens exactly one, titled `Team N: <project>`
-(for example `Team 3: Job Coach Connection`). The team's captain opens it from the team fork by 3:00 (Joey opens a backup-editor team's with its driver, from 2:30)
+(for example `Team 3: Job Coach Connection`). The team's captain opens it from the team fork any time before 3:30 (Joey opens a backup-editor team's with its driver after the last save)
 (times: [wiki/event/hackreation.md](wiki/event/hackreation.md)). Teammates work
 on branches in the team fork and the captain merges them into the team branch; they do not open
 their own pull requests to this repo. **Don't merge your own PR.** Leave it open: judges and ERI review it
 there, and a merged attempt stops being comparable with the ones beside it.
 
-Have it open by 3:00 (code freeze) so CI finishes before presentations start at 3:30. The retired `challenge-01` to `challenge-03` workflows run only when a file in their own folder changes, so a team pull request does not trigger them.
+Have it open before 3:30 (by 3:00 is best, so CI finishes before presentations start at 3:30); you can keep pushing until 3:30. The retired `challenge-01` to `challenge-03` workflows run only when a file in their own folder changes, so a team pull request does not trigger them.
 
 ## 6. How attempts at the same problem are compared
 

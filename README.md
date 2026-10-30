@@ -5,7 +5,19 @@ Sat, Oct 31, 2026, Penrod, Milwaukee, [Mitobyte](https://www.meetup.com/mitobyte
 
 > Everything in this repo uses **synthetic data**. No real client information, ever.
 
-**Event day? Start with [START-HERE.md](START-HERE.md).** Joey is the Mitobyte host (name tag: HELP). It says, step by step, how to start in a Codespace or on your own laptop (and the backup team editor if you have no account), what to do if you are not coding, where to get help, and how to hand in your work. Times, place, help and judging: [wiki/event/hackreation.md](wiki/event/hackreation.md).
+**Event day? Start with [START-HERE.md](START-HERE.md).** Joey and the Mitobyte hosts are the floating mentors (Joey's name tag: HELP). It says, step by step, how to start in a Codespace or on your own laptop (and the backup team editor if you have no account), what to do if you are not coding, where to get help, and how to hand in your work. Times, place, help and judging: [wiki/event/hackreation.md](wiki/event/hackreation.md).
+
+## The four projects and where you can work
+
+Want to try the code on your own time, before or after the event? See [Start before the event](docs/PREP-CHECKLIST.md#start-before-the-event). Full tables, with who each project helps and links to ERI's exact words: [the four projects](wiki/event/hackreation.md#the-four-projects) and [where you can work](wiki/event/hackreation.md#where-you-can-work) on the event page.
+
+- **P1 Show Your Skills**: a portfolio of words, pictures, audio or video to show what a person can do. Folder `challenges/p1-show-your-skills`, port 8000.
+- **P2 My Workday Assistant**: step-by-step task guides with pictures, text, audio and reminders. Folder `challenges/p2-my-workday-assistant`, port 8002.
+- **P3 Job Coach Connection**: an employee asks their job coach for help, the coach answers. Folder `challenges/p3-job-coach-connection`, port 8003.
+- **P4 Employer Opportunity & Support Hub**: turns a candidate's skills into workplace tasks and gives employers plain guidance. Folder `challenges/p4-employer-hub`, port 8000 (same as P1).
+- All four are plain HTML, CSS and vanilla JavaScript with zero dependencies. In the project folder: `npm start`, open `http://localhost:PORT/web/`, and `npm test` (passed if it ends with `# fail 0`). ERI's words: [docs/eri-problem-statements.md](docs/eri-problem-statements.md).
+
+Three doors: a **Codespace** (a free verified GitHub account and a browser; usually ready in about 2 minutes), **your own laptop** (git, Node 20 or newer, Python 3), and the **5 backup VS Code instances** (one per team at `hack-team1` to `hack-team5` `.taild76c1b.ts.net`, the team password is on your card, one shared session and one driver, no account needed; the safety net if a Codespace or laptop fails).
 
 ## Get going in 10 minutes
 1. **Read** [wiki/ESSENTIALS.md](wiki/ESSENTIALS.md), the one-page rules and data summary.

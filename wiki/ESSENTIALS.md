@@ -23,7 +23,7 @@ Open a GitHub Codespace (free account) or use your own laptop (git and Node 20 o
 ERI's four projects (P1 to P4) each carry their own fake data in `challenges/p<n>-.../fixtures/`. That is all you need. The shared `data/` folder has more fake records (`job_seekers.csv`, `job_postings.csv`) if you want them; its DVR, Ticket and county files are for billing tools only, and none of P1 to P4 is one.
 
 ## Numbers you might need
-Benefits numbers are for any project that shows an estimate; their source is [wiki/domain/ssa-work-incentives-2026.md](domain/ssa-work-incentives-2026.md) (SSA Red Book), and they are estimates to verify before you hard-code anything. The 2027 figures were announced on 2026-10-14 (the source page says so). The DVR rows are for billing tools only (none of P1 to P4).
+The dollar figures and legal statuses below are unconfirmed as of Oct 30, 2026: the ERI liaison has not checked them, so show them as estimates and say "as of 2026". Benefits numbers are for any project that shows an estimate; their source is [wiki/domain/ssa-work-incentives-2026.md](domain/ssa-work-incentives-2026.md) (SSA Red Book), and they are estimates to verify before you hard-code anything. The 2027 figures were announced on 2026-10-14 (the source page says so). The DVR rows are for billing tools only (none of P1 to P4).
 
 | Thing | Value |
 | --- | --- |

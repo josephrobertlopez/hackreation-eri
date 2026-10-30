@@ -21,9 +21,21 @@ style: |
 
 Sat, Oct 31, 2026, Penrod, Milwaukee
 Mitobyte + Employment Resources, Inc.
-Slides as plain text: `deck/attendee-kickoff.md`. Times, place, help and judging: `wiki/event/hackreation.md`. Your guide for today: `START-HERE.md`
+Use this deck before the event (what to expect, how to try the code) and at kickoff. Slides as plain text: `deck/attendee-kickoff.md`. Times, place, help and judging: `wiki/event/hackreation.md`. Your guide for today: `START-HERE.md`
 
-<!-- Speaker: welcome, thank ERI, Wisconsin Tech Month closer. Read the challenge list aloud. Publish this deck as text next to the slides. Introduce the ERI liaison, and any judge who is here, by name; others are introduced when they arrive. Say where the front-table sheet is. Kickoff target: 10 minutes, hacking by 9:30. SPEAK only five slides: this one, Pick one challenge, Roles, Get started, How you're judged. The rest are read on your own (the text copy is linked on this slide). -->
+<!-- Speaker: welcome, thank ERI, Wisconsin Tech Month closer. Read the challenge list aloud. Publish this deck as text next to the slides. Introduce the ERI liaison, and any judge who is here, by name; others are introduced when they arrive. Say where the front-table sheet is. Kickoff target: 10 minutes, hacking by 9:30. SPEAK only these: this one, The theme, The four projects, Three doors, Roles, How you're judged. Everything else is read on your own (before the event it is the whole deck). The rest are read on your own (the text copy is linked on this slide). -->
+
+---
+
+# The theme, and who it helps
+
+**Software that connects people with disabilities to job opportunities.**
+
+- Job seekers with disabilities: show what they can do
+- Employees: keep a job with the right support at work
+- Job coaches and employers: help and hire with confidence
+- Part of Wisconsin Tech Month. Hosted by Mitobyte with Employment Resources, Inc. (ERI)
+- Everything is built for real users, on fake data
 
 ---
 
@@ -60,20 +72,28 @@ Public ports are public, and the repo is public. Ask before you photograph anyon
 
 ---
 
-# Pick one challenge
+# The four projects, in ERI's words
 
-Four projects, in ERI's own words: `docs/eri-problem-statements.md`
+Quotes are ERI's "product goal" lines. Full text: `docs/eri-problem-statements.md`
 
-| # | Project | Product type |
-| --- | --- | --- |
-| **P1** | Show Your Skills | Accessible digital skills portfolio |
-| **P2** | My Workday Assistant | Accessible workplace task and routine support tool |
-| **P3** | Job Coach Connection | Accessible employee and job coach communication tool |
-| **P4** | Employer Opportunity & Support Hub | Employer decision-support and workplace accessibility tool |
+- **P1 Show Your Skills.** "Help employers recognize what a person can do by providing alternative ways to demonstrate skills and experience."
+- **P2 My Workday Assistant.** "Reduce reliance on repeated verbal instructions and help employees complete workplace tasks with confidence."
+- **P3 Job Coach Connection.** "Help employees get timely assistance while supporting their independence and reducing unnecessary barriers to communication."
+- **P4 Employer Opportunity & Support Hub.** "Make it easier for employers to recognize talent, create meaningful job opportunities, and support employees with disabilities."
 
-Each project folder (`challenges/p1-...` to `p4-...`) already runs and has tests. Extend it; do not rebuild it.
-The folders `01-...` to `03-...` are retired. Ignore them.
-Several teams may pick the same project. Attempts are compared, not merged.
+---
+
+# Pick one project
+
+| # | Project | Who it helps | Port |
+| --- | --- | --- | --- |
+| **P1** | Show Your Skills | Job seekers, job coaches, employers | 8000 |
+| **P2** | My Workday Assistant | Employees, job coaches, supervisors | 8002 |
+| **P3** | Job Coach Connection | Employees and their job coaches | 8003 |
+| **P4** | Employer Opportunity & Support Hub | Employers and hiring managers | 8000 |
+
+Each is plain HTML, CSS and vanilla JavaScript, zero dependencies, in `challenges/p1-...` to `p4-...`. It already runs and has tests. Extend it; do not rebuild it.
+Several teams may pick the same project. Attempts are compared, not merged. The folders `01-...` to `03-...` are retired. Ignore them.
 
 ---
 
@@ -89,14 +109,39 @@ Captain, navigator, designer, writer, tester, ERI expert, presenter, WordPress l
 
 ---
 
-# Get started: two doors and a backup
+# Three doors: where you can work
 
-1. **Codespace** (free GitHub account). The captain forks the repo and adds teammates; everyone opens a Codespace **from the team fork**. Start it now; if it is not ready after 10 minutes, delete it and use path 3
-2. **Your own laptop** (git and Node 20 or newer): clone the team fork, then in your project folder `npm start` and `npm test`
-Backup: **the team editor.** No account, any browser: the address and password are on your team card. One shared session, one driver. For no account, a laptop that cannot run Node, or a Codespace that is not ready
+1. **Codespace.** A free, verified GitHub account and a browser. Usually ready in about 2 minutes. The captain forks the repo and adds teammates; everyone opens a Codespace **from the team fork**
+2. **Your own laptop.** git, Node 20 or newer and Python 3. Best for screen reader users
+3. **Backup: 5 VS Code instances in the browser.** One per team at `hack-team1` to `hack-team5` `.taild76c1b.ts.net`. The password is on your team card. One shared session, one driver, no account. The safety net if a Codespace or laptop fails
 
-Everything step by step: `START-HERE.md`. Stuck? Ask a teammate or neighbour. 15 minutes: raise a hand.
-Not sure which door? `START-HERE.md`, "Which door" (screen reader: start on your laptop). Screen reader user? The optional session with Joey is 9:30 to 9:50, at a table he names now and writes on the front-table sheet.
+Not ready after 10 minutes? Delete the Codespace and use door 3. Everything step by step: `START-HERE.md`.
+
+---
+
+# Before the event: try it yourself
+
+No sign-up needed. Fake data only.
+
+1. Open a Codespace from the repo, or `git clone https://github.com/josephrobertlopez/hackreation-eri`
+2. `cd challenges/p1-show-your-skills` (or p2, p3, p4)
+3. `npm test`. It passed if the last lines say `# fail 0`
+4. `npm start`, then open `http://localhost:8000/web/`
+5. Read the project's problem statement and README
+6. Fork the repo to keep your own work
+
+Steps: `docs/PREP-CHECKLIST.md`, "Start before the event". Windows: use `py -m http.server 8000`.
+
+---
+
+# How teams form
+
+- Up to 5 teams, about 6 to 8 people each. No team needed in advance
+- 8:30 to 9:00: meet people. Mentors and hosts help match teams by skills and interests
+- 9:00 to 9:30: kickoff and team registration: sit at a table, take that team's numbered card
+- Every team needs one person who can run the hello world and one who owns plain language and accessibility testing (no code needed)
+- Pick the captain: anyone with a GitHub account
+- Joining late is fine. Leaving early is fine
 
 ---
 
@@ -134,7 +179,7 @@ Judges look for this in your demo: keyboard-only use, which screen reader you tr
 | ERI could adopt it (their stack, no paid services, a README that names the run commands) | 15% | ERI liaison, with the developer judge's check of the README |
 | Presentation | 10% | All judges |
 
-**The Golden Byte** goes to the highest weighted judge total. Every team is eligible, whichever project it picked, if it gives a demo and Joey has its pull request address before 3:30 (open it by 3:00; late still counts). Details: the Awards table on the event page. People's Choice is a show of hands; the judges agree Best in Design, Best in Innovation and Best in Teamwork.
+**The Golden Byte** goes to the highest weighted judge total. Every team is eligible, whichever project it picked, if it gives a demo and Joey has its pull request address before 3:30 (open it any time before 3:30; late still counts). Details: the Awards table on the event page. People's Choice is a show of hands; each judge may nominate a team for Best in Design, Best in Innovation and Best in Teamwork, and the team with the most nominations wins.
 
 Joey introduces the ERI liaison and any judge who is here. Rubric version: draft as of Thu Oct 29 (it becomes final after the Fri Oct 30, 6 pm confirmation). Judges never get a team password. Details: `wiki/event/hackreation.md`.
 
@@ -143,7 +188,7 @@ Joey introduces the ERI liaison and any judge who is here. Rubric version: draft
 # Share your work: one team pull request
 
 - One pull request per team, titled `Team N: <project>`
-- The captain opens it from the team fork to the main repo, **by 3:00**, then tells Joey its address at the front table
+- The captain opens it from the team fork to the main repo, **any time before 3:30**, then tells Joey its address at the front table
 - Everyone works on a branch in the team fork; the captain merges them into the team branch. Only your project folder may change
 - The form asks five things: project, the feature or story IDs, three ticks, one tester sentence, and your "What ERI would need" line
 - Backup editor only? Tell Joey between 2:00 and 2:15 (that call counts; 11:30 to 11:45 is optional and only buys a lunch safety copy): hold up your card and say your team number and project. He saves your project folder and opens the pull request with your driver. A late team still counts
@@ -158,7 +203,7 @@ Joey introduces the ERI liaison and any judge who is here. Rubric version: draft
 3. **What ERI would need** to adopt it (20 sec). Also the first line under the title of your project README, beginning `What ERI would need:`
 4. **Accessibility** you tested (20 sec)
 
-Demos run from the **venue laptop** or your own laptop, in a 10-minute slot (3 minutes of demo). Demo check 3:00 to 3:30; presentations start at 3:30.
+Demos run from the **venue laptop** or your own laptop, in a 10-minute slot (3 minutes of demo). Demo check 3:00 to 3:30, alongside hacking; presentations start at 3:30.
 Codespace: set your port to **Public** and open that link on the venue laptop. Backup editor: your driver opens the team editor there and types the password (screen turned away). Judges never get a password. Keep a recording of the working demo (up to 3 minutes) on your phone as a backup; judges score what it shows.
 Any teammate may present, read a script, or play the clip. Captions on.
 Call it a Hackreation prototype, not an ERI product.
@@ -167,23 +212,31 @@ Call it a Hackreation prototype, not an ERI product.
 
 # Schedule
 
-Source: the Meetup page, and `wiki/event/hackreation.md`
+Source: the Meetup page, and `wiki/event/hackreation.md`. Breakfast and lunch provided.
 
 | Time | What |
 | --- | --- |
-| 9:00 to 9:30 | Kickoff and team formation (now) |
-| 9:30 to 12:00 | Hacking |
-| 11:30 to 11:45 | Backup-editor teams tell Joey |
-| 12:00 to 12:45 | Lunch. Joey makes a safety copy of the backup-editor folders of teams that told him |
-| 12:45 to 2:30 | Hacking |
-| 2:00 to 2:15 | Backup-editor teams tell Joey again |
-| 2:15 to 2:30 | Last save of backup-editor folders. A late team is saved 2:30 to 2:35 and still counts |
-| 2:30 to 3:00 | New features stop at 2:30. Captains open the team pull requests. Code freeze at 3:00 |
-| 3:00 to 3:30 | Demo check on the venue laptop |
-| 3:30 to 4:30 | Presentations and awards |
-| 4:30 to 5:00 | Photos (ask first), hand cards back, thank-yous. Ends 5:00 |
+| 8:00 | Doors, check-in, coffee |
+| 8:30 to 9:00 | Networking. Organizers help match teams |
+| 9:00 to 9:30 | Kickoff, rules, agenda, team registration |
+| 9:30 to 12:00 | Hacking, floating mentors available |
+| 12:00 to 12:45 | Lunch (backup-editor teams: Joey makes a safety copy of their folders) |
+| 12:45 to 3:30 | Hacking. The team pull request is open any time before 3:30 |
+| 3:00 to 3:30 | Demo check on the venue laptop, alongside hacking |
+| 3:30 to 4:30 | Presentations to judges and the community, then awards |
+| 5:00 | End |
 
 Leaving early is fine. Coming late is fine.
+
+---
+
+# Awards
+
+- **The Golden Byte**: the highest weighted judge total
+- **People's Choice**: the room, by a show of hands
+- **Best in Design**, **Best in Innovation**, **Best in Teamwork**: judge nominations
+
+Presentations and awards: 3:30 to 4:30. Every team is eligible, whichever of the four projects it picked.
 
 ---
 
@@ -191,7 +244,7 @@ Leaving early is fine. Coming late is fine.
 
 - Ask a teammate or neighbour first
 - Stuck 15 minutes? **Raise a hand**, hold up your team card, or call out your name and "help"
-- Joey (name tag: HELP) is the floating mentor
+- Floating mentors: Joey (name tag: HELP) and the Mitobyte hosts
 - Announcements and links: the comments on the Meetup event page
 - Headphones, quiet and captions: just ask
 
@@ -214,7 +267,5 @@ Leaving early is fine. Coming late is fine.
 After today: ERI reviews every project and decides.
 
 ERI is not promising to adopt, host or support any project.
-
-If ERI picks one, a volunteer helps its web team test it on a test site first.
 
 **Let's build.**

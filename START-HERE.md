@@ -2,7 +2,19 @@
 
 Welcome. Not a coder? You have a full role today. Want to leave early? That is fine, and so is arriving late.
 
-Today we build software that connects people with disabilities to jobs, with ERI (Employment Resources, Inc.). Joey, the Mitobyte host (name tag: HELP), is the person to ask. Times, place, help and judging are on the [event page](wiki/event/hackreation.md). The four projects are in [ERI's problem statements](docs/eri-problem-statements.md). Each is the only copy, so this page links to them instead of repeating them. The old folders `challenges/01-...` to `03-...` are retired: ignore them.
+Today we build software that connects people with disabilities to jobs, with ERI (Employment Resources, Inc.). Joey and the Mitobyte hosts are the floating mentors (Joey's name tag: HELP). Times, place, help and judging are on the [event page](wiki/event/hackreation.md). The four projects are in [ERI's problem statements](docs/eri-problem-statements.md). Each is the only copy, so this page links to them instead of repeating them. The old folders `challenges/01-...` to `03-...` are retired: ignore them.
+
+## The four projects and where you can work (short version)
+
+Full tables, with who each project helps and links to ERI's exact words: [the four projects](wiki/event/hackreation.md#the-four-projects) and [where you can work](wiki/event/hackreation.md#where-you-can-work) on the event page.
+
+- **P1 Show Your Skills**: a portfolio of words, pictures, audio or video to show what a person can do. Folder `challenges/p1-show-your-skills`, port 8000.
+- **P2 My Workday Assistant**: step-by-step task guides with pictures, text, audio and reminders. Folder `challenges/p2-my-workday-assistant`, port 8002.
+- **P3 Job Coach Connection**: an employee asks their job coach for help, the coach answers. Folder `challenges/p3-job-coach-connection`, port 8003.
+- **P4 Employer Opportunity & Support Hub**: turns a candidate's skills into workplace tasks and gives employers plain guidance. Folder `challenges/p4-employer-hub`, port 8000 (same as P1).
+- All four are plain HTML, CSS and vanilla JavaScript with zero dependencies. In the project folder: `npm start`, open `http://localhost:PORT/web/`, and `npm test` (passed if it ends with `# fail 0`). ERI's words: [docs/eri-problem-statements.md](docs/eri-problem-statements.md).
+
+Three doors: a **Codespace** (a free verified GitHub account and a browser; usually ready in about 2 minutes), **your own laptop** (git, Node 20 or newer, Python 3), and the **5 backup VS Code instances** (one per team at `hack-team1` to `hack-team5` `.taild76c1b.ts.net`, the team password is on your card, one shared session and one driver, no account needed; the safety net if a Codespace or laptop fails).
 
 ## Pick your path
 
@@ -15,17 +27,17 @@ Most people use path 1 or 2. Path 3 is the backup, so nobody is left out.
 | Have a GitHub account and a laptop with a browser | Path 1, a Codespace. Start it right away |
 | Have git, Node 20 or newer and Python 3 on your laptop already, or use a screen reader | Path 2, your own laptop. It keeps your own tools and settings |
 | Your laptop has no Node, or you cannot install it (no admin rights) | Path 1: a Codespace needs only a browser |
-| No GitHub account | Make one (free, a phone works), or take a role below and let a teammate drive. Path 3 is for a team whose members cannot do either |
+| No GitHub account | Make one (free, a phone works), or join a team that has one and take a role below. A team with nobody who can make an account, or whose Codespace or laptop failed, uses its team editor (Path 3, the backup) |
 
 ### Path 1: Codespaces (a free GitHub account, any laptop with a browser)
 
-A Codespace is a coding workspace in your browser. The default one is a slim image with Node 20, Python 3 and git: enough for P1 to P4, but **no PHP and no Docker**. It is usually ready in about 2 minutes (the older, larger image took 6 to 8 minutes or stalled; numbers on the [event page](wiki/event/hackreation.md#paths-how-you-get-a-workspace)). **If yours is not ready after 10 minutes, delete it and use path 3** (screen reader users: your own laptop, path 2).
+A Codespace is a coding workspace in your browser. The default one is a slim image with Node 20, Python 3 and git: enough for P1 to P4, but **no PHP and no Docker**. It was ready in about 76 seconds in 4 of 5 test creates (one did not start) (the older, larger image took 6 to 8 minutes or stalled; numbers on the [event page](wiki/event/hackreation.md#paths-how-you-get-a-workspace)). **If yours is not ready after 10 minutes, delete it and use path 3** (screen reader users: your own laptop, path 2).
 
 **Need PHP, Docker or WordPress** (for example the WordPress lead's `php tests/smoke.php`)? Create that Codespace with the full configuration: on the team fork press **Code**, **Codespaces**, the **...** menu, **New with options**, and set **Dev container configuration** to **full**. It starts slower, so create it at kickoff. Or use the team editor, whose image is documented to have PHP 8 (check with `php -v`).
 
 **Friday night (10 minutes, worth it):**
 1. Make a free account at https://github.com/signup and verify your email. The sign-up has a puzzle; choose the audio option.
-2. Open https://github.com/josephrobertlopez/hackreation-eri, press **Code**, **Codespaces**, **Create codespace on main**. Wait for files on the left and a terminal at the bottom. Run `node -v`: it should say v20 or newer. That proves your account and the 10-minute start only; Saturday's Codespace is opened from the team fork. Do not commit in this test Codespace. If GitHub offers to make your own copy (a fork), accept: that is normal. This test cannot prove Saturday's steps (a collaborator invite, a Codespace opened on someone else's fork): nobody has tried those yet. Leave it; it sleeps on its own. If it made a fork and you become captain: open that fork, press **Sync fork**, **Update branch**, check it holds none of your own commits, and write its exact address on the card. Stray commits? Delete it (Settings, Delete this repository) and fork again.
+2. Open https://github.com/josephrobertlopez/hackreation-eri, press **Code**, **Codespaces**, **Create codespace on main**. Wait for files on the left and a terminal at the bottom. Run `node -v`: it should say v20 or newer. That proves your account and the 10-minute start only; Saturday's Codespace is opened from the team fork. Do not commit in this test Codespace. If GitHub offers to make your own copy (a fork), accept: that is normal. A free account has a monthly Codespaces allowance (see the billing page linked from [docs/PREP-CHECKLIST.md](docs/PREP-CHECKLIST.md)); delete the test Codespace when you have seen it work. This test cannot prove Saturday's steps (a collaborator invite, a Codespace opened on someone else's fork): nobody has tried those yet. Leave it; it sleeps on its own. If it made a fork and you become captain: open that fork, press **Sync fork**, **Update branch**, check it holds none of your own commits, and write its exact address on the card. Stray commits? Delete it (Settings, Delete this repository) and fork again.
 
 **Saturday, at kickoff (do not wait for the end of kickoff):**
 1. Your team picks a **captain**: anyone with a GitHub account, best the person most comfortable with git (if that is not the captain, the navigator runs the merge commands in step 6). The captain opens the repo above and presses **Fork**, then **Create fork**. That is the **team fork**; its address is `github.com/<captain's name>/hackreation-eri`. The captain writes it on the team card.
@@ -33,7 +45,7 @@ A Codespace is a coding workspace in your browser. The default one is a slim ima
 3. Each teammate accepts the invite (email, or the **Invitations** page of the team fork; check your spam folder). No account yet? Make one now at https://github.com/signup (a phone works; choose the audio puzzle option), or take a non-coding role and let a teammate share their screen.
 4. Everyone, captain included, opens **the team fork's page**, then **Code**, **Codespaces**, **Create codespace on main**. Do this right away and keep going while it starts. Do not open it from the main repo: it will ask you to fork again.
 5. In the Codespace terminal: `cd challenges/p<n>-...` for your project, then `npm start` and `npm test`. Ports are in the table below.
-6. Work on your own branch (names below): `git switch -c attempt/N/p<n>-<yourname>`. Commit, then press **Publish Branch** (on a terminal: the push with `-u origin <your branch>`). The captain builds the team branch from these: [One team pull request](#one-team-pull-request), step 1.
+6. Work on your own branch (names below): `git fetch origin`, then `git switch -c attempt/N/p<n>-<yourname> origin/main` (start from `origin/main`, so your pull request carries only your project). Commit, then press **Publish Branch** (on a terminal: the push with `-u origin <your branch>`). The captain builds the team branch from these: [One team pull request](#one-team-pull-request), step 1.
 
 #### Branch names
 
@@ -46,7 +58,7 @@ N is your team number (join late? use the team you joined). This is the only tab
 
 ### Path 2: Your own laptop
 
-You need **git**, **Node 20 or newer** (https://nodejs.org) and a browser. `npm start` runs `python3 -m http.server`, so you also need Python 3 to preview a page; `npm test` needs only Node. The four projects have no dependencies. **No admin rights, or an install not finished in 20 minutes? Stop and use a Codespace (path 1): it needs only a browser.** Choices that need no admin (not verified on a locked-down laptop): Node as the `.zip` download from https://nodejs.org/en/download, the VS Code **User Installer**, and the current-user option of Git for Windows. To send your work to the team fork you also sign in to GitHub once: `gh auth login`, then `gh auth setup-git`. Windows and Mac details, and that sign-in step: [docs/PREP-CHECKLIST.md](docs/PREP-CHECKLIST.md#option-b-your-own-laptop-primary).
+You need **git**, **Node 20 or newer** (https://nodejs.org) and a browser. `npm start` runs `python3 -m http.server`, so you also need Python 3 to preview a page; `npm test` needs only Node. The four projects have no dependencies. Check your versions: `node -v` (v20 or newer), `python3 -V` (Windows: `py -V`), `git --version`. **No admin rights, or an install not finished in 20 minutes? Stop and use a Codespace (path 1): it needs only a browser.** Choices that need no admin (not verified on a locked-down laptop): Node as the `.zip` download from https://nodejs.org/en/download, the VS Code **User Installer**, and the current-user option of Git for Windows. To send your work to the team fork you also sign in to GitHub once: `gh auth login`, then `gh auth setup-git`. Windows and Mac details, and that sign-in step: [docs/PREP-CHECKLIST.md](docs/PREP-CHECKLIST.md#option-b-your-own-laptop-primary).
 
 ```
 git clone https://github.com/<captain's name>/hackreation-eri
@@ -68,12 +80,12 @@ Leave `npm start` running in one terminal and run `npm test` in a second. P1 and
 
 ### Path 3: Backup, the team editor
 
-Use it only if you have **no GitHub account**, your **laptop cannot run Node**, or your **Codespace is not ready in 10 minutes**. It is a VS Code in your browser, shared by your team.
+Use it only if your team has **nobody who can make a GitHub account**, your **laptop cannot run Node**, or your **Codespace is not ready in 10 minutes**. It is a VS Code in your browser, shared by your team.
 
 1. Your team card has a team number, a password and an address: `https://hack-teamN.taild76c1b.ts.net`. Team 3 opens `hack-team3`. Any browser, no account (on a phone the editor is hard to use: phone users take a role below and let the driver type). One password per team, the same for everyone on it; a spare card has none, so a teammate tells you. Joey changes all five after the event. The editor holds the repo as it was on Friday noon: for the rubric and venue facts, GitHub's event page wins.
 2. Type the password. Open a terminal (Terminal, then New Terminal) and your project's folder.
 3. **One shared session, one driver.** Only the driver edits files; swap every so often. Anyone may open an extra terminal tab only to run `npm test` or read output. Everyone else tests, writes, designs and reviews.
-4. **Getting its work to GitHub:** the editor holds Friday's copy of the repo and cannot push. If a teammate has a Codespace or laptop, download the changed files from the editor (right-click in the file list, **Download**; this needs a computer, not a phone) and the teammate copies them into their copy and commits them. If your whole team is on the editor, tell Joey between 2:00 and 2:15 (hold up your card and say your team number and project); that call is the one that counts; say your "What ERI would need" line to Joey then too. A call at 11:30 to 11:45 is optional and only buys a safety copy at lunch. Joey tells you when your last save will be; stop new work then, which costs no points. He saves your project folder and opens the pull request with your driver from 2:30 (best effort: the save steps have not been rehearsed yet, so a teammate with a laptop or Codespace is the safer route). A team that misses the call is saved 2:30 to 2:35 and still counts. Only `challenges/p<n>-...` is saved; work after your last save is not in it.
+4. **Getting its work to GitHub:** the editor holds Friday's copy of the repo and cannot push. If a teammate has a Codespace or laptop, download the changed files from the editor (right-click in the file list, **Download**; this needs a computer, not a phone) and the teammate copies them into their copy and commits them. If your whole team is on the editor, tell Joey between 2:00 and 2:15 (hold up your card and say your team number and project); that call is the one that counts; say your "What ERI would need" line to Joey then too. A call at 11:30 to 11:45 is optional and only buys a safety copy at lunch. Joey tells you when your last save will be; stop new work then, which costs no points. He saves your project folder and opens the pull request with your driver after your save (best effort: the save steps have not been rehearsed yet, so a teammate with a laptop or Codespace is the safer route). A team that misses the call is saved 3:00 to 3:10 and still counts. Only `challenges/p<n>-...` is saved; work after your last save is not in it.
 
 **Stuck?** Ask a teammate or a neighbour. Still stuck after 15 minutes? **Raise a hand, hold up your team card, or call out your name and "help"**, and Joey comes. Cannot see the room? Call out Joey, or ask the first person you meet; any teammate will fetch him. Cannot read the card? Tell Joey, or reply "Screen reader" on the Meetup post before Saturday, and he sends you the table, Wi-Fi and notes-doc link as text. Announcements and links: the comments on the [Meetup event page](https://www.meetup.com/mitobyte/events/316630269/). Who is who: the [event page](wiki/event/hackreation.md#who-is-who).
 
@@ -96,7 +108,7 @@ You are a full member of a team. You need only your device or paper. Pick a role
 
 **Getting your work to the team.** The team has a notes doc, a shared Google Doc (the link is on your team card; anyone with the link can edit, so no personal data and no photos of people). Paste text and links there. No Google account, or would you rather not? Write it on paper and leave it in the pile on your table; a teammate types it in. A photo of a paper sketch can be emailed to yourself and dropped in the notes doc. A teammate with a Codespace or laptop adds anything that belongs in the project. Screen reader users: in Google Docs press Ctrl+Alt+Z to turn on screen reader support, and ask Joey to send you the notes-doc link as text.
 
-**Plain words.** A *fork* is your team's own copy of the project. A *branch* is your own copy of the work inside it. A *pull request* is how your team sends its work to the judges. **Publish Branch** uploads your branch to the fork.
+**Plain words.** A *fork* is your team's own copy of the project. A *branch* is your own copy of the work inside it. A *pull request* is how your team sends its work to the judges. **Publish Branch** uploads your branch to the fork. The *captain* is the teammate with a GitHub account who forks the repo and opens the team's pull request. A *collaborator* is a teammate the captain has invited to the fork so they can push to it. A *Codespace* is a coding workspace that runs in your browser. A *port* is the number after the colon in a local web address (`localhost:8000`); a *Public* port can be opened by anyone with the link. *CI* is the automatic check GitHub runs on a pull request. The *team editor* is the backup VS Code in the browser, and its *driver* is the one person who types in it; in a Codespace or on a laptop, any teammate may type. The *navigator* is the teammate who reads along and runs the git commands.
 
 **Phone, iPad or Chromebook?** Great for design, notes and testing. A phone cannot write code well. A Chromebook can open a Codespace in its browser if you have a GitHub account; sign in to nothing you cannot sign out of.
 
@@ -104,7 +116,7 @@ You are a full member of a team. You need only your device or paper. Pick a role
 
 ## Ports and preview addresses
 
-Run a project from its folder with `npm start` and `npm test`. Then open the page:
+Run a project from its folder with `npm start` and `npm test`. `npm test` prints a lot; it passed if the last lines say `# fail 0`. Work only in `challenges/p1-...` to `challenges/p4-...`: the folders `challenges/01-...` to `challenges/03-...` are retired and are not this event's challenges. Then open the page:
 
 | Project | Port | Path | Notes |
 | --- | --- | --- | --- |
@@ -117,8 +129,8 @@ Run a project from its folder with `npm start` and `npm test`. Then open the pag
 - **Windows without `python3`:** python.org installs `py`, not `python3`, so `npm start` fails (`python3` may even open the Microsoft Store). In the project folder run `py -m http.server PORT` instead (P1 and P4 8000, P2 8002, P3 8003) and open the same `/web/` address. `npm test` still works.
 - **Own laptop:** `http://localhost:PORT/web/`, for example `http://localhost:8003/web/`.
 - **Team editor:** your team address plus `/proxy/PORT/web/`, for example `https://hack-team3.taild76c1b.ts.net/proxy/8003/web/`. Each team has its own editor, so teams never clash.
-- **Port 8000 in use** (P1 and P4 share it, so two teammates on both collide): in the project folder run `python3 -m http.server 8010`, then open `http://localhost:8010/web/`, or in the editor `/proxy/8010/web/`. In a Codespace a new row for 8010 appears in the Ports tab (the label there says P1 / P4 only for 8000); open that row.
-- **Public Codespace port:** a visitor may first see a GitHub page asking to continue; press Continue.
+- **Port 8000 in use** (P1 and P4 share it, so two teammates on both collide): in the project folder run `python3 -m http.server 8010` (for example P4 as the second one: `cd challenges/p4-employer-hub && python3 -m http.server 8010`), then open `http://localhost:8010/web/`, or in the editor `/proxy/8010/web/`. In a Codespace a new row for 8010 appears in the Ports tab (the label there says P1 / P4 only for 8000); open that row.
+- **Public Codespace port:** a visitor first sees a GitHub page titled "You are about to access a development port served by someone's codespace" with a **Continue** button. That is normal, not an error: press Continue and the app opens. It asks once per browser.
 
 ## If you have done this before
 
@@ -137,7 +149,7 @@ You are the navigator, not the driver. Handing the keyboard back is the job.
 
 ## One team pull request
 
-Your team sends **one** pull request to the main repo, titled `Team N: <project>`, for example `Team 3: Job Coach Connection`, **opened by 3:00**. New features stop at 2:30 for every team; 2:30 to 3:00 is for the pull request, the README line, fixes and demo practice. The rules are in [CONTRIBUTING.md](CONTRIBUTING.md), section 5.
+Your team sends **one** pull request to the main repo, titled `Team N: <project>`, for example `Team 3: Job Coach Connection`, **opened any time before 3:30** (it can keep being updated until 3:30; we suggest opening it by 3:00 so its checks finish; confirm with Joey). Hacking runs to 3:30; the demo check (3:00 to 3:30) runs alongside it. The rules are in [CONTRIBUTING.md](CONTRIBUTING.md), section 5.
 
 1. The captain builds the team branch in the Codespace or clone, in this order: `git fetch origin`, `git switch -c attempt/N/<project folder> origin/main`, then `git merge --no-edit origin/<teammate's branch>` for each teammate, then the first push of it with `-u origin attempt/N/<project folder>` ([Branch names](#branch-names)). The pull request's head is that team branch; CI does not read branch names ([CONTRIBUTING.md](CONTRIBUTING.md), section 3). Only your project folder `challenges/p<n>-...` may change, or CI fails the pull request.
 2. On the team fork's page, press **Compare & pull request** next to the team branch (or open **Contribute**, **Open pull request** and pick the team branch in the head dropdown; it defaults to `main`). The base is `josephrobertlopez/hackreation-eri`, branch `main`. Set the title to `Team N: <project>`. (The fork's `main` also works as the head if it holds only your project folder's changes, but the team branch is easier for Joey to find.)
@@ -147,7 +159,7 @@ Your team sends **one** pull request to the main repo, titled `Team N: <project>
    3. Tick the first three boxes in section 5: no field asks for a disability or diagnosis; nothing scores or ranks candidates; no automated hiring or accommodation decision.
    4. One sentence on what a person who did not write it found when they tried it, under section 4.
    5. Your "What ERI would need" line, on the labelled line in section 1. Also replace the placeholder `What ERI would need:` line, the first line under the title in your project's `README.md` (built only a note or a recording? it goes there anyway), because the judge reads that README on the pull request page. Leaving the placeholder in place caps the "ERI could adopt it" row at 2; "wrong" means the run commands do not work as written (event page, Judging).
-4. Tell Joey the pull request's address at the front table (by 3:00 is the aim; late rules: Awards on the event page). If a check says it is waiting for approval, Joey approves it. The checks are informational today: a red check never disqualifies a team and is not a score row, so spend your last minutes on the demo.
+4. Tell Joey the pull request's address at the front table (before 3:30; by 3:00 is the aim; late rules: Awards on the event page). If a check says it is waiting for approval, Joey approves it. The checks are informational today: a red check never disqualifies a team and is not a score row, so spend your last minutes on the demo.
 
 **A team that is only on the backup editor** does not open a pull request: Joey does, with your driver (Path 3, step 4).
 
@@ -164,9 +176,9 @@ Nobody has tested a screen reader in a Codespace or in the team editor yet (even
 
 ## Show a demo from the venue laptop
 
-From 3:00 to 3:30 each team brings its demo to the venue laptop, one at a time. Joey calls you. **Judges never get a team password and never need a login.**
+From 3:00 to 3:30, alongside hacking, each team brings its demo to the venue laptop, one at a time. Joey calls you. **Judges never get a team password and never need a login.**
 
-1. **Codespace:** open the **Ports** tab, right-click your port, **Port Visibility**, **Public** (by keyboard: Ctrl+Shift+P, `Ports: Focus on Ports View`, arrow to your port, Shift+F10 or the Menu key for the context menu, then **Port Visibility**, **Public**; the same menu can copy the address), and open that link on the venue laptop. Public means anyone with the link can open it, so fake data only. A Codespace sleeps when idle and a sleeping one closes its ports: before your demo check, reopen it at https://github.com/codespaces, run `npm start` again and check the link still opens (set the idle-time setting before creating the Codespace: [docs/PREP-CHECKLIST.md](docs/PREP-CHECKLIST.md#option-a-a-codespace-primary)). A school or work GitHub account may block Public ports: use a personal account or your own laptop.
+1. **Codespace:** open the **Ports** tab, right-click your port, **Port Visibility**, **Public** (by keyboard: Ctrl+Shift+P, `Ports: Focus on Ports View`, arrow to your port, Shift+F10 or the Menu key for the context menu, then **Port Visibility**, **Public**; the same menu can copy the address), and open that link on the venue laptop. At your 3:00 to 3:30 demo check, open it once on the venue laptop and press **Continue** on GitHub's warning page, so the judges go straight to your app. Public means anyone with the link can open it, so fake data only. A Codespace sleeps when idle and a sleeping one closes its ports: before your demo check, reopen it at https://github.com/codespaces, run `npm start` again and check the link still opens (set the idle-time setting before creating the Codespace: [docs/PREP-CHECKLIST.md](docs/PREP-CHECKLIST.md#option-a-a-codespace-primary)). A school or work GitHub account may block Public ports: use a personal account or your own laptop.
 2. **Your own laptop:** show your screen. Joey has USB-C and HDMI adapters; bring your own only for an unusual port.
 3. **Backup editor:** your driver opens the team address on the venue laptop and types the password with the screen turned away from the room. Start the app, open the preview address, then leave the tab open and minimise it. Close it afterward.
 4. **Any path:** keep a recording of the working demo on your phone, up to 3 minutes. If the live demo fails, play it; judges score what it shows. Sound (for example P2 audio) comes from the browser on the venue laptop: test it at the demo check.
@@ -180,6 +192,7 @@ A live demo is preferred; the recording is the fallback. No path costs you point
 | Account sign-up has a puzzle or will not finish | Choose the audio option. Still blocked? Call out Joey's name; use path 3 for now |
 | Codespace stays on "Provisioning", or is not ready after 10 minutes | Delete it (it holds nothing yet) and use path 3 (screen reader users: path 2, your laptop). Do not make a second one |
 | Codespace is slow to start, or `node -v` says older than 20 | Your fork may be older than the slim image. Open the team fork, press **Sync fork**, **Update branch**, then create a new Codespace (delete the old one only if it holds nothing) |
+| The creation log shows red text or "SKIPPED" lines about PHP, WordPress or challenges 01 to 03 | Expected on the slim default: it has no PHP. If files appear and `node -v` says v20 or newer, ignore it |
 | Codespace says creation had errors | If files appear on the left and a terminal at the bottom, keep going, but the setup step can fail quietly: run `node -v`; v20 or newer means fine. If not, delete it and use path 3 |
 | The collaborator invite is not accepted | Teammate: check your email, or open the team fork's address and look for the yellow invite banner. Captain: Settings, Collaborators shows "Pending"; send the invite again |
 | It asks you to fork, or says you cannot push | You opened the main repo, not the team fork. Delete the Codespace and open one from the team fork's page. On a laptop, `git remote -v` must show the team fork. If it shows the main repo, run `git remote set-url origin https://github.com/<captain's name>/hackreation-eri` (copy the address from the team card), check with `git remote -v`, then send your branch again with `git push -u origin <your branch>`; no re-clone is needed |

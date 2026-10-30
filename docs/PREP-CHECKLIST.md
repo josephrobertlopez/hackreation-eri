@@ -4,6 +4,19 @@
 
 This page is the Friday-night setup. Do whichever of A or B you like; neither is required.
 
+## Start before the event
+
+Saw the Meetup post and want to try the code on your own time, before or after Saturday? You do not need to come to the event, sign up for a team, or ask anyone. Everything below uses fake data only. Never put real personal information in it.
+
+1. **Get the code.** Either open a Codespace (a free, verified GitHub account and a browser): at https://github.com/josephrobertlopez/hackreation-eri press **Code**, **Codespaces**, **Create codespace on main**. Or on your own computer (git, Node 20 or newer, Python 3): `git clone https://github.com/josephrobertlopez/hackreation-eri`, then `cd hackreation-eri`.
+2. **Pick a project** (the four are in [ERI's problem statements](eri-problem-statements.md); short version on the [event page](../wiki/event/hackreation.md#the-four-projects)): `challenges/p1-show-your-skills`, `challenges/p2-my-workday-assistant`, `challenges/p3-job-coach-connection` or `challenges/p4-employer-hub`.
+3. **Run the tests.** `cd` into the project folder and run `npm test`. There is nothing to install. It prints a lot; it passed if the last lines say `# fail 0`.
+4. **Start it.** Run `npm start`, then open the page: `http://localhost:8000/web/` for P1 and P4, `:8002` for P2, `:8003` for P3 (P3 also has `/web/coach.html`; open the two pages in two tabs of one browser). In a Codespace, open the port from the **Ports** tab. P1 and P4 share port 8000, so run one at a time. On Windows, `npm start` fails because there is no `python3` command: run `py -m http.server 8000` in the project folder instead (use the project's own port).
+5. **Read the problem statement** for your project, then read the project's `README.md` for what is built and what is left. The first line, `What ERI would need: (your team writes this)`, is a blank for you to fill in.
+6. **Keep or share your own work.** Press **Fork** on the repo page to get your own copy (https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo), work on a branch there and push it. Your fork is yours: nothing you do changes the original. You are welcome to share the link in the Meetup comments. Note that during the event, teams send one pull request to the main repo, and the main repo keeps pull requests open for ERI to read; see [CONTRIBUTING.md](../CONTRIBUTING.md).
+
+The code is MIT licensed ([LICENSE](../LICENSE)), so you may reuse it. Not every check has been run in every browser: if a page does not load or something breaks, say so in the Meetup comments.
+
 ## Not coding? Nothing to do.
 
 Design, writing, testing, ERI knowledge and presenting are full roles. Tools you might bring: paper and a pen, an iPad or tablet, a Chromebook, a phone for recording. The roles and first tasks are in [START-HERE.md](../START-HERE.md#not-a-coder-your-tasks). Read the four projects if you like (5 minutes): [ERI's problem statements](eri-problem-statements.md).
@@ -16,13 +29,13 @@ Use a screen reader? Do Option B on your own laptop: it keeps your own tools and
 
 ## Option A: a Codespace (primary)
 
-A Codespace is your own workspace in the browser. The default is a slim image (Node 20, Python 3, git; no PHP, no Docker), enough for P1 to P4. It is usually ready in about 2 minutes; opening one on Friday night proves it works for you. On Saturday your team will open one from its team fork (see [START-HERE.md](../START-HERE.md)). Only the WordPress lead, or a team that wants PHP or Docker, needs the full configuration: START-HERE, [Path 1](../START-HERE.md#path-1-codespaces-a-free-github-account-any-laptop-with-a-browser) (it starts slower; create it at kickoff).
+A Codespace is your own workspace in the browser. The default is a slim image (Node 20, Python 3, git; no PHP, no Docker), enough for P1 to P4. It was ready in about 76 seconds in 4 of 5 test creates (one did not start); opening one on Friday night proves it works for you. On Saturday your team will open one from its team fork (see [START-HERE.md](../START-HERE.md)). Only the WordPress lead, or a team that wants PHP or Docker, needs the full configuration: START-HERE, [Path 1](../START-HERE.md#path-1-codespaces-a-free-github-account-any-laptop-with-a-browser) (it starts slower; create it at kickoff).
 
 1. Open https://github.com/josephrobertlopez/hackreation-eri, press **Code**, **Codespaces**, **Create codespace on main**. GitHub may say it will make your own copy (a fork): choose **Create fork** or **Continue**; that is normal. This test Codespace is read-only for you: do not commit in it.
 2. Wait until you see files on the left and a terminal at the bottom. Do not refresh and do not make a second one. Run `node -v`; it should say v20 or newer. Not ready after 10 minutes? Delete it. You lose nothing: use the backup team editor on Saturday.
 3. Never delete a Codespace that holds work not yet on GitHub (an empty one that never became ready is fine to delete). It sleeps when idle and closes its ports; reopen it at https://github.com/codespaces. At https://github.com/settings/codespaces, **Default idle timeout** can be raised to 4 hours. Do that before you create the Codespace: it does not change one that already exists.
 
-This Friday test proves your account and the start of the slim image from the main repo only. It cannot prove the Saturday steps (a collaborator invite, a Codespace opened on someone else's fork): nobody has tried those yet. On Saturday your team opens its Codespace from the team fork. A free account has a monthly Codespaces allowance; [GitHub's billing page](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces) has the current numbers.
+Delete the test Codespace when you have seen it work, to save your free allowance. This Friday test proves your account and the start of the slim image from the main repo only. It cannot prove the Saturday steps (a collaborator invite, a Codespace opened on someone else's fork): nobody has tried those yet. On Saturday your team opens its Codespace from the team fork. A free account has a monthly Codespaces allowance; [GitHub's billing page](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces) has the current numbers.
 
 ## Option B: your own laptop (primary)
 
