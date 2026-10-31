@@ -23,10 +23,10 @@ Needs Docker with about 2 GB free RAM. The image bundles the Agents (AI) plugin.
 ## AI helper (Agents plugin, already bundled)
 The API key is never committed. Enter it in System Console > Plugins > Agents:
 1. Add an Anthropic service with your key and a model (`claude-haiku-4-5-20251001` works).
-2. Add a bot: name `helper`, display name "Helper (AI)", that service, tools off,
+2. Add a bot: name `ally`, display name "Ally (AI helper)", that service, tools off,
    and paste `helper-prompt.md` into the custom instructions.
-3. `$M team users add eri-demo helper` and `$M channel users add eri-demo:sam-help helper`.
-4. In the channel, start each message with `@helper`.
+3. `$M team users add eri-demo ally` and `$M channel users add eri-demo:sam-help ally`.
+4. In the channel, start each message with `@ally`.
 
 If the page only updates after a refresh, the browser's address is missing from
 `MM_ALLOWED_ORIGINS` in `.env`. Restart with `docker compose up -d`.

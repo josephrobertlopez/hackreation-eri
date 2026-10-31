@@ -41,7 +41,11 @@ services:
       MM_SERVICESETTINGS_ENABLEUSERACCESSTOKENS: "true"
       MM_TEAMSETTINGS_ENABLEOPENSERVER: "false"
       MM_EMAILSETTINGS_ENABLESIGNUPWITHEMAIL: "false"
-      MM_EMAILSETTINGS_SENDPUSHNOTIFICATIONS: "false"
+      # iPhone app push goes through Mattermost's free TEST push service
+      # (no uptime promise). "generic" sends no message text to it.
+      MM_EMAILSETTINGS_SENDPUSHNOTIFICATIONS: "true"
+      MM_EMAILSETTINGS_PUSHNOTIFICATIONSERVER: https://push-test.mattermost.com
+      MM_EMAILSETTINGS_PUSHNOTIFICATIONCONTENTS: generic
       MM_LOGSETTINGS_CONSOLELEVEL: WARN
     volumes:
       - mm-config:/mattermost/config
