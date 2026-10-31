@@ -1,0 +1,57 @@
+# Local Mattermost for the "client + coach + AI helper" demo.
+#   cp .env.example .env   (then set a password), then:  docker compose up -d
+#   Open http://localhost:8065 on the laptop, http://<laptop-LAN-IP>:8065 on the iPhone.
+# Synthetic data only. Nothing here is hardened for a public network.
+name: eri-p3-mattermost
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: mmuser
+      POSTGRES_PASSWORD: ${MM_DB_PASSWORD:?copy .env.example to .env first}
+      POSTGRES_DB: mattermost
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mmuser -d mattermost"]
+      interval: 5s
+      retries: 20
+
+  mattermost:
+    image: mattermost/mattermost-enterprise-edition:release-10.11
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      # 0.0.0.0 so the iPhone on the same Wi-Fi can reach it. Fake data only.
+      - "${MM_PORT:-8065}:8065"
+    environment:
+      MM_SQLSETTINGS_DRIVERNAME: postgres
+      MM_SQLSETTINGS_DATASOURCE: postgres://mmuser:${MM_DB_PASSWORD}@db:5432/mattermost?sslmode=disable&connect_timeout=10
+      MM_SERVICESETTINGS_SITEURL: ${MM_SITEURL:-http://localhost:8065}
+      MM_SERVICESETTINGS_ENABLELOCALMODE: "true"
+      # Replies from the AI helper show inline instead of hidden in threads.
+      MM_SERVICESETTINGS_COLLAPSEDTHREADS: disabled
+      # Live updates (websocket) only work from origins listed here or SiteURL.
+      MM_SERVICESETTINGS_ALLOWCORSFROM: ${MM_ALLOWED_ORIGINS:-http://localhost:8065}
+      MM_SERVICESETTINGS_ENABLEBOTACCOUNTCREATION: "true"
+      MM_SERVICESETTINGS_ENABLEUSERACCESSTOKENS: "true"
+      MM_TEAMSETTINGS_ENABLEOPENSERVER: "false"
+      MM_EMAILSETTINGS_ENABLESIGNUPWITHEMAIL: "false"
+      MM_EMAILSETTINGS_SENDPUSHNOTIFICATIONS: "false"
+      MM_LOGSETTINGS_CONSOLELEVEL: WARN
+    volumes:
+      - mm-config:/mattermost/config
+      - mm-data:/mattermost/data
+      - mm-logs:/mattermost/logs
+      - mm-plugins:/mattermost/plugins
+
+volumes:
+  db-data:
+  mm-config:
+  mm-data:
+  mm-logs:
+  mm-plugins:
